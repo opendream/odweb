@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import manifest from '../../content/pages/manifest.json';
+import html from '../../content/pages/en/homepage.html?raw';
+import css from '../../styles/pages/en-homepage.css?raw';
+const page = manifest.find((m) => m.path === '/en/' && m.lang === 'en');
+---
+<BaseLayout title={page?.title ?? 'Opendream'} description={page?.description} lang="en" path="/en/" altPath="/" pageStyles={css} bodyClass={page?.bodyClass}>
+  <Fragment set:html={html} />
+</BaseLayout>

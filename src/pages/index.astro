@@ -1,7 +1,10 @@
 ---
-const langs = [{ code: 'th', href: '/blog' }, { code: 'en', href: '/en/blogs' }];
+import BaseLayout from '../layouts/BaseLayout.astro';
+import manifest from '../content/pages/manifest.json';
+import html from '../content/pages/th/home.html?raw';
+import css from '../styles/pages/th-home.css?raw';
+const page = manifest.find((m) => m.path === '/' && m.lang === 'th');
 ---
-<html lang="th"><head><meta charset="utf-8" /><title>Opendream — migration preview</title></head>
-<body><h1>Opendream (Phase 1 preview)</h1>
-<ul>{langs.map(l => <li><a href={l.href}>{l.code.toUpperCase()} posts</a></li>)}</ul>
-</body></html>
+<BaseLayout title={page?.title ?? 'Opendream'} description={page?.description} lang="th" path="/" altPath="/en/" pageStyles={css} bodyClass={page?.bodyClass}>
+  <Fragment set:html={html} />
+</BaseLayout>

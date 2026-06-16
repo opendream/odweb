@@ -9,8 +9,10 @@ interface Props {
   lang: 'th' | 'en';
   path: string;
   altPath?: string;
+  pageStyles?: string;
+  bodyClass?: string;
 }
-const { title, description, lang, path, altPath } = Astro.props;
+const { title, description, lang, path, altPath, pageStyles, bodyClass } = Astro.props;
 const site = 'https://opendream.co.th';
 const enHref = lang === 'en' ? path : (altPath ?? '/en/blogs');
 const thHref = lang === 'th' ? path : (altPath ?? '/blog');
@@ -32,8 +34,9 @@ const thHref = lang === 'th' ? path : (altPath ?? '/blog');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&subset=cyrillic,cyrillic-ext,latin,latin-ext,vietnamese&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr:200,300,400,500,600,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansthai.css" />
+    {pageStyles && <style set:html={pageStyles}></style>}
   </head>
-  <body>
+  <body class={bodyClass}>
     <Header lang={lang} thHref={thHref} enHref={enHref} />
     <main><slot /></main>
     <Footer lang={lang} />
