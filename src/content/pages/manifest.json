@@ -16,5 +16,68 @@
     "bodyClass": "home page-template-default page page-id-27147 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
     "html": "src/content/pages/en/homepage.html",
     "css": "src/styles/pages/en-homepage.css"
+  },
+  {
+    "path": "/about-us",
+    "lang": "th",
+    "slug": "about-us",
+    "title": "เราทำอะไร | Opendream",
+    "bodyClass": "page-template-default page page-id-29542 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/about-us.html",
+    "css": "src/styles/pages/th-about-us.css"
+  },
+  {
+    "path": "/contact",
+    "lang": "th",
+    "slug": "contact",
+    "title": "ติดต่อเรา | Opendream",
+    "bodyClass": "page-template-default page page-id-14 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/contact.html",
+    "css": "src/styles/pages/th-contact.css"
+  },
+  {
+    "path": "/join-us",
+    "lang": "th",
+    "slug": "join-us",
+    "title": "ร่วมงาน | Opendream",
+    "bodyClass": "page-template-default page page-id-10 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/join-us.html",
+    "css": "src/styles/pages/th-join-us.css"
+  },
+  {
+    "path": "/announcement",
+    "lang": "th",
+    "slug": "announcement",
+    "title": "ประกาศ | Opendream",
+    "bodyClass": "page-template-default page page-id-29546 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/announcement.html",
+    "css": "src/styles/pages/th-announcement.css"
+  },
+  {
+    "path": "/en/about_en",
+    "lang": "en",
+    "slug": "about_en",
+    "title": "About | Opendream",
+    "bodyClass": "page-template-default page page-id-27151 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/about_en.html",
+    "css": "src/styles/pages/en-about_en.css"
+  },
+  {
+    "path": "/en/contact_en",
+    "lang": "en",
+    "slug": "contact_en",
+    "title": "Contact Us | Opendream",
+    "bodyClass": "page-template-default page page-id-27139 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/contact_en.html",
+    "css": "src/styles/pages/en-contact_en.css"
+  },
+  {
+    "path": "/en/join-us_en",
+    "lang": "en",
+    "slug": "join-us_en",
+    "title": "Join Us | Opendream",
+    "bodyClass": "page-template-default page page-id-27167 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/join-us_en.html",
+    "css": "src/styles/pages/en-join-us_en.css"
   }
 ]

@@ -10,6 +10,13 @@ const ROOT = new URL('..', import.meta.url).pathname;
 const PAGES = [
   { path: '/',    lang: 'th', slug: 'home' },
   { path: '/en/', lang: 'en', slug: 'homepage' },
+  { path: '/about-us',       lang: 'th', slug: 'about-us' },
+  { path: '/contact',        lang: 'th', slug: 'contact' },
+  { path: '/join-us',        lang: 'th', slug: 'join-us' },
+  { path: '/announcement',   lang: 'th', slug: 'announcement' },
+  { path: '/en/about_en',    lang: 'en', slug: 'about_en' },
+  { path: '/en/contact_en',  lang: 'en', slug: 'contact_en' },
+  { path: '/en/join-us_en',  lang: 'en', slug: 'join-us_en' },
 ];
 
 async function fetchText(url) {
