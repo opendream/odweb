@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+const posts = (await getCollection('posts', (p) => p.data.lang === 'en'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout title="News — Opendream" lang="en" path="/en/blogs" altPath="/blog">
+  <h1>News</h1>
+  <div class="post-list">
+    {posts.map((p) => <PostCard title={p.data.title} href={p.data.path} date={p.data.date} excerpt={p.data.excerpt} cover={p.data.cover} />)}
+  </div>
+</BaseLayout>

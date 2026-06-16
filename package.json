@@ -1,0 +1,20 @@
+{
+  "name": "odweb-site",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --port 4321",
+    "test": "vitest run",
+    "extract": "node scripts/extract.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/sitemap": "^3.2.0"
+  },
+  "devDependencies": {
+    "turndown": "^7.2.0",
+    "vitest": "^2.1.0"
+  }
+}

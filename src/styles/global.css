@@ -1,0 +1,10 @@
+/* Vendor theme CSS ported from the live site (fidelity-first; trim later). */
+/* Import order matters: Divi core first, then customizer overrides, then child theme overrides */
+@import "./vendor/divi-unified.css";
+@import "./vendor/divi-customizer.css";
+@import "./vendor/theme.css";
+@import "./vendor/theme2.css";
+@import "./vendor/theme3.css";
+
+:root { color-scheme: light; }
+img { max-width: 100%; height: auto; }

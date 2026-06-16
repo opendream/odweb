@@ -1,0 +1,13 @@
+---
+import BaseLayout from './BaseLayout.astro';
+interface Props { title: string; date: Date; lang: 'th' | 'en'; path: string; cover?: string; description?: string; }
+const { title, date, lang, path, cover, description } = Astro.props;
+---
+<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
+  <article class="single-post">
+    <h1>{title}</h1>
+    <time datetime={date.toISOString()}>{date.toLocaleDateString()}</time>
+    {cover && <img class="cover" src={cover} alt={title} />}
+    <div class="post-body"><slot /></div>
+  </article>
+</BaseLayout>

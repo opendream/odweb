@@ -1,0 +1,44 @@
+[
+  {
+    "db_id": 27178,
+    "type": "post_type",
+    "title": "About",
+    "link": "/en/about_en",
+    "position": 1
+  },
+  {
+    "db_id": 27177,
+    "type": "post_type",
+    "title": "Projects",
+    "link": "/en/projects_en",
+    "position": 2
+  },
+  {
+    "db_id": 27176,
+    "type": "post_type",
+    "title": "Join",
+    "link": "/en/join-us_en",
+    "position": 3
+  },
+  {
+    "db_id": 27204,
+    "type": "post_type",
+    "title": "Press",
+    "link": "/en/blogs",
+    "position": 4
+  },
+  {
+    "db_id": 27141,
+    "type": "post_type",
+    "title": "Contact",
+    "link": "/en/contact_en",
+    "position": 5
+  },
+  {
+    "db_id": 27179,
+    "type": "custom",
+    "title": "Language switcher",
+    "link": "#pll_switcher",
+    "position": 6
+  }
+]

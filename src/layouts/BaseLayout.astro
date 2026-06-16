@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: 'th' | 'en';
+  path: string;
+  altPath?: string;
+}
+const { title, description, lang, path, altPath } = Astro.props;
+const site = 'https://opendream.co.th';
+const enHref = lang === 'en' ? path : (altPath ?? '/en/blogs');
+const thHref = lang === 'th' ? path : (altPath ?? '/blog');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="alternate" hreflang="th" href={site + thHref} />
+    <link rel="alternate" hreflang="en" href={site + enHref} />
+    <link rel="canonical" href={site + path} />
+    <!-- Google Fonts (self-hosting deferred; these match the live site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&subset=cyrillic,cyrillic-ext,latin,latin-ext,vietnamese&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr:200,300,400,500,600,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansthai.css" />
+  </head>
+  <body>
+    <Header lang={lang} thHref={thHref} enHref={enHref} />
+    <main><slot /></main>
+    <Footer lang={lang} />
+  </body>
+</html>

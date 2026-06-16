@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  date: Date;
+  excerpt?: string;
+  cover?: string;
+}
+const { title, href, date, excerpt, cover } = Astro.props;
+---
+<article class="post-card et_pb_post">
+  {cover && (
+    <a href={href} class="entry-featured-image-url">
+      <img src={cover} alt={title} />
+    </a>
+  )}
+  <h2 class="entry-title"><a href={href}>{title}</a></h2>
+  <p class="post-meta">
+    <time datetime={date.toISOString()}>
+      {date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+    </time>
+  </p>
+  {excerpt && <div class="post-content"><p>{excerpt}</p></div>}
+</article>

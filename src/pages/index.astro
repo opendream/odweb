@@ -1,0 +1,7 @@
+---
+const langs = [{ code: 'th', href: '/blog' }, { code: 'en', href: '/en/blogs' }];
+---
+<html lang="th"><head><meta charset="utf-8" /><title>Opendream — migration preview</title></head>
+<body><h1>Opendream (Phase 1 preview)</h1>
+<ul>{langs.map(l => <li><a href={l.href}>{l.code.toUpperCase()} posts</a></li>)}</ul>
+</body></html>

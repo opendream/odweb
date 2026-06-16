@@ -1,0 +1,10 @@
+---
+interface Props { thHref: string; enHref: string; lang: 'th' | 'en'; }
+const { thHref, enHref, lang } = Astro.props;
+---
+<li class="lang-item lang-item-first menu-item menu-item-type-custom menu-item-object-custom">
+  {lang === 'en'
+    ? <a href={thHref} hreflang="th" lang="th">TH</a>
+    : <a href={enHref} hreflang="en" lang="en">EN</a>
+  }
+</li>

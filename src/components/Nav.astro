@@ -1,0 +1,26 @@
+---
+import navTh from '../data/nav.th.json';
+import navEn from '../data/nav.en.json';
+import LangSwitcher from './LangSwitcher.astro';
+
+interface Props { lang: 'th' | 'en'; }
+const { lang } = Astro.props;
+const rawItems = (lang === 'en' ? navEn : navTh) as Array<{
+  db_id: number;
+  type: string;
+  title: string;
+  link: string;
+  position: number;
+}>;
+
+// Exclude the lang-switcher placeholder item
+const items = rawItems.filter(i => i.link !== '#pll_switcher');
+---
+<ul id="top-menu" class="nav">
+  {items.map(i => (
+    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+      <a href={i.link}>{i.title}</a>
+    </li>
+  ))}
+  <LangSwitcher lang={lang} thHref="/blog" enHref="/en/blogs" />
+</ul>
