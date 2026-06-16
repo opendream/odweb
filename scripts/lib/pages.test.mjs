@@ -43,6 +43,13 @@ describe('unlazy', () => {
     expect(out).not.toContain('data-src');
     expect(out).not.toContain('lazyload');
   });
+  it('promotes data-srcset and drops placeholder srcset', () => {
+    const html = '<img src="/wp-content/uploads/c.png" srcset="data:image/gif;base64,R0=" data-srcset="/wp-content/uploads/c.png 1x, /wp-content/uploads/c-2x.png 2x">';
+    const out = unlazy(html);
+    expect(out).toContain('srcset="/wp-content/uploads/c.png 1x, /wp-content/uploads/c-2x.png 2x"');
+    expect(out).not.toContain('data:image');
+    expect(out).not.toContain('data-srcset');
+  });
   it('leaves non-lazy images untouched', () => {
     const html = '<img src="/media/y.jpg" alt="y">';
     expect(unlazy(html)).toBe(html);

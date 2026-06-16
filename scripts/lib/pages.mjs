@@ -16,12 +16,24 @@ export function collectWpContentUrls(text) {
 // For a static (no-JS) site, promote data-src -> src and drop the lazyload markers so images show.
 export function unlazy(html) {
   return html.replace(/<img\b[^>]*>/gi, (tag) => {
-    const ds = tag.match(/\sdata-src="([^"]*)"/i);
-    if (!ds) return tag;
-    let t = /\ssrc="[^"]*"/i.test(tag)
-      ? tag.replace(/\ssrc="[^"]*"/i, ` src="${ds[1]}"`)
-      : tag.replace(/<img/i, `<img src="${ds[1]}"`);
-    t = t.replace(/\sdata-src="[^"]*"/i, '').replace(/\blazyload\b/g, '');
+    let t = tag;
+    const ds = t.match(/\sdata-src="([^"]*)"/i);
+    if (ds) {
+      t = /\ssrc="[^"]*"/i.test(t)
+        ? t.replace(/\ssrc="[^"]*"/i, ` src="${ds[1]}"`)
+        : t.replace(/<img/i, `<img src="${ds[1]}"`);
+      t = t.replace(/\sdata-src="[^"]*"/i, '');
+    }
+    const dss = t.match(/\sdata-srcset="([^"]*)"/i);
+    if (dss) {
+      t = /\ssrcset="[^"]*"/i.test(t)
+        ? t.replace(/\ssrcset="[^"]*"/i, ` srcset="${dss[1]}"`)
+        : t.replace(/<img/i, `<img srcset="${dss[1]}"`);
+      t = t.replace(/\sdata-srcset="[^"]*"/i, '');
+    } else {
+      t = t.replace(/\ssrcset="data:[^"]*"/i, ''); // drop placeholder srcset so real src wins
+    }
+    if (ds || dss) t = t.replace(/\blazyload\b/g, '');
     return t;
   });
 }
