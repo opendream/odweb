@@ -52,8 +52,12 @@ committed markdown + media are the source of truth.
 - **Phase 1 — DONE:** foundation + i18n + design system + extraction pipeline + all posts
   (TH/EN) rendering at preserved URLs. See `docs/2026-06-16-static-migration-phase1-spec.md`
   and `docs/2026-06-16-static-migration-phase1-plan.md`.
-- **Phase 2 — projects** (custom type, ~92 items + categories). Not started.
-- **Phase 3 — designed pages + home.** Not started.
+- **Phase 2 — DONE:** all 92 projects (52 TH / 40 EN) rendering at preserved `/project/<slug>`
+  URLs via `ProjectLayout`, plus `/projects` + `/en/projects_en` listings with a client-side
+  category filter (`ProjectCard` grid). Detail bodies are markdown. See
+  `docs/2026-06-16-static-migration-phase2-spec.md` and `-plan.md`. *Deferred to Phase 3: the
+  pixel-faithful Divi filterable-portfolio design for the listings.*
+- **Phase 3 — designed pages + home** (incl. faithful projects-listing design). Not started.
 - **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
 
 ## When making changes
