@@ -6,7 +6,8 @@ export function extractBoc(html) {
   return el ? el.outerHTML.trim() : '';
 }
 
-const WP_CONTENT_RE = /https?:\/\/[^"')\s]+\/wp-content\/[^"')\s]+/g;
+// Matches absolute (http://host/wp-content/...) AND root-relative (/wp-content/...) refs.
+const WP_CONTENT_RE = /(?:https?:\/\/[^"')\s]+)?\/wp-content\/[^"')\s]+/g;
 export function collectWpContentUrls(text) {
   return [...new Set(text.match(WP_CONTENT_RE) || [])];
 }

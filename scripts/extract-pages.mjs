@@ -17,12 +17,14 @@ async function fetchText(url) {
   if (!r.ok) throw new Error(`${r.status} ${url}`);
   return r.text();
 }
-async function mirrorAsset(absUrl) {
-  const p = new URL(absUrl).pathname;            // /wp-content/...
+async function mirrorAsset(ref) {
+  // ref may be absolute (http://host/wp-content/...) or root-relative (/wp-content/...)
+  const p = ref.startsWith('http') ? new URL(ref).pathname : ref;   // /wp-content/...
+  const abs = ref.startsWith('http') ? ref : BASE + ref;
   const dest = join(ROOT, 'public', p);
   if (existsSync(dest)) return;
-  const r = await fetch(absUrl);
-  if (!r.ok) { console.warn(`asset ${r.status}: ${absUrl}`); return; }
+  const r = await fetch(abs);
+  if (!r.ok) { console.warn(`asset ${r.status}: ${abs}`); return; }
   await mkdir(dirname(dest), { recursive: true });
   await writeFile(dest, Buffer.from(await r.arrayBuffer()));
 }

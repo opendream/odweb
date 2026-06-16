@@ -25,4 +25,11 @@ describe('collectWpContentUrls', () => {
       'http://localhost:8080/wp-content/uploads/1.jpg',
     ]);
   });
+  it('also collects root-relative /wp-content refs', () => {
+    const text = 'src="/wp-content/uploads/a.png" url(/wp-content/themes/x.woff)';
+    expect(collectWpContentUrls(text).sort()).toEqual([
+      '/wp-content/themes/x.woff',
+      '/wp-content/uploads/a.png',
+    ]);
+  });
 });
