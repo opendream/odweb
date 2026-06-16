@@ -5,7 +5,7 @@ interface Props { lang: 'th' | 'en'; }
 const { lang } = Astro.props;
 const homeHref = lang === 'en' ? '/en/' : '/';
 const selectPageLabel = lang === 'en' ? 'Select Page' : 'เลือกหน้า';
-const searchPlaceholder = lang === 'en' ? 'Search …' : 'ค้นหา …';
+
 ---
 <header id="main-header" data-height-onload="66">
   <div class="container clearfix et_menu_container">
@@ -19,9 +19,7 @@ const searchPlaceholder = lang === 'en' ? 'Search …' : 'ค้นหา …';
       <nav id="top-menu-nav">
         <Nav lang={lang} />
       </nav>
-      <div id="et_top_search">
-        <span id="et_search_icon"></span>
-      </div>
+
       <div id="et_mobile_nav_menu">
         <div class="mobile_nav closed">
           <span class="select_page">{selectPageLabel}</span>
@@ -30,12 +28,5 @@ const searchPlaceholder = lang === 'en' ? 'Search …' : 'ค้นหา …';
       </div>
     </div>
   </div>
-  <div class="et_search_outer">
-    <div class="container et_search_form_container">
-      <form role="search" method="get" class="et-search-form" action={homeHref}>
-        <input type="search" class="et-search-field" placeholder={searchPlaceholder} name="s" />
-      </form>
-      <span class="et_close_search_field"></span>
-    </div>
-  </div>
+
 </header>
