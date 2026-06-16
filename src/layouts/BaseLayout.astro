@@ -13,7 +13,8 @@ interface Props {
   bodyClass?: string;
 }
 const { title, description, lang, path, altPath, pageStyles, bodyClass } = Astro.props;
-const site = 'https://opendream.co.th';
+// canonical/hreflang must be absolute; derive from the Astro `site` config (single source of truth)
+const site = Astro.site?.origin ?? 'https://opendream.co.th';
 const enHref = lang === 'en' ? path : (altPath ?? '/en/blogs');
 const thHref = lang === 'th' ? path : (altPath ?? '/blog');
 ---
