@@ -21,12 +21,27 @@ async function fetchAll(type) {
   return out;
 }
 
+// Normalize a media URL so it always points to WP_BASE (handles localhost:8080 vs host.docker.internal)
+function normalizeMediaUrl(absUrl) {
+  try {
+    const u = new URL(absUrl);
+    const base = new URL(BASE);
+    u.hostname = base.hostname;
+    u.port = base.port;
+    u.protocol = base.protocol;
+    return u.toString();
+  } catch {
+    return absUrl;
+  }
+}
+
 async function downloadMedia(absUrl) {
   const rel = rewriteMediaUrls(`"${absUrl}"`).slice(1, -1);
   const dest = join(ROOT, 'public', rel);
   if (existsSync(dest)) return rel;
-  const r = await fetch(absUrl);
-  if (!r.ok) { console.warn(`media ${r.status}: ${absUrl}`); return rel; }
+  const fetchUrl = normalizeMediaUrl(absUrl);
+  const r = await fetch(fetchUrl);
+  if (!r.ok) { console.warn(`media ${r.status}: ${fetchUrl}`); return rel; }
   await mkdir(dirname(dest), { recursive: true });
   await writeFile(dest, Buffer.from(await r.arrayBuffer()));
   return rel;
@@ -43,12 +58,12 @@ function cleanExcerpt(s) {
   return s.replace(/\\([[\]()#*_`])/g, '$1');
 }
 
-async function run() {
-  const posts = await fetchAll('posts');
+async function extractType({ type, dir, catTaxonomy }) {
+  const items = await fetchAll(type);
   const counts = { th: 0, en: 0 };
 
-  for (const p of posts) {
-    // Detect language from path: EN posts live under /en/
+  for (const p of items) {
+    // Detect language from path: EN items live under /en/
     const rawPath = urlToPath(p.link);
     const lang = rawPath.startsWith('/en/') ? 'en' : 'th';
 
@@ -58,14 +73,15 @@ async function run() {
     const feat = p._embedded?.['wp:featuredmedia']?.[0]?.source_url;
     if (feat) cover = await downloadMedia(feat);
     const cleaned = rewriteMediaUrls(stripDiviCruft(html));
-    const body = toSiteRelative(htmlToMarkdown(cleaned));
+    // Also rewrite relative /wp-content/uploads/ paths left after HTML→MD conversion
+    const body = toSiteRelative(htmlToMarkdown(cleaned)).replace(/\/wp-content\/uploads\//g, '/media/');
     const terms = (p._embedded?.['wp:term'] || []).flat();
 
     // Decode slug and path: WP may return percent-encoded Thai characters
     const slug = decodeSafe(p.slug);
     const path = decodeSafe(rawPath);
 
-    const rawExcerpt = toSiteRelative(htmlToMarkdown(p.excerpt?.rendered || '')).replace(/\n/g, ' ').trim();
+    const rawExcerpt = toSiteRelative(htmlToMarkdown(stripDiviCruft(rewriteMediaUrls(p.excerpt?.rendered || '')))).replace(/\n/g, ' ').trim();
     const excerpt = rawExcerpt ? cleanExcerpt(rawExcerpt) : undefined;
 
     // Decode title HTML entities and strip remaining HTML
@@ -77,6 +93,12 @@ async function run() {
       .replace(/&#039;/g, "'")
       .replace(/<[^>]+>/g, '');
 
+    const categories = terms.filter(t => t.taxonomy === catTaxonomy).map(t => t.name);
+    // posts keep post_tag behavior; projects have no tags
+    const tags = catTaxonomy === 'category'
+      ? terms.filter(t => t.taxonomy === 'post_tag').map(t => t.name)
+      : [];
+
     const data = {
       title,
       date: new Date(p.date),
@@ -84,21 +106,26 @@ async function run() {
       lang,
       slug,
       path,
-      categories: terms.filter(t => t.taxonomy === 'category').map(t => t.name),
-      tags: terms.filter(t => t.taxonomy === 'post_tag').map(t => t.name),
+      categories,
+      tags,
       cover,
       excerpt,
     };
-    // Use decoded slug as filename too so frontmatter and filename align
-    const safeSlug = p.slug; // keep URL-safe filename (percent-encoded)
-    const file = join(ROOT, 'src/content/posts', lang, `${safeSlug}.md`);
+    // Use original (URL-safe, percent-encoded) slug as filename so it round-trips correctly
+    const safeSlug = p.slug;
+    const file = join(ROOT, 'src/content', dir, lang, `${safeSlug}.md`);
     await mkdir(dirname(file), { recursive: true });
     await writeFile(file, toFrontmatter(data, body));
     counts[lang]++;
   }
 
-  console.log(`posts[th]: ${counts.th}`);
-  console.log(`posts[en]: ${counts.en}`);
-  console.log(`TOTAL posts written: ${counts.th + counts.en}`);
+  console.log(`${type}[th]: ${counts.th}`);
+  console.log(`${type}[en]: ${counts.en}`);
+  console.log(`TOTAL ${type} written: ${counts.th + counts.en}`);
+}
+
+async function run() {
+  await extractType({ type: 'posts',   dir: 'posts',    catTaxonomy: 'category' });
+  await extractType({ type: 'project', dir: 'projects', catTaxonomy: 'project_category' });
 }
 run().catch(e => { console.error(e); process.exit(1); });
