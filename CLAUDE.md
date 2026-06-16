@@ -60,9 +60,9 @@ committed markdown + media are the source of truth.
 - **Phase 3 — designed pages + home** (preserve rendered Divi HTML + per-page CSS, not markdown).
   Decomposed: **3a home — DONE** (scrape pipeline `scripts/extract-pages.mjs` + `scripts/lib/pages.mjs`;
   home TH `/` + EN `/en/` rendered from `src/content/pages/**` + `src/styles/pages/**`, Divi assets
-  mirrored under `public/wp-content/`; `BaseLayout` gained `pageStyles`+`bodyClass`). Pending: human
-  visual check. **3b** core pages (about/contact/join-us/announcement) via a generic manifest-driven
-  route; **3c** ~17 service pages + faithful `/projects` filterable-portfolio design; **3d** ~14
+  mirrored under `public/wp-content/`; `BaseLayout` gained `pageStyles`+`bodyClass`; nginx `absolute_redirect off` keeps link host:port).
+  **3b core pages — DONE** (about/contact/join-us/announcement TH+EN via the generic manifest-driven
+  route in `[...path].astro`; header search box removed). Pending: human visual check of 3a+3b. **3c** ~17 service pages + faithful `/projects` filterable-portfolio design; **3d** ~14
   privacy policies → markdown. See `docs/2026-06-16-static-migration-phase3a-spec.md` + `-plan.md`.
 - **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
 
