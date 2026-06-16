@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+const items = (await getCollection('projects', (p) => p.data.lang === 'en'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const cats = [...new Set(items.flatMap((p) => p.data.categories))].sort();
+---
+<BaseLayout title="Projects — Opendream" lang="en" path="/en/projects_en" altPath="/projects">
+  <h1>Projects</h1>
+  <div class="project-filter">
+    <button class="is-active" data-filter="*">All</button>
+    {cats.map((c) => <button data-filter={c}>{c}</button>)}
+  </div>
+  <div class="project-grid">
+    {items.map((p) => <ProjectCard title={p.data.title} href={p.data.path} cover={p.data.cover} categories={p.data.categories} />)}
+  </div>
+  <script is:inline>
+    (() => {
+      const root = document.currentScript.closest('main') || document;
+      const btns = root.querySelectorAll('.project-filter button');
+      const cards = root.querySelectorAll('.project-grid .project-card');
+      btns.forEach((b) => b.addEventListener('click', () => {
+        const f = b.dataset.filter;
+        btns.forEach((x) => x.classList.toggle('is-active', x === b));
+        cards.forEach((c) => {
+          const cs = (c.dataset.categories || '').split('|');
+          c.style.display = (f === '*' || cs.includes(f)) ? '' : 'none';
+        });
+      }));
+    })();
+  </script>
+</BaseLayout>

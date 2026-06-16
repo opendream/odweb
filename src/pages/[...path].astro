@@ -1,18 +1,24 @@
 ---
 import { getCollection, render } from 'astro:content';
 import PostLayout from '../layouts/PostLayout.astro';
+import ProjectLayout from '../layouts/ProjectLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map((post) => ({
-    params: { path: post.data.path.replace(/^\//, '') },
-    props: { post },
-  }));
+  const projects = await getCollection('projects');
+  const mk = (entry, kind) => ({ params: { path: entry.data.path.replace(/^\//, '') }, props: { entry, kind } });
+  return [...posts.map((e) => mk(e, 'post')), ...projects.map((e) => mk(e, 'project'))];
 }
-const { post } = Astro.props;
-const { Content } = await render(post);
-const d = post.data;
+const { entry, kind } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
 ---
-<PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt}>
-  <Content />
-</PostLayout>
+{kind === 'project' ? (
+  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} categories={d.categories} description={d.excerpt}>
+    <Content />
+  </ProjectLayout>
+) : (
+  <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt}>
+    <Content />
+  </PostLayout>
+)}

@@ -8,3 +8,10 @@
 
 :root { color-scheme: light; }
 img { max-width: 100%; height: auto; }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+.project-card__cover { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.project-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+.project-filter button { cursor: pointer; }
+.project-filter button.is-active { font-weight: 700; text-decoration: underline; }
+.project-card__cat, .single-project__cat { display: inline-block; margin-right: .4rem; font-size: .8em; opacity: .75; }
