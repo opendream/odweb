@@ -1,0 +1,13 @@
+---
+interface Props { title: string; href: string; cover?: string; categories?: string[]; }
+const { title, href, cover, categories = [] } = Astro.props;
+---
+<article class="project-card" data-categories={categories.join('|')}>
+  <a href={href} class="project-card__link">
+    {cover && <img class="project-card__cover" src={cover} alt={title} loading="lazy" />}
+    <h3 class="project-card__title">{title}</h3>
+  </a>
+  {categories.length > 0 && (
+    <p class="project-card__cats">{categories.map((c) => <span class="project-card__cat">{c}</span>)}</p>
+  )}
+</article>

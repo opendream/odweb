@@ -1,0 +1,15 @@
+---
+import BaseLayout from './BaseLayout.astro';
+interface Props { title: string; lang: 'th' | 'en'; path: string; cover?: string; categories?: string[]; description?: string; }
+const { title, lang, path, cover, categories = [], description } = Astro.props;
+---
+<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
+  <article class="single-project">
+    <h1>{title}</h1>
+    {categories.length > 0 && (
+      <p class="single-project__cats">{categories.map((c) => <span class="single-project__cat">{c}</span>)}</p>
+    )}
+    {cover && <img class="single-project__cover" src={cover} alt={title} />}
+    <div class="project-body"><slot /></div>
+  </article>
+</BaseLayout>
