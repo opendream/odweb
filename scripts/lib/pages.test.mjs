@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractBoc, collectWpContentUrls } from './pages.mjs';
+import { extractBoc, collectWpContentUrls, unlazy } from './pages.mjs';
 
 describe('extractBoc', () => {
   it('returns the #et-boc element outerHTML', () => {
@@ -31,5 +31,20 @@ describe('collectWpContentUrls', () => {
       '/wp-content/themes/x.woff',
       '/wp-content/uploads/a.png',
     ]);
+  });
+});
+
+describe('unlazy', () => {
+  it('promotes data-src to src and drops the placeholder + lazyload class', () => {
+    const html = '<img src="data:image/gif;base64,R0lGOD" data-src="/wp-content/uploads/x.png" class="lazyload">';
+    const out = unlazy(html);
+    expect(out).toContain('src="/wp-content/uploads/x.png"');
+    expect(out).not.toContain('data:image');
+    expect(out).not.toContain('data-src');
+    expect(out).not.toContain('lazyload');
+  });
+  it('leaves non-lazy images untouched', () => {
+    const html = '<img src="/media/y.jpg" alt="y">';
+    expect(unlazy(html)).toBe(html);
   });
 });

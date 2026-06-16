@@ -2,7 +2,7 @@ import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { parse } from 'node-html-parser';
-import { extractBoc, collectWpContentUrls } from './lib/pages.mjs';
+import { extractBoc, collectWpContentUrls, unlazy } from './lib/pages.mjs';
 import { toSiteRelative } from './lib/convert.mjs';
 
 const BASE = process.env.WP_BASE || 'http://localhost:8080';
@@ -34,7 +34,7 @@ async function run() {
   let manifest = existsSync(manifestPath) ? JSON.parse(await readFile(manifestPath, 'utf8')) : [];
   for (const pg of PAGES) {
     const dom = parse(await fetchText(BASE + pg.path));
-    let content = extractBoc(dom.toString());
+    let content = unlazy(extractBoc(dom.toString()));
     const cssLinks = dom.querySelectorAll('link[rel="stylesheet"]')
       .map((l) => l.getAttribute('href')).filter(Boolean)
       .filter((h) => /et-cache\/\d+\/et-core-unified/.test(h) || /et-divi-customizer-global/.test(h));
