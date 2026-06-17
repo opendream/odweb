@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ProjectCard from '../../../components/ProjectCard.astro';
 import { SECTORS } from '../../../../scripts/lib/categories.mjs';
 import manifest from '../../../content/pages/manifest.json';
+import trailing from '../../../content/pages/en/projects_en-trailing.html?raw';
 
 const pageCss = import.meta.glob('../../../styles/pages/*.css', { query: '?raw', import: 'default', eager: true });
 const pageStyles = pageCss['../../../styles/pages/en-projects_en.css'];
@@ -38,6 +39,7 @@ const items = (await getCollection('projects', (p) => p.data.lang === 'en'))
         </div>
       </div>
     </div>
+    <Fragment set:html={trailing} />
   </div></div>
   <script is:inline>
     (() => {
