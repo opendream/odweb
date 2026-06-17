@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { extractBoc, collectWpContentUrls, unlazy } from './pages.mjs';
+import { extractEntryContent } from './pages.mjs';
 
 describe('extractBoc', () => {
   it('returns the #et-boc element outerHTML', () => {
@@ -53,5 +54,21 @@ describe('unlazy', () => {
   it('leaves non-lazy images untouched', () => {
     const html = '<img src="/media/y.jpg" alt="y">';
     expect(unlazy(html)).toBe(html);
+  });
+});
+
+describe('extractEntryContent', () => {
+  it('returns the article .entry-content inner HTML, not a footer copy', () => {
+    const html = `<html><body>
+      <article class="post"><div class="entry-content"><h2>Policy</h2><p>Body text</p></div></article>
+      <footer><div class="entry-content">FOOTER WIDGET</div></footer>
+    </body></html>`;
+    const out = extractEntryContent(html);
+    expect(out).toContain('<h2>Policy</h2>');
+    expect(out).toContain('Body text');
+    expect(out).not.toContain('FOOTER WIDGET');
+  });
+  it('returns "" when there is no entry-content', () => {
+    expect(extractEntryContent('<html><body><p>x</p></body></html>')).toBe('');
   });
 });

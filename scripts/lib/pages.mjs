@@ -12,6 +12,15 @@ export function collectWpContentUrls(text) {
   return [...new Set(text.match(WP_CONTENT_RE) || [])];
 }
 
+// Inner HTML of the first article's .entry-content (scoped to <article> so a footer/widget
+// .entry-content is never matched). Used to convert plain WordPress pages to markdown.
+export function extractEntryContent(html) {
+  const root = parse(html);
+  const scope = root.querySelector('article') || root;
+  const el = scope.querySelector('.entry-content');
+  return el ? el.innerHTML.trim() : '';
+}
+
 // Divi/lazysizes lazy-loads images: real src is in data-src, the src is a 1x1 placeholder.
 // For a static (no-JS) site, promote data-src -> src and drop the lazyload markers so images show.
 export function unlazy(html) {
