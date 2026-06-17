@@ -28,5 +28,18 @@ const selectPageLabel = lang === 'en' ? 'Select Page' : 'เลือกหน�
       </div>
     </div>
   </div>
-
 </header>
+<script is:inline>
+  // Mobile menu: the hamburger toggles .od-nav-open on #main-header (modern.css drops the
+  // nav down as a panel). Divi's own mobile menu needed JS we don't ship.
+  (() => {
+    const header = document.getElementById('main-header');
+    const bar = header && header.querySelector('#et_mobile_nav_menu');
+    if (!bar) return;
+    bar.addEventListener('click', () => {
+      const open = header.classList.toggle('od-nav-open');
+      bar.querySelector('.mobile_nav')?.classList.toggle('opened', open);
+      bar.querySelector('.mobile_nav')?.classList.toggle('closed', !open);
+    });
+  })();
+</script>

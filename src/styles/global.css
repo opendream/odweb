@@ -9,6 +9,8 @@
 @import "./vendor/theme.css";
 @import "./vendor/theme2.css";
 @import "./vendor/theme3.css";
+/* Modern de-Divi'd styles for data-driven surfaces — last so it wins over vendor Divi CSS. */
+@import "./modern.css";
 
 :root { color-scheme: light; }
 img { max-width: 100%; height: auto; }
@@ -20,12 +22,8 @@ img { max-width: 100%; height: auto; }
    the never-triggered animation. */
 .et-waypoint, .et_animated { opacity: 1 !important; animation: none !important; }
 
-/* The Divi header (#main-header) is position:fixed; the live site offsets the page body
-   below it by setting #page-container padding-top via JS. We replicate that statically so
-   the fixed header doesn't paint over the top of the content (e.g. the projects filter bar).
-   Values match the live site (desktop 88px, mobile 119px). */
-#page-container { padding-top: 88px; }
-@media (max-width: 980px) { #page-container { padding-top: 119px; } }
+/* (Header offset removed — the header is now `position: sticky` via modern.css, so it
+   occupies normal flow and never overlaps content. No #page-container padding needed.) */
 
 /* Divi lays out the portfolio grid with isotope JS, which sets an explicit container
    height. Statically the floated .et_pb_portfolio_item children collapse their wrapper to
