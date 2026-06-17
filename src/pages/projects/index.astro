@@ -2,30 +2,55 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import { SECTORS } from '../../../scripts/lib/categories.mjs';
+import manifest from '../../content/pages/manifest.json';
+
+const pageCss = import.meta.glob('../../styles/pages/*.css', { query: '?raw', import: 'default', eager: true });
+const pageStyles = pageCss['../../styles/pages/th-projects.css'];
+const bodyClass = manifest.find((m) => m.path === '/projects')?.bodyClass;
+
 const items = (await getCollection('projects', (p) => p.data.lang === 'th'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const cats = [...new Set(items.flatMap((p) => p.data.categories))].sort();
 ---
-<BaseLayout title="โครงการ — Opendream" lang="th" path="/projects" altPath="/en/projects_en">
-  <h1>โครงการ</h1>
-  <div class="project-filter">
-    <button class="is-active" data-filter="*">ทั้งหมด</button>
-    {cats.map((c) => <button data-filter={c}>{c}</button>)}
-  </div>
-  <div class="project-grid">
-    {items.map((p) => <ProjectCard title={p.data.title} href={p.data.path} cover={p.data.cover} categories={p.data.categories} />)}
-  </div>
+<BaseLayout title="งานของเรา — Opendream" lang="th" path="/projects" altPath="/en/projects_en" pageStyles={pageStyles} bodyClass={bodyClass}>
+  <div id="et-boc" class="et-boc"><div class="et-l">
+    <div class="et_pb_section et_pb_section_0 et_section_regular">
+      <div class="et_pb_row et_pb_row_0">
+        <div class="et_pb_column et_pb_column_4_4 et_pb_column_0 et_pb_css_mix_blend_mode_passthrough et-last-child">
+          <div class="et_pb_module et_pb_portfolio et_pb_bg_layout_light et_pb_text_align_left et_pb_filterable_portfolio et_pb_filterable_portfolio_0 clearfix">
+            <div class="et_pb_portfolio_filters clearfix">
+              <ul class="clearfix">
+                {SECTORS.map((s) => (
+                  <li class={s.slug === 'all' ? 'et_pb_portfolio_filter et_pb_portfolio_filter_all' : 'et_pb_portfolio_filter'}>
+                    <a href="#" class={s.slug === 'all' ? 'active' : undefined} data-category-slug={s.slug}>{s.th}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="et_pb_portfolio_items_wrapper no_pagination">
+              <div class="et_pb_portfolio_items">
+                {items.map((p, i) => (
+                  <ProjectCard title={p.data.title} href={p.data.path} cover={p.data.cover} categories={p.data.categories} index={i} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
   <script is:inline>
     (() => {
       const root = document.currentScript.closest('main') || document;
-      const btns = root.querySelectorAll('.project-filter button');
-      const cards = root.querySelectorAll('.project-grid .project-card');
-      btns.forEach((b) => b.addEventListener('click', () => {
-        const f = b.dataset.filter;
-        btns.forEach((x) => x.classList.toggle('is-active', x === b));
-        cards.forEach((c) => {
-          const cs = (c.dataset.categories || '').split('|');
-          c.style.display = (f === '*' || cs.includes(f)) ? '' : 'none';
+      const links = root.querySelectorAll('.et_pb_portfolio_filter a');
+      const items = root.querySelectorAll('.et_pb_portfolio_item');
+      links.forEach((a) => a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const slug = a.getAttribute('data-category-slug');
+        links.forEach((x) => x.classList.toggle('active', x === a));
+        items.forEach((it) => {
+          const show = slug === 'all' || it.classList.contains('project_category_' + slug);
+          it.style.display = show ? '' : 'none';
         });
       }));
     })();

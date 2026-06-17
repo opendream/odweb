@@ -1,13 +1,18 @@
 ---
-interface Props { title: string; href: string; cover?: string; categories?: string[]; }
-const { title, href, cover, categories = [] } = Astro.props;
+import { sectorSlugs } from '../../scripts/lib/categories.mjs';
+interface Props { title: string; href: string; cover?: string; categories?: string[]; index?: number; }
+const { title, href, cover, categories = [], index = 0 } = Astro.props;
+const slugs = sectorSlugs(categories);
+const catClasses = slugs.map((s) => `project_category_${s}`).join(' ');
 ---
-<article class="project-card" data-categories={categories.join('|')}>
-  <a href={href} class="project-card__link">
-    {cover && <img class="project-card__cover" src={cover} alt={title} loading="lazy" />}
-    <h3 class="project-card__title">{title}</h3>
+<div
+  class={`et_pb_portfolio_item et_pb_grid_item ${catClasses} et_pb_filterable_portfolio_item_0_${index}`.trim()}
+  data-sectors={slugs.join(' ')}
+>
+  <a href={href}>
+    <span class="et_portfolio_image">
+      {cover && <img src={cover} alt={title} width="400" height="284" />}
+      <span class="et_overlay et_pb_inline_icon" data-icon={''}></span>
+    </span>
   </a>
-  {categories.length > 0 && (
-    <p class="project-card__cats">{categories.map((c) => <span class="project-card__cat">{c}</span>)}</p>
-  )}
-</article>
+</div>
