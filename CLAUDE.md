@@ -74,14 +74,17 @@ committed markdown + media are the source of truth.
   markdown in the `policies` collection via `scripts/extract-content-pages.mjs` + `extractEntryContent`;
   rendered as prose by the new minimal `PageLayout`, routed by `[...path].astro` kind `policy`; lang per
   page from `<html lang>`; `blueflagshops` dropped by decision). **Content conversion is now complete.**
-  Pending: human visual check of 3a/3b/3c/3d; pre-deploy polish (CSS purge/trim, sitemap/robots/404,
-  TH↔EN per-page hreflang pairing) then Cloudflare Pages deploy.
-  See `docs/2026-06-17-static-migration-phase3{c,d}-spec.md` + `-plan.md`.
+  **Pre-deploy polish — DONE** (robots.txt + auto sitemap + custom 404 + favicon/OG meta;
+  per-page TH↔EN hreflang pairing via `scripts/extract-translations.mjs` → `src/data/translations.json`
+  consulted by `BaseLayout` + threaded to the lang switcher, listing-fallback when unpaired; safe
+  PurgeCSS pass — see Global CSS note). Pending: human visual check; then Cloudflare Pages deploy.
+  See `docs/2026-06-17-static-migration-phase3{c,d}-spec.md`, `-pre-deploy-polish-plan.md`.
 - **Global CSS note:** `src/styles/global.css` imports `vendor/divi-parent.css` (the full Divi theme
   stylesheet, ~825 KB — the base `.et_pb_row` grid + responsive `@media`; without it designed pages
   box left). Divi's JS-driven reveal animations are neutralised site-wide
-  (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. A CSS purge/trim
-  pass is worthwhile before deploy.
+  (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. The `build` script
+  runs `scripts/purge-css.mjs` (PurgeCSS) after `astro build`, trimming the bundle 852 KB → ~165 KB
+  (88 KB → 22 KB gzipped) with a Divi-aware safelist; per-page inline `et-core-unified` styles are untouched.
 - **Chrome (BaseLayout):** `#main-header` is `position:fixed`; content is wrapped in `#page-container`
   with `padding-top` (88px desktop / 119px mobile, matching the live JS-set offset) so the header
   doesn't cover the top of the page. Pages that don't scrape their own `bodyClass` get a
