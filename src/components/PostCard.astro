@@ -1,24 +1,26 @@
 ---
-interface Props {
-  title: string;
-  href: string;
-  date: Date;
-  excerpt?: string;
-  cover?: string;
-}
-const { title, href, date, excerpt, cover } = Astro.props;
+// A blog post card in Divi `.et_pb_post` markup so the global Divi theme CSS
+// (divi-parent.css) styles the featured image, title and excerpt faithfully. Column
+// layout is handled by `.od-blog-grid` in global.css (the live site uses salvattore JS
+// for masonry, which this static build doesn't run). Matches the live blog card, which
+// shows image + title + excerpt and no visible post-meta.
+interface Props { title: string; href: string; excerpt?: string; cover?: string; }
+const { title, href, excerpt, cover } = Astro.props;
+const overlayIcon = '\ue0f7'; // ETmodules glyph, matches the live card hover overlay
 ---
-<article class="post-card et_pb_post">
+<article class="et_pb_post clearfix et_pb_text_align_left et_pb_has_overlay">
   {cover && (
-    <a href={href} class="entry-featured-image-url">
-      <img src={cover} alt={title} />
-    </a>
+    <div class="et_pb_image_container">
+      <a href={href} class="entry-featured-image-url">
+        <img src={cover} alt={title} />
+        <span class="et_overlay et_pb_inline_icon" data-icon={overlayIcon}></span>
+      </a>
+    </div>
   )}
   <h2 class="entry-title"><a href={href}>{title}</a></h2>
-  <p class="post-meta">
-    <time datetime={date.toISOString()}>
-      {date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
-    </time>
-  </p>
-  {excerpt && <div class="post-content"><p>{excerpt}</p></div>}
+  {excerpt && (
+    <div class="post-content">
+      <div class="post-content-inner">{excerpt}</div>
+    </div>
+  )}
 </article>
