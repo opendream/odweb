@@ -79,5 +79,320 @@
     "bodyClass": "page-template-default page page-id-27167 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
     "html": "src/content/pages/en/join-us_en.html",
     "css": "src/styles/pages/en-join-us_en.css"
+  },
+  {
+    "path": "/projects/chatbot",
+    "lang": "th",
+    "slug": "chatbot",
+    "title": "Chat Bot | Opendream",
+    "bodyClass": "page-template-default page page-id-28966 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/chatbot.html",
+    "css": "src/styles/pages/th-chatbot.css"
+  },
+  {
+    "path": "/projects/crowdfunding",
+    "lang": "th",
+    "slug": "crowdfunding",
+    "title": "Online Crowdfunding | Opendream",
+    "bodyClass": "page-template-default page page-id-26697 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/crowdfunding.html",
+    "css": "src/styles/pages/th-crowdfunding.css"
+  },
+  {
+    "path": "/projects/crowdsourcing",
+    "lang": "th",
+    "slug": "crowdsourcing",
+    "title": "Crowdsourcing | Opendream",
+    "bodyClass": "page-template-default page page-id-28763 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/crowdsourcing.html",
+    "css": "src/styles/pages/th-crowdsourcing.css"
+  },
+  {
+    "path": "/projects/e-commerce",
+    "lang": "th",
+    "slug": "e-commerce",
+    "title": "E-Commerce | Opendream",
+    "bodyClass": "page-template-default page page-id-26754 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/e-commerce.html",
+    "css": "src/styles/pages/th-e-commerce.css"
+  },
+  {
+    "path": "/projects/graphic-design",
+    "lang": "th",
+    "slug": "graphic-design",
+    "title": "Graphic Design | Opendream",
+    "bodyClass": "page-template-default page page-id-26742 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/graphic-design.html",
+    "css": "src/styles/pages/th-graphic-design.css"
+  },
+  {
+    "path": "/projects/interactive-infographic",
+    "lang": "th",
+    "slug": "interactive-infographic",
+    "title": "Interactive Infographic | Opendream",
+    "bodyClass": "page-template-default page page-id-26713 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/interactive-infographic.html",
+    "css": "src/styles/pages/th-interactive-infographic.css"
+  },
+  {
+    "path": "/projects/intranet",
+    "lang": "th",
+    "slug": "intranet",
+    "title": "Intranet | Opendream",
+    "bodyClass": "page-template-default page page-id-26729 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/intranet.html",
+    "css": "src/styles/pages/th-intranet.css"
+  },
+  {
+    "path": "/projects/mobileapplication",
+    "lang": "th",
+    "slug": "mobileapplication",
+    "title": "Mobile Application iOS,Android | Opendream",
+    "bodyClass": "page-template-default page page-id-26725 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/mobileapplication.html",
+    "css": "src/styles/pages/th-mobileapplication.css"
+  },
+  {
+    "path": "/projects/mobilegame",
+    "lang": "th",
+    "slug": "mobilegame",
+    "title": "Mobile Game (iOS/Android) | Opendream",
+    "bodyClass": "page-template-default page page-id-26706 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/mobilegame.html",
+    "css": "src/styles/pages/th-mobilegame.css"
+  },
+  {
+    "path": "/projects/online-donation",
+    "lang": "th",
+    "slug": "online-donation",
+    "title": "Online Donation | Opendream",
+    "bodyClass": "page-template-default page page-id-27026 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/online-donation.html",
+    "css": "src/styles/pages/th-online-donation.css"
+  },
+  {
+    "path": "/projects/online-payment",
+    "lang": "th",
+    "slug": "online-payment",
+    "title": "Online Payment | Opendream",
+    "bodyClass": "page-template-default page page-id-26748 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/online-payment.html",
+    "css": "src/styles/pages/th-online-payment.css"
+  },
+  {
+    "path": "/projects/online-ticketing-system",
+    "lang": "th",
+    "slug": "online-ticketing-system",
+    "title": "Online Ticketing System | Opendream",
+    "bodyClass": "page-template-default page page-id-27953 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/online-ticketing-system.html",
+    "css": "src/styles/pages/th-online-ticketing-system.css"
+  },
+  {
+    "path": "/projects/open-data",
+    "lang": "th",
+    "slug": "open-data",
+    "title": "Open Data | Opendream",
+    "bodyClass": "page-template-default page page-id-28908 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/open-data.html",
+    "css": "src/styles/pages/th-open-data.css"
+  },
+  {
+    "path": "/projects/project",
+    "lang": "th",
+    "slug": "project",
+    "title": "ระบบเฝ้าระวัง | Opendream",
+    "bodyClass": "page-template-default page page-id-26702 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/project.html",
+    "css": "src/styles/pages/th-project.css"
+  },
+  {
+    "path": "/projects/web-application",
+    "lang": "th",
+    "slug": "web-application",
+    "title": "Web Application | Opendream",
+    "bodyClass": "page-template-default page page-id-26657 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/web-application.html",
+    "css": "src/styles/pages/th-web-application.css"
+  },
+  {
+    "path": "/projects/web-portal",
+    "lang": "th",
+    "slug": "web-portal",
+    "title": "Web Portal | Opendream",
+    "bodyClass": "page-template-default page page-id-26734 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/web-portal.html",
+    "css": "src/styles/pages/th-web-portal.css"
+  },
+  {
+    "path": "/projects/website",
+    "lang": "th",
+    "slug": "website",
+    "title": "Website | Opendream",
+    "bodyClass": "page-template-default page page-id-26738 page-child parent-pageid-248 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/website.html",
+    "css": "src/styles/pages/th-website.css"
+  },
+  {
+    "path": "/en/projects_en/chatbot",
+    "lang": "en",
+    "slug": "chatbot",
+    "title": "Chat Bot | Opendream",
+    "bodyClass": "page-template-default page page-id-28974 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/chatbot.html",
+    "css": "src/styles/pages/en-chatbot.css"
+  },
+  {
+    "path": "/en/projects_en/crowdfunding",
+    "lang": "en",
+    "slug": "crowdfunding",
+    "title": "Online Crowdfunding | Opendream",
+    "bodyClass": "page-template-default page page-id-27328 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/crowdfunding.html",
+    "css": "src/styles/pages/en-crowdfunding.css"
+  },
+  {
+    "path": "/en/projects_en/crowdsourcing",
+    "lang": "en",
+    "slug": "crowdsourcing",
+    "title": "Crowdsourcing | Opendream",
+    "bodyClass": "page-template-default page page-id-28784 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/crowdsourcing.html",
+    "css": "src/styles/pages/en-crowdsourcing.css"
+  },
+  {
+    "path": "/en/projects_en/graphic-design",
+    "lang": "en",
+    "slug": "graphic-design",
+    "title": "Graphic Design | Opendream",
+    "bodyClass": "page-template-default page page-id-27639 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/graphic-design.html",
+    "css": "src/styles/pages/en-graphic-design.css"
+  },
+  {
+    "path": "/en/projects_en/interactive-infographic",
+    "lang": "en",
+    "slug": "interactive-infographic",
+    "title": "Interactive Infographic | Opendream",
+    "bodyClass": "page-template-default page page-id-27615 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/interactive-infographic.html",
+    "css": "src/styles/pages/en-interactive-infographic.css"
+  },
+  {
+    "path": "/en/projects_en/intranet",
+    "lang": "en",
+    "slug": "intranet",
+    "title": "Intranet | Opendream",
+    "bodyClass": "page-template-default page page-id-27645 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/intranet.html",
+    "css": "src/styles/pages/en-intranet.css"
+  },
+  {
+    "path": "/en/projects_en/mobile-application",
+    "lang": "en",
+    "slug": "mobile-application",
+    "title": "Mobile Application iOS,Android | Opendream",
+    "bodyClass": "page-template-default page page-id-27227 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/mobile-application.html",
+    "css": "src/styles/pages/en-mobile-application.css"
+  },
+  {
+    "path": "/en/projects_en/mobilegame",
+    "lang": "en",
+    "slug": "mobilegame",
+    "title": "Mobile Game (iOS/Android) | Opendream",
+    "bodyClass": "page-template-default page page-id-27220 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/mobilegame.html",
+    "css": "src/styles/pages/en-mobilegame.css"
+  },
+  {
+    "path": "/en/projects_en/online-donation",
+    "lang": "en",
+    "slug": "online-donation",
+    "title": "Online Donation | Opendream",
+    "bodyClass": "page-template-default page page-id-27326 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/online-donation.html",
+    "css": "src/styles/pages/en-online-donation.css"
+  },
+  {
+    "path": "/en/projects_en/online-payment",
+    "lang": "en",
+    "slug": "online-payment",
+    "title": "Online Payment | Opendream",
+    "bodyClass": "page-template-default page page-id-27430 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/online-payment.html",
+    "css": "src/styles/pages/en-online-payment.css"
+  },
+  {
+    "path": "/en/projects_en/online-ticketing-system",
+    "lang": "en",
+    "slug": "online-ticketing-system",
+    "title": "Online Ticketing System | Opendream",
+    "bodyClass": "page-template-default page page-id-27955 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/online-ticketing-system.html",
+    "css": "src/styles/pages/en-online-ticketing-system.css"
+  },
+  {
+    "path": "/en/projects_en/open-data",
+    "lang": "en",
+    "slug": "open-data",
+    "title": "Open Data | Opendream",
+    "bodyClass": "page-template-default page page-id-28929 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/open-data.html",
+    "css": "src/styles/pages/en-open-data.css"
+  },
+  {
+    "path": "/en/projects_en/project",
+    "lang": "en",
+    "slug": "project",
+    "title": "Surveillance System | Opendream",
+    "bodyClass": "page-template-default page page-id-27212 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/project.html",
+    "css": "src/styles/pages/en-project.css"
+  },
+  {
+    "path": "/en/projects_en/web-application",
+    "lang": "en",
+    "slug": "web-application",
+    "title": "Web Application | Opendream",
+    "bodyClass": "page-template-default page page-id-27319 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/web-application.html",
+    "css": "src/styles/pages/en-web-application.css"
+  },
+  {
+    "path": "/en/projects_en/web-portal",
+    "lang": "en",
+    "slug": "web-portal",
+    "title": "Web Portal | Opendream",
+    "bodyClass": "page-template-default page page-id-27460 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/web-portal.html",
+    "css": "src/styles/pages/en-web-portal.css"
+  },
+  {
+    "path": "/en/projects_en/website",
+    "lang": "en",
+    "slug": "website",
+    "title": "Website | Opendream",
+    "bodyClass": "page-template-default page page-id-29043 page-child parent-pageid-27155 et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/website.html",
+    "css": "src/styles/pages/en-website.css"
+  },
+  {
+    "path": "/projects",
+    "lang": "th",
+    "slug": "projects",
+    "title": "งานของเรา | Opendream",
+    "bodyClass": "page-template-default page page-id-248 page-parent et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/th/projects.html",
+    "css": "src/styles/pages/th-projects.css"
+  },
+  {
+    "path": "/en/projects_en",
+    "lang": "en",
+    "slug": "projects_en",
+    "title": "Projects | Opendream",
+    "bodyClass": "page-template-default page page-id-27155 page-parent et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css",
+    "html": "src/content/pages/en/projects_en.html",
+    "css": "src/styles/pages/en-projects_en.css"
   }
 ]
