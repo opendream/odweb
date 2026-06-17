@@ -1,5 +1,9 @@
 /* Vendor theme CSS ported from the live site (fidelity-first; trim later). */
 /* Import order matters: Divi core first, then customizer overrides, then child theme overrides */
+/* divi-parent = themes/Divi/style.css — the base Divi grid (.et_pb_row{margin:auto} +
+   responsive @media) the live child theme @imports first. Without it, designed pages
+   (raw .et_pb_section/.et_pb_row markup) box left and don't reflow. Must load first. */
+@import "./vendor/divi-parent.css";
 @import "./vendor/divi-unified.css";
 @import "./vendor/divi-customizer.css";
 @import "./vendor/theme.css";
