@@ -77,6 +77,14 @@ committed markdown + media are the source of truth.
   box left). Divi's JS-driven reveal animations are neutralised site-wide
   (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. A CSS purge/trim
   pass is worthwhile before deploy.
+- **Chrome (BaseLayout):** `#main-header` is `position:fixed`; content is wrapped in `#page-container`
+  with `padding-top` (88px desktop / 119px mobile, matching the live JS-set offset) so the header
+  doesn't cover the top of the page. Pages that don't scrape their own `bodyClass` get a
+  `DEFAULT_BODY_CLASS` (standard Divi classes) — without it the header renders unstyled (giant logo).
+  Divi grid/masonry modules (portfolio, blog) rely on isotope/salvattore JS we don't run, so their
+  float/grid containers are laid out with plain CSS (`.et_pb_portfolio_items` clearfix; `.od-blog-grid`).
+- **Blog listings** (`/blog`, `/en/blogs`) are faithful Divi blog grids: `PostCard` emits `.et_pb_post`
+  markup (image+title+excerpt) in `.od-blog-grid`, under a `BlogHero` purple banner.
 - **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
 
 ## When making changes
