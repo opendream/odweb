@@ -22,5 +22,14 @@ const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: baseSchema,
 });
+const policies = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/policies' }),
+  schema: z.object({
+    title: z.string(),
+    lang: z.enum(['th', 'en']),
+    slug: z.string(),
+    path: z.string(),
+  }),
+});
 
-export const collections = { posts, projects };
+export const collections = { posts, projects, policies };

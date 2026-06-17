@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import PostLayout from '../layouts/PostLayout.astro';
 import ProjectLayout from '../layouts/ProjectLayout.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import manifest from '../content/pages/manifest.json';
 
 export async function getStaticPaths() {
@@ -11,6 +12,7 @@ export async function getStaticPaths() {
 
   const posts = await getCollection('posts');
   const projects = await getCollection('projects');
+  const policies = await getCollection('policies');
   const col = (entry, kind) => ({ params: { path: entry.data.path.replace(/^\//, '') }, props: { kind, entry } });
   const designed = manifest
     .filter((m) => m.path !== '/' && m.path !== '/en/' && m.path !== '/projects' && m.path !== '/en/projects_en')
@@ -23,7 +25,7 @@ export async function getStaticPaths() {
         css: pageCss[`../styles/pages/${m.lang}-${m.slug}.css`],
       },
     }));
-  return [...posts.map((e) => col(e, 'post')), ...projects.map((e) => col(e, 'project')), ...designed];
+  return [...posts.map((e) => col(e, 'post')), ...projects.map((e) => col(e, 'project')), ...policies.map((e) => col(e, 'policy')), ...designed];
 }
 
 const props = Astro.props;
@@ -42,6 +44,10 @@ if (props.kind !== 'page') {
   <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} categories={d.categories} description={d.excerpt}>
     <Content />
   </ProjectLayout>
+) : props.kind === 'policy' ? (
+  <PageLayout title={d.title} lang={d.lang} path={d.path}>
+    <Content />
+  </PageLayout>
 ) : (
   <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt}>
     <Content />
