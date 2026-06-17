@@ -94,6 +94,12 @@
   .od-menu__lang a { display: inline-block; margin: 8px 24px; }
 }
 
+/* ---- page hero banner (blog/press) ---- */
+.od-hero { background: #664f9e url('/wp-content/uploads/2016/12/bg-head-blog.jpg') center/cover no-repeat; }
+.od-hero__inner { max-width: var(--od-max); margin: 0 auto; padding: 56px 24px; text-align: center; color: #fff; }
+.od-hero__title { font-size: 38px; line-height: 1.2; font-weight: 800; margin: 0; color: #fff; }
+.od-hero__subtitle { font-size: 18px; margin: 12px 0 0; opacity: .95; }
+
 /* ===== Article detail (posts / projects / policies): centered readable prose ===== */
 .od-article { max-width: 820px; margin: 0 auto; padding: 56px 24px 80px; }
 .od-article__title { font-size: 34px; line-height: 1.25; font-weight: 800; margin: 0 0 14px; color: var(--od-ink); }

@@ -1,18 +1,11 @@
 ---
-// The purple banner atop the blog listing (live blog section_0: a Divi fullwidth_header
-// over bg-head-blog.jpg / #664f9e). Styled by .od-blog-hero in global.css.
+// Clean, de-Divi'd hero banner for the blog/press listing (was the live blog section_0).
 interface Props { title: string; subtitle: string; }
 const { title, subtitle } = Astro.props;
 ---
-<div class="et_pb_section et_pb_section_0 et_pb_with_background et_pb_fullwidth_section od-blog-hero">
-  <div class="et_pb_fullwidth_header et_pb_fullwidth_header_0 et_pb_text_align_center et_pb_bg_layout_dark">
-    <div class="et_pb_fullwidth_header_container left">
-      <div class="header-content-container center">
-        <div class="header-content">
-          <h1 class="et_pb_module_header">{title}</h1>
-          <div class="et_pb_fullwidth_header_subhead">{subtitle}</div>
-        </div>
-      </div>
-    </div>
+<section class="od-hero">
+  <div class="od-hero__inner">
+    <h1 class="od-hero__title">{title}</h1>
+    <p class="od-hero__subtitle">{subtitle}</p>
   </div>
-</div>
+</section>
