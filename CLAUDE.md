@@ -85,14 +85,19 @@ committed markdown + media are the source of truth.
   (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. The `build` script
   runs `scripts/purge-css.mjs` (PurgeCSS) after `astro build`, trimming the bundle 852 KB → ~165 KB
   (88 KB → 22 KB gzipped) with a Divi-aware safelist; per-page inline `et-core-unified` styles are untouched.
-- **Chrome (BaseLayout):** `#main-header` is `position:fixed`; content is wrapped in `#page-container`
-  with `padding-top` (88px desktop / 119px mobile, matching the live JS-set offset) so the header
-  doesn't cover the top of the page. Pages that don't scrape their own `bodyClass` get a
-  `DEFAULT_BODY_CLASS` (standard Divi classes) — without it the header renders unstyled (giant logo).
-  Divi grid/masonry modules (portfolio, blog) rely on isotope/salvattore JS we don't run, so their
-  float/grid containers are laid out with plain CSS (`.et_pb_portfolio_items` clearfix; `.od-blog-grid`).
-- **Blog listings** (`/blog`, `/en/blogs`) are faithful Divi blog grids: `PostCard` emits `.et_pb_post`
-  markup (image+title+excerpt) in `.od-blog-grid`, under a `BlogHero` purple banner.
+- **Modernisation (de-Divi), in progress — phased.** We're progressively replacing the ported Divi
+  scaffolding/classes with a clean design system in `src/styles/modern.css` (`.od-*`), on the surfaces
+  we control. **Done:** the **chrome** (Header/Footer/Nav/LangSwitcher rebuilt clean — sticky `.od-header`,
+  animated hamburger → dropdown nav, `.od-footer`; no `#main-header`/`#top-menu`/`et_pb_*`, no body-class
+  coupling, no fixed-header `#page-container` offset) and the **listings** (`/projects` = centered
+  `.od-container` + centered pill `.od-filter` + 1:1 `.od-card` grid w/ hover; `/blog` = `.od-postgrid`
+  of `.od-postcard` under `BlogHero`). PurgeCSS safelist keeps `/^od-/`. **Remaining phases:** detail
+  layouts (Post/Project/Page prose), BlogHero, then the scraped designed pages (home/about/services) —
+  after which `vendor/divi-parent.css` + the PurgeCSS crutch can be dropped.
+- **Global CSS note (legacy/Divi):** `vendor/divi-parent.css` (full Divi theme) still backs the
+  not-yet-modernised surfaces (designed pages, detail layouts). Divi reveal animations neutralised
+  (`.et-waypoint,.et_animated{opacity:1!important}`); designed-page grids that relied on isotope/salvattore
+  JS are laid out with plain CSS.
 - **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
 
 ## When making changes
