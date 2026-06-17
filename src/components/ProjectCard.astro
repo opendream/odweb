@@ -5,14 +5,11 @@ const { title, href, cover, categories = [], index = 0 } = Astro.props;
 const slugs = sectorSlugs(categories);
 const catClasses = slugs.map((s) => `project_category_${s}`).join(' ');
 ---
-<div
-  class={`et_pb_portfolio_item et_pb_grid_item ${catClasses} et_pb_filterable_portfolio_item_0_${index}`.trim()}
-  data-sectors={slugs.join(' ')}
->
+<div class={`et_pb_portfolio_item et_pb_grid_item ${catClasses} et_pb_filterable_portfolio_item_0_${index}`.trim()}>
   <a href={href}>
     <span class="et_portfolio_image">
       {cover && <img src={cover} alt={title} width="400" height="284" />}
-      <span class="et_overlay et_pb_inline_icon" data-icon={''}></span>
+      <span class="et_overlay et_pb_inline_icon" data-icon={'\ue0f7'}></span>
     </span>
   </a>
 </div>
