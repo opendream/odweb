@@ -1,45 +1,29 @@
 ---
 import Nav from './Nav.astro';
-
 interface Props { lang: 'th' | 'en'; thHref?: string; enHref?: string; }
 const { lang, thHref = '/blog', enHref = '/en/blogs' } = Astro.props;
 const homeHref = lang === 'en' ? '/en/' : '/';
-const selectPageLabel = lang === 'en' ? 'Select Page' : 'เลือกหน้า';
-
+const menuLabel = lang === 'en' ? 'Menu' : 'เมนู';
 ---
-<header id="main-header" data-height-onload="66">
-  <div class="container clearfix et_menu_container">
-    <div class="logo_container">
-      <span class="logo_helper"></span>
-      <a href={homeHref}>
-        <img src="/media/od_logo.svg" alt="Opendream" id="logo" data-height-percentage="54" />
-      </a>
-    </div>
-    <div id="et-top-navigation" data-height="66" data-fixed-height="40">
-      <nav id="top-menu-nav">
-        <Nav lang={lang} thHref={thHref} enHref={enHref} />
-      </nav>
-
-      <div id="et_mobile_nav_menu">
-        <div class="mobile_nav closed">
-          <span class="select_page">{selectPageLabel}</span>
-          <span class="mobile_menu_bar mobile_menu_bar_toggle"></span>
-        </div>
-      </div>
-    </div>
+<header class="od-header">
+  <div class="od-header__inner">
+    <a href={homeHref} class="od-logo"><img src="/media/od_logo.svg" alt="Opendream" /></a>
+    <button class="od-burger" id="od-burger" type="button" aria-label={menuLabel} aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="od-nav" aria-label={menuLabel}>
+      <Nav lang={lang} thHref={thHref} enHref={enHref} />
+    </nav>
   </div>
 </header>
 <script is:inline>
-  // Mobile menu: the hamburger toggles .od-nav-open on #main-header (modern.css drops the
-  // nav down as a panel). Divi's own mobile menu needed JS we don't ship.
   (() => {
-    const header = document.getElementById('main-header');
-    const bar = header && header.querySelector('#et_mobile_nav_menu');
-    if (!bar) return;
-    bar.addEventListener('click', () => {
+    const header = document.querySelector('.od-header');
+    const burger = document.getElementById('od-burger');
+    if (!header || !burger) return;
+    burger.addEventListener('click', () => {
       const open = header.classList.toggle('od-nav-open');
-      bar.querySelector('.mobile_nav')?.classList.toggle('opened', open);
-      bar.querySelector('.mobile_nav')?.classList.toggle('closed', !open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   })();
 </script>

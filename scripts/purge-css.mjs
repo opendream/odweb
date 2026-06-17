@@ -19,8 +19,9 @@ const results = await new PurgeCSS().purge({
   css: cssFiles,
   safelist: {
     standard: ['active', 'lazyload', 'clearfix'],
-    // JS-toggled / animation / overlay states that static HTML scanning may not surface
-    greedy: [/et_pb_animation/, /et_overlay/, /et-waypoint/, /et_animated/, /et-fixed-header/],
+    // JS-toggled / animation / overlay states that static HTML scanning may not surface.
+    // /^od-/ keeps the whole modern design system (incl. JS-toggled .od-nav-open).
+    greedy: [/^od-/, /et_pb_animation/, /et_overlay/, /et-waypoint/, /et_animated/, /et-fixed-header/],
     keyframes: true,
     fontFace: true,
     variables: true,
