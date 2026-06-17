@@ -62,8 +62,20 @@ committed markdown + media are the source of truth.
   home TH `/` + EN `/en/` rendered from `src/content/pages/**` + `src/styles/pages/**`, Divi assets
   mirrored under `public/wp-content/`; `BaseLayout` gained `pageStyles`+`bodyClass`; nginx `absolute_redirect off` keeps link host:port).
   **3b core pages — DONE** (about/contact/join-us/announcement TH+EN via the generic manifest-driven
-  route in `[...path].astro`; header search box removed). Pending: human visual check of 3a+3b. **3c** ~17 service pages + faithful `/projects` filterable-portfolio design; **3d** ~14
-  privacy policies → markdown. See `docs/2026-06-16-static-migration-phase3a-spec.md` + `-plan.md`.
+  route in `[...path].astro`; header search box removed).
+  **3c service pages + faithful projects — DONE** (33 service pages — TH `/projects/<slug>`, EN
+  `/en/projects_en/<slug>` — via the preserve-HTML pipeline; the `/projects` + `/en/projects_en`
+  landings rebuilt as data-driven Divi filterable-portfolio grids — `ProjectCard` emits
+  `et_pb_portfolio_item` markup styled by the global `divi-parent.css`, filtered by the 4 sector
+  categories via tested `scripts/lib/categories.mjs`. Known deferred fidelity gap: the landings omit
+  the live page's two trailing sections after the grid — a parallax strip + an "Our Clients" logos
+  section.) **3d** ~14 privacy policies → markdown (remaining). Pending: human visual check of 3a/3b/3c.
+  See `docs/2026-06-17-static-migration-phase3c-spec.md` + `-plan.md`.
+- **Global CSS note:** `src/styles/global.css` imports `vendor/divi-parent.css` (the full Divi theme
+  stylesheet, ~825 KB — the base `.et_pb_row` grid + responsive `@media`; without it designed pages
+  box left). Divi's JS-driven reveal animations are neutralised site-wide
+  (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. A CSS purge/trim
+  pass is worthwhile before deploy.
 - **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
 
 ## When making changes
