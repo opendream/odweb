@@ -4,12 +4,12 @@ interface Props { title: string; lang: 'th' | 'en'; path: string; cover?: string
 const { title, lang, path, cover, categories = [], description } = Astro.props;
 ---
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
-  <article class="single-project">
-    <h1>{title}</h1>
+  <article class="od-article">
+    <h1 class="od-article__title">{title}</h1>
     {categories.length > 0 && (
-      <p class="single-project__cats">{categories.map((c) => <span class="single-project__cat">{c}</span>)}</p>
+      <p class="od-article__meta">{categories.map((c) => <span class="od-cat">{c}</span>)}</p>
     )}
-    {cover && <img class="single-project__cover" src={cover} alt={title} />}
-    <div class="project-body"><slot /></div>
+    {cover && <img class="od-article__cover" src={cover} alt={title} />}
+    <div class="od-prose"><slot /></div>
   </article>
 </BaseLayout>

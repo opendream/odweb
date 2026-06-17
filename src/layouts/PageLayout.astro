@@ -4,16 +4,8 @@ interface Props { title: string; lang: 'th' | 'en'; path: string; description?: 
 const { title, lang, path, description } = Astro.props;
 ---
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
-  <div id="et-main-area">
-    <div class="container">
-      <div id="content-area" class="clearfix">
-        <div id="left-area">
-          <article class="et_pb_post">
-            <h1 class="entry-title">{title}</h1>
-            <div class="entry-content"><slot /></div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
+  <article class="od-article">
+    <h1 class="od-article__title">{title}</h1>
+    <div class="od-prose"><slot /></div>
+  </article>
 </BaseLayout>
