@@ -13,6 +13,13 @@
 :root { color-scheme: light; }
 img { max-width: 100%; height: auto; }
 
+/* Divi scroll-reveal animations are JS-driven: .et-waypoint / .et_animated start at
+   opacity:0 and Divi's JS fades them in when scrolled into view. This static build runs
+   no Divi JS, so the parent grid's initial opacity:0 leaves animated modules and images
+   (project tiles, fullwidth images) permanently invisible. Force them visible and cancel
+   the never-triggered animation. */
+.et-waypoint, .et_animated { opacity: 1 !important; animation: none !important; }
+
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
 .project-card__cover { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
 .project-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }

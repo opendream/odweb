@@ -26,9 +26,13 @@ async function fetchText(url) {
 }
 async function mirrorAsset(ref) {
   // ref may be absolute (http://host/wp-content/...) or root-relative (/wp-content/...)
-  const p = ref.startsWith('http') ? new URL(ref).pathname : ref;   // /wp-content/...
+  const p = ref.startsWith('http') ? new URL(ref).pathname : ref;   // /wp-content/... (may be %-encoded)
   const abs = ref.startsWith('http') ? ref : BASE + ref;
-  const dest = join(ROOT, 'public', p);
+  // Write under the DECODED path so the on-disk filename matches what nginx resolves a
+  // request to (a raw UTF-8 ref like /…/เทใจ@2x-1.jpg). Saving the %-encoded form as a
+  // literal filename would 404 the raw reference.
+  let diskPath; try { diskPath = decodeURIComponent(p); } catch { diskPath = p; }
+  const dest = join(ROOT, 'public', diskPath);
   if (existsSync(dest)) return;
   const r = await fetch(abs);
   if (!r.ok) { console.warn(`asset ${r.status}: ${abs}`); return; }
