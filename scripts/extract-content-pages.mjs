@@ -41,7 +41,10 @@ async function run() {
     const langAttr = (dom.querySelector('html')?.getAttribute('lang') || 'th').toLowerCase();
     const lang = langAttr.startsWith('th') ? 'th' : 'en';
     const title = (dom.querySelector('title')?.text || slug).replace(/\s*\|\s*Opendream\s*$/i, '').trim();
-    let content = unlazy(extractEntryContent(dom.toString()));
+    // Strip <noscript> fallback images: unlazy already promoted data-src on the real <img>,
+    // so the <noscript><img></noscript> copy is redundant — and turndown would render it as a
+    // second, duplicate image in the markdown.
+    let content = unlazy(extractEntryContent(dom.toString())).replace(/<noscript[\s\S]*?<\/noscript>/gi, '');
     for (const u of collectWpContentUrls(content)) await mirrorAsset(u);
     content = toSiteRelative(content);
     const md = htmlToMarkdown(stripDiviCruft(content));

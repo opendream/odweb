@@ -70,8 +70,13 @@ committed markdown + media are the source of truth.
   categories via tested `scripts/lib/categories.mjs`. The landings' two trailing sections after the
   grid — a parallax strip + an "Our Clients" logos section — are restored from the scraped landing
   HTML via `scripts/extract-trailing.mjs` → `*-trailing.html` partials rendered after the portfolio.)
-  **3d** ~14 privacy policies → markdown (remaining). Pending: human visual check of 3a/3b/3c.
-  See `docs/2026-06-17-static-migration-phase3c-spec.md` + `-plan.md`.
+  **3d policy pages — DONE** (15 privacy/policy pages render-scraped from `article .entry-content` →
+  markdown in the `policies` collection via `scripts/extract-content-pages.mjs` + `extractEntryContent`;
+  rendered as prose by the new minimal `PageLayout`, routed by `[...path].astro` kind `policy`; lang per
+  page from `<html lang>`; `blueflagshops` dropped by decision). **Content conversion is now complete.**
+  Pending: human visual check of 3a/3b/3c/3d; pre-deploy polish (CSS purge/trim, sitemap/robots/404,
+  TH↔EN per-page hreflang pairing) then Cloudflare Pages deploy.
+  See `docs/2026-06-17-static-migration-phase3{c,d}-spec.md` + `-plan.md`.
 - **Global CSS note:** `src/styles/global.css` imports `vendor/divi-parent.css` (the full Divi theme
   stylesheet, ~825 KB — the base `.et_pb_row` grid + responsive `@media`; without it designed pages
   box left). Divi's JS-driven reveal animations are neutralised site-wide
