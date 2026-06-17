@@ -67,9 +67,10 @@ committed markdown + media are the source of truth.
   `/en/projects_en/<slug>` — via the preserve-HTML pipeline; the `/projects` + `/en/projects_en`
   landings rebuilt as data-driven Divi filterable-portfolio grids — `ProjectCard` emits
   `et_pb_portfolio_item` markup styled by the global `divi-parent.css`, filtered by the 4 sector
-  categories via tested `scripts/lib/categories.mjs`. Known deferred fidelity gap: the landings omit
-  the live page's two trailing sections after the grid — a parallax strip + an "Our Clients" logos
-  section.) **3d** ~14 privacy policies → markdown (remaining). Pending: human visual check of 3a/3b/3c.
+  categories via tested `scripts/lib/categories.mjs`. The landings' two trailing sections after the
+  grid — a parallax strip + an "Our Clients" logos section — are restored from the scraped landing
+  HTML via `scripts/extract-trailing.mjs` → `*-trailing.html` partials rendered after the portfolio.)
+  **3d** ~14 privacy policies → markdown (remaining). Pending: human visual check of 3a/3b/3c.
   See `docs/2026-06-17-static-migration-phase3c-spec.md` + `-plan.md`.
 - **Global CSS note:** `src/styles/global.css` imports `vendor/divi-parent.css` (the full Divi theme
   stylesheet, ~825 KB — the base `.et_pb_row` grid + responsive `@media`; without it designed pages
