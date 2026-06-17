@@ -1,26 +1,10 @@
 ---
-// A blog post card in Divi `.et_pb_post` markup so the global Divi theme CSS
-// (divi-parent.css) styles the featured image, title and excerpt faithfully. Column
-// layout is handled by `.od-blog-grid` in global.css (the live site uses salvattore JS
-// for masonry, which this static build doesn't run). Matches the live blog card, which
-// shows image + title + excerpt and no visible post-meta.
+// Clean, de-Divi'd blog post card: cover image, title, excerpt. Styled by .od-postcard in modern.css.
 interface Props { title: string; href: string; excerpt?: string; cover?: string; }
 const { title, href, excerpt, cover } = Astro.props;
-const overlayIcon = '\ue0f7'; // ETmodules glyph, matches the live card hover overlay
 ---
-<article class="et_pb_post clearfix et_pb_text_align_left et_pb_has_overlay">
-  {cover && (
-    <div class="et_pb_image_container">
-      <a href={href} class="entry-featured-image-url">
-        <img src={cover} alt={title} />
-        <span class="et_overlay et_pb_inline_icon" data-icon={overlayIcon}></span>
-      </a>
-    </div>
-  )}
-  <h2 class="entry-title"><a href={href}>{title}</a></h2>
-  {excerpt && (
-    <div class="post-content">
-      <div class="post-content-inner">{excerpt}</div>
-    </div>
-  )}
-</article>
+<a href={href} class="od-postcard">
+  {cover && <span class="od-postcard__img"><img src={cover} alt={title} loading="lazy" /></span>}
+  <h2 class="od-postcard__title">{title}</h2>
+  {excerpt && <p class="od-postcard__excerpt">{excerpt}</p>}
+</a>
