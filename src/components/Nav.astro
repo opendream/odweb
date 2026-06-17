@@ -3,8 +3,8 @@ import navTh from '../data/nav.th.json';
 import navEn from '../data/nav.en.json';
 import LangSwitcher from './LangSwitcher.astro';
 
-interface Props { lang: 'th' | 'en'; }
-const { lang } = Astro.props;
+interface Props { lang: 'th' | 'en'; thHref?: string; enHref?: string; }
+const { lang, thHref = '/blog', enHref = '/en/blogs' } = Astro.props;
 const rawItems = (lang === 'en' ? navEn : navTh) as Array<{
   db_id: number;
   type: string;
@@ -22,5 +22,5 @@ const items = rawItems.filter(i => i.link !== '#pll_switcher');
       <a href={i.link}>{i.title}</a>
     </li>
   ))}
-  <LangSwitcher lang={lang} thHref="/blog" enHref="/en/blogs" />
+  <LangSwitcher lang={lang} thHref={thHref} enHref={enHref} />
 </ul>

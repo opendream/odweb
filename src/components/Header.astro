@@ -1,8 +1,8 @@
 ---
 import Nav from './Nav.astro';
 
-interface Props { lang: 'th' | 'en'; }
-const { lang } = Astro.props;
+interface Props { lang: 'th' | 'en'; thHref?: string; enHref?: string; }
+const { lang, thHref = '/blog', enHref = '/en/blogs' } = Astro.props;
 const homeHref = lang === 'en' ? '/en/' : '/';
 const selectPageLabel = lang === 'en' ? 'Select Page' : 'เลือกหน้า';
 
@@ -17,7 +17,7 @@ const selectPageLabel = lang === 'en' ? 'Select Page' : 'เลือกหน�
     </div>
     <div id="et-top-navigation" data-height="66" data-fixed-height="40">
       <nav id="top-menu-nav">
-        <Nav lang={lang} />
+        <Nav lang={lang} thHref={thHref} enHref={enHref} />
       </nav>
 
       <div id="et_mobile_nav_menu">
