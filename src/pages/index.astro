@@ -7,9 +7,9 @@ const all = await getCollection('projects');
 const bySlug = Object.fromEntries(all.map((p) => [p.data.slug, p.data]));
 const tiles = (projectConfig.th.featured ?? []).map((s) => bySlug[s]).filter(Boolean);
 ---
-<BaseLayout title="Opendream — Open by Design. Impact by Default" lang="th" path="/" altPath="/en/">
+<BaseLayout title="Opendream — Open by Design. Build for Impact." lang="th" path="/" altPath="/en/">
   <section class="od-home-hero">
-    <h1 class="od-home-hero__title">Open by Design.<br /><span>Impact by Default</span></h1>
+    <h1 class="od-home-hero__title">Open by Design.<br /><span>Build for Impact.</span></h1>
   </section>
   <div class="od-showcase">
     {tiles.map((t) => (
