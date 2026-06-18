@@ -85,8 +85,11 @@ access to that source — everyday editing is just markdown, no WordPress requir
 
 ## Licensing
 
-Site **content** is licensed **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)**.
-The Noto Sans Thai Looped font is under the **SIL Open Font License** (see `public/fonts/OFL.txt`).
+- **Code & theme** (templates, components, styles, scripts, config) — **[MIT](LICENSE)**.
+- **Content** (text, images, markdown under `src/content/` and `public/media/`) —
+  **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)**.
+- **Font** — Noto Sans Thai Looped under the **SIL Open Font License** (`public/fonts/OFL.txt`).
+  Brand icons (Facebook/X/GitHub) remain their owners' trademarks.
 
 ## More
 
