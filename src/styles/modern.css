@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Thai Looped', system-ui, -apple
 }
 
 /* ===== home (hero + project showcase) ===== */
-.od-home-hero { text-align: center; padding: 76px 24px 4px; }
+.od-home-hero { text-align: center; padding: 76px 24px 56px; }
 .od-home-hero__pre { font-size: 18px; color: var(--od-muted); margin: 0 0 6px; }
 .od-home-hero__title { font-size: 40px; line-height: 1.25; font-weight: 800; color: var(--od-ink); margin: 0; }
 .od-home-hero__title span { color: var(--od-accent); }
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Thai Looped', system-ui, -apple
 .od-showcase__tile:hover .od-showcase__overlay { opacity: 1; }
 .od-showcase__name { color: #fff; font-size: 22px; font-weight: 700; line-height: 1.25; }
 .od-showcase__type { color: #fff; opacity: .9; font-size: 14px; margin-top: 4px; }
-@media (max-width: 640px) { .od-home-hero { padding: 44px 20px 4px; } .od-home-hero__title { font-size: 29px; } }
+@media (max-width: 640px) { .od-home-hero { padding: 44px 20px 36px; } .od-home-hero__title { font-size: 29px; } }
 
 /* ===== content components (MDX) ===== */
 /* Hero banner (bg color/image via props; white text when over a bg) */
