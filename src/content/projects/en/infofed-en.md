@@ -16,27 +16,12 @@ partners:
   - Infofed Co,. Ltd
 ---
 
+
 # INFOFED | Virtual Tour Platform
 
 ระบบแสดงผล Virtual Tour ที่สามารถจัดการรวบรวมข้อมูลการติดต่อ ข้อมูลพื้นฐานของธุรกิจหลากหลายแขนงออกมาในรูปแบบ 360°
 
 [Visit Site](https://360.infofed.com/)
-
-### Category
-
-Others
-
-### Type of project
-
-Web Application
-
-### Year of introduction
-
-2017
-
-### Partners
-
--   Infofed Co,. Ltd
 
 รูปแบบการแสดงผลหน้าจอ Virtual Tour สามารถคลิกดูรายละเอียดข้อมูลของสถานที่นั้นๆได้
 

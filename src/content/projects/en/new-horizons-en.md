@@ -16,6 +16,7 @@ partners:
   - PTT Public Company Limited
 ---
 
+
 # New Horizons
 
 Buckle up!
@@ -29,22 +30,6 @@ New Horizons players learn the mechanics of how the global energy market works, 
 New Horizons is available in English and Thai on iOS and Android.
 
 [Visit Site](http://www.new-horizons.in.th/)
-
-### Category
-
-Education
-
-### Type of project
-
-Mobile Game (iOS, Android)
-
-### Year of introduction
-
-2020
-
-### Partner
-
--   PTT Public Company Limited
 
 [![App Store Download Application](/media/2017/01/ic_appstore@2x.png)](https://itunes.apple.com/us/app/doctorme/id450125162) [![google play Download Application](/media/2017/01/ic_googleplay@2x.png)](https://play.google.com/store/apps/details?id=com.opendream.android.doctorme)
 

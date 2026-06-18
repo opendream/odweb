@@ -19,22 +19,7 @@ partners:
   - TMB Bank
 ---
 
+
 # TMB PARKRUN
 
 TMB | ING Parkrun is the annual marathon organized by the Thai Military Bank (TMB) to help raise funds for heart surgeries for children. With the introduction of One Stop Shopping system by Opendream in 2018,
-
-### Category
-
-Online Payment
-
-### Type of project
-
-Web Application, Online Donation, Online Ticketing System
-
-### Year of introduction
-
-2016 – 2018
-
-### Partners
-
--   TMB Bank

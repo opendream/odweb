@@ -19,27 +19,10 @@ partners:
   - Change Fusion
 ---
 
+
 # LOVE NOT YET
 
 **Love Not Yet** is Thailand’s first mobile game on sex education with the aim to educate Thai teenagers on sexuality by incorporating sex education and safe sex practices in over 30 aspects so as to increase the excitement and appeal to teenagers. Tips would be provided in different intervals of the game to clarify various false beliefs regarding sex.
-
-### Category
-
-Health / Education
-
-### Type of project
-
-Mobile Game (iOS/Android)
-
-### Year of introduction
-
-2011
-
-### Partners
-
--   Film Maker of “Love Not Yet”
--   Ork Pai Dern Co., Ltd
--   Change Fusion
 
 [![App Store Download Application](/media/2017/01/ic_appstore@2x.png)](https://itunes.apple.com/th/app/love-not-yet/id493582143?mt=8) [![google play Download Application](/media/2017/01/ic_googleplay@2x.png)](https://play.google.com/store/apps/details?id=com.opendream.games.lovenotyet2&hl=th)
 

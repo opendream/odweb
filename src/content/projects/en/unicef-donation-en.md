@@ -17,22 +17,7 @@ partners:
   - UNICEF Thailand
 ---
 
+
 # Launching UNICEF Thailand’s New Donation Website
 
 UNICEF Thailand partnered with Opendream to launch their national donation website, along with a brand new e-commerce experience where supporters can buy life-saving gifts for children around the world.
-
-### Category
-
-Other
-
-### Type of project
-
-Web Application / Online Donation
-
-### Year of introduction
-
-2020
-
-### Partner
-
--   UNICEF Thailand

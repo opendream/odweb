@@ -17,25 +17,10 @@ partners:
   - Equitable Education Fund (EEF
 ---
 
+
 # Project Tracking System for the Equitable Education Fund (EEF)
 
 Opendream partnered with EEF to create a system to manage the progress-tracking of their funded projects. The system provides an overview of each project, tracks project activities, financial reporting, as well as allows EEF to contribute project feedback and reviews. The Project Tracking System allows EEF to monitor their funded projects in order to to ensure that their fundees are meeting their project goals and objectives on-time and under-budget.
-
-### Category
-
-Other
-
-### Type of project
-
-Web Application
-
-### Year of introduction
-
-2020
-
-### Partner
-
--   Equitable Education Fund (EEF
 
 Project and fund disburse progress / Project inspector process
 

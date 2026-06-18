@@ -18,22 +18,7 @@ partners:
   - Openbooks Publishing
 ---
 
+
 # SIDDHARTHA
 
 First time ever the classic literature “SIDDHARTHA” is open for booking online. Only 1,000 copies were printed and buyers may choose the serial number (0001 to 1000) for the book when they made the online purchase. All 1,000 copies were sold out within 12 hours, which created a new record for literature sales in Thailand.
-
-### Category
-
-Online Payment, Other
-
-### Type of project
-
-Web Application / Online Payment
-
-### Year of introduction
-
-2016
-
-### Partners
-
--   Openbooks Publishing

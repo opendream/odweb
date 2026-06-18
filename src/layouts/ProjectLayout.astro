@@ -8,12 +8,26 @@ const { title, lang, path, cover, description, issues = [], type, year, partners
 const L = lang === 'en'
   ? { issue: 'Issue', type: 'Type', year: 'Year', partners: 'Partners' }
   : { issue: 'ประเด็น', type: 'ประเภท', year: 'ปีที่พัฒนา', partners: 'ร่วมกับองค์กร' };
+// `type` is a single string that may pack several values with "," or "/", while keeping a
+// parenthetical such as "(iOS, Android)" intact. Split on top-level separators only.
+const splitMulti = (s: string): string[] => {
+  const out: string[] = []; let depth = 0, cur = '';
+  for (const ch of s) {
+    if (ch === '(') depth++;
+    else if (ch === ')') depth = Math.max(0, depth - 1);
+    if ((ch === ',' || ch === '/') && depth === 0) { out.push(cur.trim()); cur = ''; }
+    else cur += ch;
+  }
+  if (cur.trim()) out.push(cur.trim());
+  return out.filter(Boolean);
+};
+// Each row carries an items array; a single item renders plain, two or more render as a list.
 const rows = [
-  issues.length ? { label: L.issue, value: issues } : null,
-  type ? { label: L.type, value: type } : null,
-  year ? { label: L.year, value: String(year) } : null,
-  partners.length ? { label: L.partners, value: partners } : null,
-].filter(Boolean) as { label: string; value: string | string[] }[];
+  issues.length ? { label: L.issue, items: issues } : null,
+  type ? { label: L.type, items: splitMulti(type) } : null,
+  year ? { label: L.year, items: [String(year)] } : null,
+  partners.length ? { label: L.partners, items: partners } : null,
+].filter(Boolean) as { label: string; items: string[] }[];
 ---
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
   <article class="od-article">
@@ -24,7 +38,7 @@ const rows = [
         {rows.map((r) => (
           <div class="od-meta__row">
             <dt>{r.label}</dt>
-            <dd>{Array.isArray(r.value) ? <ul>{r.value.map((v) => <li>{v}</li>)}</ul> : r.value}</dd>
+            <dd>{r.items.length > 1 ? <ul>{r.items.map((v) => <li>{v}</li>)}</ul> : r.items[0]}</dd>
           </div>
         ))}
       </dl>

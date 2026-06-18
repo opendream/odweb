@@ -15,6 +15,7 @@ type: Open Data
 year: 2019
 ---
 
+
 # YAK DATA project
 
 YAK DATA project was developed to extract and analyse data from various open data sources in order to produce information and insights for community collaboration and tackling problems like road accidents, corruption and crime. Yak, meaning giant in Thai, is used as a symbol for mapping incidents in the system, indicating locations where problems mentioned above occur.
@@ -26,18 +27,6 @@ Road accident data provided an illustrative example on how data can be analysed 
 Opendream and its partners have been consolidating road accident data from different sources of open data and with these data created a system for spotting accident locations so that local communities could make use of these data to develop plans for reducing road accidents.
 
 [Visit Site](https://analysis.yakdata.org/)
-
-### Category
-
-Others
-
-### Type of project
-
-Open Data
-
-### Years
-
-2019  
 
 ยักษ์ สัญลักษณ์ของพลังร้าย ณ ที่นี้เป็นพลังจากอุบัติเหตุบนท้องถนนในกรุงเทพฯ
 

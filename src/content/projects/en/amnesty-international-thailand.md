@@ -18,24 +18,9 @@ partners:
   - AMNESTY INTERNATIONAL THAILAND
 ---
 
+
 ## AMNESTY INTERNATIONAL THAILAND
 
 Amnesty International Thailand has campaigned actively to promote the awareness and understanding of a wide spectrum of human rights issues through collaboration with the public, private and social sector.
 
 Their online donation platform, supported by Opendream, enables visitors the flexibility to donate to specific projects. Credit card payment is supported and donation can be conveniently done on mobile devices including smart phones and tablets. Donors may also choose to subscribe to monthly or quarterly donation.
-
-### Category
-
-Online Payment
-
-### Type of project
-
-Web Application, Online Donation
-
-### Year of introduction
-
-2016
-
-### Partners
-
-AMNESTY INTERNATIONAL THAILAND

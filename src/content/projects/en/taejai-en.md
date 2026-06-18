@@ -20,26 +20,9 @@ partners:
   - Khonthai Foundation
 ---
 
+
 # TAEJAI
 
-**Taejai.com** is a crowdfunding platform that brings together donations from individuals in the society to support the work of NGOs or social projects so that they are able to execute their projects to create positive impacts to both the society and the environment.  
-
-### Category
-
-Online Payment
-
-### Type of project
-
-Web Application, Online Donation,  
-Online Crowdfunding
-
-### Year of introduction
-
-2016
-
-### Partners
-
--   Change Fusion
--   Khonthai Foundation
+**Taejai.com** is a crowdfunding platform that brings together donations from individuals in the society to support the work of NGOs or social projects so that they are able to execute their projects to create positive impacts to both the society and the environment.
 
 เทใจสามารถใช้งานได้บน Desktop และ Mobile

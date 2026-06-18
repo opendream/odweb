@@ -18,6 +18,7 @@ partners:
   - CBEE
 ---
 
+
 # CORRUPT THE GAME
 
 Corrupt is the first Thai digital game with the theme of investigation with the aim of raising the youths’ awareness on the problems of corruption. The game was developed in the form of visual novel which brings players on a journey from the cause of corrupt to its consequences. As the game proceeds, players would develop a deeper understanding on various issues surrounding corruption by making decisions for the main character of the game and discovery what kind of consequences they would lead to.
@@ -46,24 +47,6 @@ Players would have the chance to learn about how different decisions or actions 
 Over 80,000 players Players are able to learn about consequences of corruption through the game and also corruption cases that had happened in real life. If the game is able to effectively penetrate youth groups that are active in leading changes in the society, the corruption situation in the country will likely be changed for the better in the near future.
 
 [Visit Site](http://www.corruptthegame.com/)  [Download Fact Sheet](/media/2019/01/lo8_corrupt-compressed.pdf)
-
-### Category
-
-Education
-
-### Type of project
-
-Mobile Game (iOS, Android)
-
-### Year of introduction
-
-2015-2017
-
-### Partners
-
--   Khonthai Foundation
--   TDRI
--   CBEE
 
 ![App Store Download Application](/media/2017/01/ic_appstore@2x.png) ![google play Download Application](/media/2017/01/ic_googleplay@2x.png)
 

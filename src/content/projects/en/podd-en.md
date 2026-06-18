@@ -18,6 +18,7 @@ partners:
   - One Health Network, Chiangmai
 ---
 
+
 # PODD
 
 **PODD – Participatory Onehealth Disease Detection** is a pilot project on surveillance and control of zoonotic diseases that could possibly infect humans and cause economic losses to villagers. The project was initiated based on studies which showed that an effective disease surveillance system that is capable of controlling infectious diseases in both humans and animals in a timely manner would largely reduce both the health and economic costs of the villagers.
@@ -49,21 +50,3 @@ PODD was initiated through the collaboration of experts from numerous discipline
 -   Furthermore, PODD is an open source program, which facilitates replication in other communities for disease surveillance or even other applications in future.
 
 [Visit Site](http://www.cmonehealth.org/)  [Download Fact Sheet](/media/2017/05/lo8_podd-compressed.pdf)
-
-### Category
-
-Health
-
-### Type of project
-
-Surveillance System
-
-### Year of introduction
-
-2014-2016
-
-### Partners
-
--   Skoll Global Threats Fund
--   Faculty of Veterinary Science, Chiangmai University
--   One Health Network, Chiangmai

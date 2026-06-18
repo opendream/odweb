@@ -14,6 +14,7 @@ type: Mobile Game (Android)
 year: 2017
 ---
 
+
 # JUDIES
 
 Judies is a digital game that educates teenagers on the ways to protect themselves from unsafe sex since they are susceptible to premature pregnancy and other sexually-transmitted diseases (STDs). Judies is part of the revolution in providing sex education outside the classroom through game, which helps players learn how to protect themselves properly before having sex, for example, the correct way of wearing a condom. The game also provides tips for safe sex at various intervals of the game to facilitate learning.
@@ -23,18 +24,6 @@ The new Adventure Mode of the Judies game aims at delivering comprehensive sexua
 Judies is now available for Android download and online play at [https://judies.opendream.co.th/game/](https://judies.opendream.co.th/game/)
 
 [Visit Page](https://www.facebook.com/safesexnaja)  [Download Fact Sheet](/media/2017/06/lo8_judies-compressed.pdf)
-
-### Category
-
-Education
-
-### Type of project
-
-Mobile Game (Android)
-
-### Year of introduction
-
-2017
 
 [![Google Play](/media/2017/06/judies_play_store.png)](https://play.google.com/store/apps/details?id=com.opendream.condomgame)
 

@@ -18,27 +18,12 @@ partners:
   - MADVR
 ---
 
+
 # BNK48
 
 BNK48 is one of the sister groups of AKB48, the most successful idol girl group in Japan. The website of BNK48 is the first of its peers to have online shopping system that is highly customizable to cater to niche customer groups.
 
 [Visit Site](https://www.bnk48.com)  [Visit Shop Site](https://shop.bnk48.com/)
-
-### Category
-
-Other
-
-### Type of project
-
-Web Application, Online Payment
-
-### Year of introduction
-
-2017
-
-### Partners
-
--   MADVR
 
 เว็บไซต์ BNK48 Shop กับระบบขายสินค้าออนไลน์ที่เน้นตลาดแบบเฉพาะกลุ่ม
 

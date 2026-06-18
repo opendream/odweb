@@ -15,6 +15,7 @@ partners:
   - Debaratana Vejjanukula Foundation
 ---
 
+
 # DV Consult
 
 DV Consult is an online chat application that allows general practitioners in remote areas to consult medical specialists in the cities through text and images. It enables collaboration by overcoming geographical barrier and other obstacles using technology.
@@ -46,19 +47,3 @@ DV Consult is created to provide the general practitioners a list of medical spe
 ### Impact
 
 -   Piloted with members of Debaratana Vejjanukula Foundation, including both general practitioners in remote areas in the Chiang Mai province and medical specialists in the city of Chiang Mai. The application is expected to cover an additional eleven hospitals within the network of the foundation.
-
-### Category
-
-Health
-
-### Type of Project
-
-Empower Telemedicine
-
-### Year of Developing
-
-2016-2017
-
-### Partner
-
--   Debaratana Vejjanukula Foundation

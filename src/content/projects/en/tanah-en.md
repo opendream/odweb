@@ -19,27 +19,10 @@ partners:
   - UNESCO Bangkok
 ---
 
+
 # TANAH : THE TSUNAMI & EARTHQUAKE FIGHTER
 
 Tanah: the tsnami and earthquake fighter is the sequel of Saifah: the flood fighter that aims to educate players on how to protect themselves from and cope with tsnami and earthquakes so that they would be able to minimize losses and damages during times of disasters.
 
 The game is available in multiple languages, including English, Thai, Indonesian, Nepalese and Spanish.  
-[Download Fact Sheet](/media/2017/02/lo8_tanah-compressed.pdf)  
-
-### Category
-
-Education / livelihood
-
-### Type of project
-
-Mobile Game (iOS, Android)
-
-### Year of introduction
-
-2015
-
-### Partners
-
--   American Red Cross
--   USAID
--   UNESCO Bangkok
+[Download Fact Sheet](/media/2017/02/lo8_tanah-compressed.pdf)

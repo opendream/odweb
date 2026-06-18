@@ -18,22 +18,7 @@ partners:
   - WWF Thailand
 ---
 
+
 # WWF Thailand Online Donation
 
 WWF’s mission is to conserve the world’s biological diversity and to mitigate human’s impact on the natural habitats. You would be able to support their work by donating online to specific projects that align with your interests. You may also choose to make a one off donation or a recurring monthly donation. Donations can be conveniently made on mobile devices including smart phones and tablets.
-
-### Category
-
-Online Payment
-
-### Type of project
-
-Web Application, Online Donation
-
-### Year of introduction
-
-2017
-
-### Partners
-
-WWF Thailand

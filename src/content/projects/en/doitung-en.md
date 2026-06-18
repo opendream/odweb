@@ -18,25 +18,10 @@ partners:
   - Doi Tung
 ---
 
+
 # DoiTung
 
 A combined corporate website and ecommerce experience for DoiTung, a social enterprise that aims to reduce social and economic disparity by creating opportunities and alternatives for communities, allowing them to gain equal access to basic amenities and quality education, to lead a sufficient lifestyle with dignity, stability and happiness.
-
-### Category
-
-Other / การเงินอิเล็กทรอนิกส์
-
-### Type of project
-
-Web Application,Website, Online Payment
-
-### Year of introduction
-
-2021
-
-### Partner
-
-Doi Tung
 
 Sample screen from DoiTung.com
 

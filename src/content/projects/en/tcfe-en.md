@@ -17,24 +17,9 @@ partners:
   - Khonthai Foundation
 ---
 
+
 # Thailand Collaboration for Education : TCFE
 
 A crowdfunding website aiming for improving education for children as well as helping disadvantaged children to reduce inequality and create sustainability to the society.
 
 [Visit Site](http://tcfe.or.th)
-
-### Category
-
-Online Payment
-
-### Type of Project
-
-Web Application / Online Donation / Online Crowdfunding
-
-### Year of introduction
-
-2018
-
-### Partner
-
--   Khonthai Foundation

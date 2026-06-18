@@ -16,22 +16,7 @@ partners:
   - Stock Exchange of Thailand
 ---
 
+
 # STARTUP PORTAL
 
 The most comprehensive social startup database in Thailand, which includes social startups, investors and supporters. All players in the social startup ecosystem could get themselves registered on this platform and the platform would enable everyone in the ecosystem to connect and collaborate for greater impacts.
-
-### Category
-
-Other
-
-### Type of project
-
-Web Portal
-
-### Year of introduction
-
-2016
-
-### Partners
-
--   Stock Exchange of Thailand

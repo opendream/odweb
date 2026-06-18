@@ -17,26 +17,11 @@ partners:
   - Thai Health Promotion Foundation
 ---
 
+
 # Expenditure Tracking System for Health Promotion Innovation and Open Grant Plan (Sector 6)
 
 Online project progress report system for grantees of the Thai Health Promotion Foundation (ThaiHealth) to report progress of their work anywhere, anytime.
 
 It is also much more convenient for ThaiHealth to keep track of the grantees’ progress online rather than going through reports in hard copies.
-
-### Category
-
-Other
-
-### Type of project
-
-Web Application / Intranet
-
-### Year of introduction
-
-2016
-
-### Partners
-
--   Thai Health Promotion Foundation
 
 Expenditure Tracking System for Health Promotion Innovation and Open Grant Plan (Sector 6)

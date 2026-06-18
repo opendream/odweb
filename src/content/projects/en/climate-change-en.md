@@ -16,22 +16,7 @@ partners:
   - Change Fusion
 ---
 
+
 # CLIMATE CHANGE
 
 Climate Change is a mobile Application that helps to raise awareness among children on the value of energy and the current state of global warming. Practical advices are provided in the game for children to take action in their daily lives, such as planting, separating wastes for recycling and adjusting the air-conditioner to 25 degrees Celsius and so on.
-
-### Category
-
-Education
-
-### Type of project
-
-Mobile Game (iOS)
-
-### Year of introduction
-
-2015
-
-### Partners
-
--   Change Fusion

@@ -14,6 +14,7 @@ type: Mobile Game (Android)
 year: 2017 / 2018
 ---
 
+
 # จูดี้ (JUDIES)
 
 เกมเพื่อการศึกษาที่ให้ความรู้เรื่องการป้องกันปัญหาต่างๆ จากการมีเซ็กส์ของวัยรุ่น เพราะกลุ่มวัยรุ่นเป็นกลุ่มที่เสี่ยงเรื่องการท้องไม่พร้อมและการติดโรคจากการมีเซ็กส์
@@ -24,19 +25,7 @@ year: 2017 / 2018
 
 ปัจจุบันสามารถดาวน์โหลดเกม “จูดี้ (Judies)” ได้แล้วในระบบปฏิบัติการ Android
 
-[ดูเพจ](https://www.facebook.com/safesexnaja)  [ดาวน์โหลด Fact Sheet](/media/2017/06/lo8_judies-compressed.pdf)  
-
-### หมวดหมู่
-
-การศึกษา
-
-### ประเภท
-
-Mobile Game (Android)
-
-### ปีที่พัฒนา
-
-2017 / 2018
+[ดูเพจ](https://www.facebook.com/safesexnaja)  [ดาวน์โหลด Fact Sheet](/media/2017/06/lo8_judies-compressed.pdf)
 
 [![Google Play](/media/2017/06/judies_play_store.png)](https://play.google.com/store/apps/details?id=com.opendream.condomgame)
 

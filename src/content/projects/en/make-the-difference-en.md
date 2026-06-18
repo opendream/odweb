@@ -16,22 +16,7 @@ partners:
   - TMB Bank
 ---
 
+
 # Make THE Difference
 
 Make The Difference is a website that facilitates users to set personal goals and to achieve them. The website provides user friendly templates to help users set goals, which would then be connected to the users’ social network to add incentives and inspirations through sharing with others.
-
-### Category
-
-Other
-
-### Type of project
-
-Web Application
-
-### Year of introduction
-
-2015
-
-### Partners
-
-TMB Bank

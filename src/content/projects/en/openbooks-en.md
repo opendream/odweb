@@ -16,24 +16,9 @@ partners:
   - Openbooks Publishing
 ---
 
+
 # openbooks
 
 สำนักพิมพ์เล็กๆ ในเมืองไทยที่ชอบทำหนังสือช้าๆ อย่างสนุกสนาน 🙂 โดยใช้ระบบขายสินค้าออนไลน์ที่สามารถจัดการหน้าเว็บไซต์ขายสินค้าได้มากกว่าที่อื่น
 
 [Visit Site](http://shop.onopen.com)
-
-### Category
-
-Online Payment, Other
-
-### Type of project
-
-Web Application / Online Payment
-
-### Year of introduction
-
-2018
-
-### Partners
-
--   Openbooks Publishing

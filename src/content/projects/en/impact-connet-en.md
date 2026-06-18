@@ -14,18 +14,7 @@ type: Web Portal
 year: 2016
 ---
 
+
 # IMPACT CONNECT
 
-Comprehensive database of social entrepreneurs, supporters and investors in East Asia.  
-
-### Category
-
-Other
-
-### Type of project
-
-Web Portal
-
-### Year of introduction
-
-2016
+Comprehensive database of social entrepreneurs, supporters and investors in East Asia.

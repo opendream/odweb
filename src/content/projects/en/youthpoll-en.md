@@ -17,25 +17,10 @@ partners:
   - สสส.
 ---
 
+
 # YOUTH POLL
 
 Youthpoll is a website for teenagers across Thailand to express their opinions through surveys, which they can create polls or surveys as well as check out what others think about, on topics relevant to their daily lives. Youthpoll brings teenagers from their local community together with youth networks from all over the country.
-
-### Category
-
-Livelihood
-
-### Type of project
-
-Web Application
-
-### Year of introduction
-
-2020
-
-### Partner
-
-สสส.
 
 Take Surveys| Check out Results | Connect to Youth Networks
 

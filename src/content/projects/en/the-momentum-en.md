@@ -16,24 +16,9 @@ partners:
   - The Momentum
 ---
 
+
 # The Momentum
 
 The Momentum, an online news agency which Opendream is responsible for website development and system deployment base on the requirements on web structure, functions and website design provided by the agency.
 
 [Visit Site](https://themomentum.co/)
-
-### Category
-
-Other
-
-### Type of Project
-
-Web Application
-
-### Year of Developing
-
-2017
-
-### Partners
-
--   The Momentum

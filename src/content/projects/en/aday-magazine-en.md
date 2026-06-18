@@ -16,24 +16,9 @@ partners:
   - day poets co., ltd.
 ---
 
+
 # a day Magazine
 
 Opendream is responsible for website development and system deployment base on the requirements on web structure, functions and website design provided by the agency.
 
 [Visit Site](https://adaymagazine.com)
-
-### Category
-
-Other
-
-### Type of Project
-
-[Web Application](/projects-en/Web-Application)
-
-### Year of Developing
-
-2018
-
-### Partners
-
--   day poets co., ltd.

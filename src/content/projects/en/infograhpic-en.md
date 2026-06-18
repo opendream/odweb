@@ -16,22 +16,7 @@ partners:
   - Office of The National Broadcasting and Telecommunications Commission
 ---
 
+
 # INFOGRAHPIC (NBCT)
 
 Infographic that provides easy to digest information on consumer rights and other information about the Office of the National Broadcasting and Telecommunications Commission (NBTC).
-
-### Category
-
-Other
-
-### Type of project
-
-Graphic Design
-
-### Year of introduction
-
-2016
-
-### Partners
-
--   Office of The National Broadcasting and Telecommunications Commission

@@ -16,24 +16,9 @@ partners:
   - Change Fusion
 ---
 
+
 # InfoAid
 
 Infoaid connects inventory data from hospitals and aid networks around Thailand in order to deliver life-saving supplies to those who are most in need. Public and private organizations can work together to confidently allocate emergency resources efficiently and transparently to vulnerable populations.
-
-### Category
-
-Health
-
-### Type of project
-
-Web Application
-
-### Year of introduction
-
-2020
-
-### Partner
-
-Change Fusion
 
 InfoAid Content

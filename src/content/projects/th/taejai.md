@@ -21,27 +21,10 @@ partners:
   - Thai Young Philanthropist Network (TYPN)
 ---
 
+
 # เทใจ
 
 เทใจดอทคอม พื้นที่กลางที่ช่วยเหลือกลุ่มคนที่อยากทำเรื่องดีๆ เพื่อสังคม ไม่ว่าจะเป็น NGOs หรือกิจการเพื่อสังคม เพื่อให้พวกเขาเหล่านั้นสามารถทำเรื่องดีๆ ให้เกิดขึ้นได้จริง ผ่านระบบ Crowdfunding
-
-### ประเด็น
-
-การเงินอิเล็กทรอนิกส์
-
-### ประเภท
-
-Web Application, Online Donation, Online Crowdfunding
-
-### ปีที่พัฒนา
-
-2016
-
-### ร่วมกับองค์กร
-
--   Change Fusion
--   มูลนิธิเพื่อคนไทย
--   Thai Young Philanthropist Network (TYPN)
 
 เทใจสามารถใช้งานได้บน Desktop และ Mobile
 
