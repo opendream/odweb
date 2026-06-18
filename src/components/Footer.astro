@@ -11,12 +11,14 @@ const deed = lang === 'en'
   <div class="od-footer__inner">
     <div class="od-footer__logo">
       <img src="/media/logo_foot.png" alt="Opendream" />
-      <p>Copyright &copy; 2007&ndash;{year} Opendream.</p>
-      <a class="od-footer__license" rel="license noopener" target="_blank" href={deed}>
-        <img src="/media/cc.svg" alt="" width="20" height="20" />
-        <img src="/media/by.svg" alt="" width="20" height="20" />
-        <span>CC BY 4.0</span>
-      </a>
+      <div class="od-footer__copy">
+        <span>Opendream &middot; 2007&ndash;{year}</span>
+        <a class="od-footer__license" rel="license noopener" target="_blank" href={deed}>
+          <img src="/media/cc.svg" alt="" width="15" height="15" />
+          <img src="/media/by.svg" alt="" width="15" height="15" />
+          <span>CC BY 4.0</span>
+        </a>
+      </div>
     </div>
     <div>
       <p><strong>Open by Design. Impact by Default</strong></p>

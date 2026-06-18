@@ -254,11 +254,16 @@ a.od-blurb:hover .od-blurb__title { color: var(--od-accent); }
   max-width: var(--od-max); margin: 0 auto; padding: 48px 24px;
   display: flex; flex-wrap: wrap; gap: 32px 64px; justify-content: space-between; align-items: flex-start;
 }
-.od-footer__logo img { height: 34px; width: auto; display: block; margin-bottom: 14px; }
+.od-footer__logo > img { height: 34px; width: auto; display: block; margin-bottom: 14px; }
 .od-footer p { margin: 0 0 8px; color: var(--od-muted); font-size: 14px; line-height: 1.5; }
 .od-footer__social { display: flex; gap: 14px; margin-top: 6px; }
 .od-footer__social img { height: 22px; width: 22px; display: block; }
-.od-footer__license { display: inline-flex; align-items: center; gap: 6px; color: var(--od-muted); font-size: 13px; text-decoration: none; }
-.od-footer__license img { height: 18px; width: 18px; display: block; opacity: .7; }
-.od-footer__license span { line-height: 1; }
+/* Copyright/license line: "Opendream · years" + CC BY badge on one line. Icons use inline
+   vertical-align:middle (not flex) so they center on the text regardless of the font's tall
+   line box — keeps the CC logos and the "CC BY 4.0" label visually aligned. */
+.od-footer__copy { color: var(--od-muted); font-size: 14px; line-height: 1.6; white-space: nowrap; }
+.od-footer__license { white-space: nowrap; margin-left: 12px; font-size: 13px; color: var(--od-muted); text-decoration: none; }
+.od-footer__license img { display: inline-block; height: 15px; width: 15px; opacity: .7; vertical-align: middle; }
+.od-footer__license img + img { margin-left: 2px; }
+.od-footer__license span { vertical-align: middle; margin-left: 5px; }
 .od-footer__license:hover { color: var(--od-accent); }
