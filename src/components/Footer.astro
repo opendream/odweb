@@ -2,16 +2,24 @@
 interface Props { lang: 'th' | 'en'; }
 const { lang } = Astro.props;
 const year = new Date().getFullYear();
-const rights = lang === 'en' ? 'All rights reserved.' : 'สงวนลิขสิทธิ์';
+// Content is licensed CC BY 4.0; link the language-appropriate deed.
+const deed = lang === 'en'
+  ? 'https://creativecommons.org/licenses/by/4.0/deed.en'
+  : 'https://creativecommons.org/licenses/by/4.0/deed.th';
 ---
 <footer class="od-footer">
   <div class="od-footer__inner">
     <div class="od-footer__logo">
       <img src="/media/logo_foot.png" alt="Opendream" />
-      <p>Copyright &copy; {year} Opendream. {rights}</p>
+      <p>Copyright &copy; 2007&ndash;{year} Opendream.</p>
+      <a class="od-footer__license" rel="license noopener" target="_blank" href={deed}>
+        <img src="/media/cc.svg" alt="" width="20" height="20" />
+        <img src="/media/by.svg" alt="" width="20" height="20" />
+        <span>CC BY 4.0</span>
+      </a>
     </div>
     <div>
-      <p><strong>Sustainable Social Impact with Technology</strong></p>
+      <p><strong>Open by Design. Impact by Default</strong></p>
       <div class="od-footer__social">
         <a href="https://www.facebook.com/opendream" aria-label="Facebook"><img src="/media/ic_fb.svg" alt="Facebook" /></a>
         <a href="https://twitter.com/opendream" aria-label="Twitter"><img src="/media/ic_tw.svg" alt="Twitter" /></a>
