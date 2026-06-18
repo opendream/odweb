@@ -38,13 +38,10 @@ const thHref = lang === 'th' ? path : (alt ?? '/blog');
     <meta property="og:image" content={site + "/wp-content/uploads/2016/12/opendream-fav.png"} />
     <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
     <meta name="twitter:card" content="summary" />
-    <!-- Google Fonts (self-hosting deferred; these match the live site) -->
+    <!-- Site font: Noto Sans Thai Looped (covers Thai + Latin), used site-wide via modern.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,latin-ext&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&subset=cyrillic,cyrillic-ext,latin,latin-ext,vietnamese&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr:200,300,400,500,600,700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansthai.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@400;600;700;800&display=swap" />
   </head>
   <body>
     <div id="page-container">

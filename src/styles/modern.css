@@ -8,18 +8,18 @@
   --od-line: #e5e7eb;
 }
 
-/* Base type system (self-contained now that the Divi theme CSS is gone). All four families
-   are loaded by BaseLayout via Google Fonts: Open Sans + Noto Sans Thai for body, Montserrat
-   for headings (Thai headings fall through to Noto Sans Thai). */
+/* Base type system (self-contained now that the Divi theme CSS is gone). The site font is
+   Noto Sans Thai Looped (loaded by BaseLayout); it covers both Thai and Latin, so it's used
+   site-wide for body and headings, with system sans as the FOUT/failure fallback. */
 body {
   margin: 0;
-  font-family: 'Open Sans', 'Noto Sans Thai', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans Thai Looped', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--od-ink);
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', 'Noto Sans Thai', 'Open Sans', sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Thai Looped', system-ui, -apple-system, sans-serif; }
 
 .od-container { max-width: var(--od-max); margin: 0 auto; padding: 0 24px; }
 .od-listing { padding: 56px 0 80px; }
