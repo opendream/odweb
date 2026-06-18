@@ -261,8 +261,9 @@ a.od-blurb:hover .od-blurb__title { color: var(--od-accent); }
 /* Copyright/license line: "Opendream · years" + CC BY badge on one line. Icons use inline
    vertical-align:middle (not flex) so they center on the text regardless of the font's tall
    line box — keeps the CC logos and the "CC BY 4.0" label visually aligned. */
-.od-footer__copy { color: var(--od-muted); font-size: 14px; line-height: 1.6; white-space: nowrap; }
-.od-footer__license { white-space: nowrap; margin-left: 12px; font-size: 13px; color: var(--od-muted); text-decoration: none; }
+.od-footer__copy { color: var(--od-muted); font-size: 14px; line-height: 1.6; }
+.od-footer__copy > span { display: block; }   /* year on row 1; CC badge drops to row 2 */
+.od-footer__license { display: inline-block; margin-top: 6px; white-space: nowrap; font-size: 13px; color: var(--od-muted); text-decoration: none; }
 .od-footer__license img { display: inline-block; height: 15px; width: 15px; opacity: .7; vertical-align: middle; }
 .od-footer__license img + img { margin-left: 2px; }
 .od-footer__license span { vertical-align: middle; margin-left: 5px; }
