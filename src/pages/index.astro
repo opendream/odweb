@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import projectConfig from '../data/projects.config.json';
+import { gradientFor } from '../lib/gradient.mjs';
 const all = await getCollection('projects');
 const bySlug = Object.fromEntries(all.map((p) => [p.data.slug, p.data]));
 const tiles = (projectConfig.th.featured ?? []).map((s) => bySlug[s]).filter(Boolean);
@@ -16,7 +17,9 @@ const tiles = (projectConfig.th.featured ?? []).map((s) => bySlug[s]).filter(Boo
       <div class="od-showcase">
         {tiles.map((t) => (
           <a href={t.path} class="od-showcase__tile">
-            {t.cover && <img src={t.cover} alt={t.title} />}
+            {t.cover
+              ? <img src={t.cover} alt={t.title} />
+              : <span class="od-ph" style={`background:${gradientFor(t.slug)}`}>{t.title}</span>}
             <div class="od-showcase__cap">
               <span class="od-showcase__name">{t.title}</span>
               {t.type && <span class="od-showcase__type">{t.type}</span>}

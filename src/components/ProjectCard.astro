@@ -2,11 +2,14 @@
 // Clean, de-Divi'd project tile: cover image with a hover overlay showing the title.
 // `data-sectors` drives the client-side category filter. Styled by .od-card in modern.css.
 import { sectorSlugs } from '../../scripts/lib/categories.mjs';
+import { gradientFor } from '../lib/gradient.mjs';
 interface Props { title: string; href: string; cover?: string; categories?: string[]; }
 const { title, href, cover, categories = [] } = Astro.props;
 const sectors = sectorSlugs(categories).join(' ');
 ---
 <a href={href} class="od-card" data-sectors={sectors}>
-  {cover && <img src={cover} alt={title} loading="lazy" width="400" height="286" />}
-  <span class="od-card__overlay"><span class="od-card__title">{title}</span></span>
+  {cover
+    ? <img src={cover} alt={title} loading="lazy" width="400" height="286" />
+    : <span class="od-ph" style={`background:${gradientFor(href)}`}>{title}</span>}
+  {cover && <span class="od-card__overlay"><span class="od-card__title">{title}</span></span>}
 </a>
