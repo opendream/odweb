@@ -1,5 +1,6 @@
 /* Global stylesheet. The site is now fully de-Divi'd: all styling lives in modern.css (.od-*),
    so there is no vendor theme CSS to import and no PurgeCSS step. */
+@import "./fonts.css";   /* self-hosted Noto Sans Thai Looped @font-face (OFL) */
 @import "./modern.css";
 
 :root { color-scheme: light; }

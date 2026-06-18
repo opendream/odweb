@@ -102,8 +102,10 @@ committed markdown + media are the source of truth.
   {et-cache,themes}` dirs; removed the PurgeCSS step (+ dep) and `DEFAULT_BODY_CLASS`/`bodyClass`/
   `pageStyles`; simplified `[...path].astro` (no manifest/glob/`kind:'page'`); delinked 124 now-dead
   `/projects/<svc>` links in project bodies (label kept); rebuilt 404 in `.od-*`; added a self-contained
-  type system to `modern.css` (one site-wide font — **Noto Sans Thai Looped**, covering Thai + Latin,
-  loaded once via BaseLayout's `css2` link; system-sans fallback). **The site is now fully de-Divi'd:**
+  type system to `modern.css` (one site-wide font — **Noto Sans Thai Looped**, covering Thai + Latin;
+  system-sans fallback). The font is **self-hosted** (OFL 1.1): woff2 subsets (latin + thai, weights
+  400/600/700/800) in `public/fonts/` with `public/fonts/OFL.txt`, `@font-face` in `src/styles/fonts.css`,
+  the 400 weight preloaded by BaseLayout — no external font CDN. **The site is now fully de-Divi'd:**
   `dist` has zero `et_pb_`/`divi-parent`/`#et-boc`,
   and the CSS bundle is **~12.5 KB** (was ~165 KB). `global.css` now just imports `modern.css` + base resets.
 - **Deploy (Cloudflare Pages)** — deferred (per decision); the build is `astro build` → static `dist/`.

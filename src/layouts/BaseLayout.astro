@@ -38,10 +38,10 @@ const thHref = lang === 'th' ? path : (alt ?? '/blog');
     <meta property="og:image" content={site + "/wp-content/uploads/2016/12/opendream-fav.png"} />
     <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
     <meta name="twitter:card" content="summary" />
-    <!-- Site font: Noto Sans Thai Looped (covers Thai + Latin), used site-wide via modern.css -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@400;600;700;800&display=swap" />
+    <!-- Site font: self-hosted Noto Sans Thai Looped (OFL); @font-face in src/styles/fonts.css.
+         Preload the body weight (400) for Thai + Latin to avoid a flash of fallback text. -->
+    <link rel="preload" href="/fonts/noto-sans-thai-looped-thai-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-thai-looped-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="page-container">
