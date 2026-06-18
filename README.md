@@ -44,6 +44,9 @@ Open **http://localhost:4321**. Run the content-pipeline unit tests:
 docker compose --profile tools run --rm test
 ```
 
+Prefer shortcuts? A `Makefile` wraps these — `make up`, `make down`, `make rebuild`,
+`make logs`, `make test`, `make clean`. Run `make` (or `make help`) to see all targets.
+
 ## Project structure
 
 ```
