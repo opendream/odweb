@@ -27,7 +27,7 @@ Other
 
 ### Type of project
 
-[Web Application](/projects/web-application)
+Web Application
 
 ### Year of introduction
 

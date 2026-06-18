@@ -28,7 +28,7 @@ Online Payment
 
 ### Type of project
 
-[Web Application](/projects_en/Web-Application), [Online Donation](/projects_en/online-donation)
+Web Application, Online Donation
 
 ### Year of introduction
 

@@ -29,7 +29,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/Web-Application) / [Online Donation](/projects/online-donation) / [Online Crowdfunding](/projects/crowdfunding)
+Web Application / Online Donation / Online Crowdfunding
 
 ### ปีที่พัฒนา
 

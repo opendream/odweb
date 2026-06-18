@@ -31,7 +31,7 @@ Online donation website ที่เป็นพื้นที่กลาง�
 
 ### ประเภท
 
-[Web Application](/projects/web-application) / [Online Donation](/projects/online-donation)
+Web Application / Online Donation
 
 ### ปีที่พัฒนา
 

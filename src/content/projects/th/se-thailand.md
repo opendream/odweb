@@ -31,7 +31,7 @@ partners:
 
 ### ประเภท
 
-[Website / Web Application](/projects/web-application)
+Website / Web Application
 
 ### ปีที่พัฒนา
 

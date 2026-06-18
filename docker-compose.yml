@@ -34,29 +34,6 @@ services:
     command: sh -c "npm install --no-save turndown@^7.2.0 >/dev/null 2>&1 && node scripts/extract.mjs"
     profiles: ["tools"]
 
-  # One-off: scrape designed pages (home, etc.) from local WP render → HTML + CSS + assets.
-  #   docker compose --profile tools run --rm extract-pages
-  # Joins odweb-local_default so it can reach the WP nginx container directly.
-  # socat proxies localhost:8080 → WP container port 80 so WP's canonical-URL redirects
-  # resolve correctly (WP_HOME=http://localhost:8080, node fetch follows redirects normally).
-  extract-pages:
-    image: node:20-alpine
-    working_dir: /app
-    volumes:
-      - ./:/app
-      - extract_modules:/app/node_modules
-    environment:
-      - WP_BASE=http://localhost:8080
-    networks:
-      - default
-      - odweb-local_default
-    command: >
-      sh -c "apk add socat -q &&
-             socat TCP-LISTEN:8080,fork,reuseaddr TCP:web:80 &
-             npm install --no-save node-html-parser@^6.1.13 turndown@^7.2.0 >/dev/null 2>&1 &&
-             node scripts/extract-pages.mjs"
-    profiles: ["tools"]
-
   # One-off: run the pipeline unit tests (Vitest) in a container.
   #   docker compose --profile tools run --rm test
   test:
@@ -70,7 +47,3 @@ services:
 
 volumes:
   extract_modules:
-
-networks:
-  odweb-local_default:
-    external: true

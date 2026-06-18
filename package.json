@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/purge-css.mjs",
+    "build": "astro build",
     "preview": "astro preview --port 4321",
     "test": "vitest run",
     "extract": "node scripts/extract.mjs"
@@ -15,7 +15,6 @@
     "@astrojs/mdx": "^4.0.0"
   },
   "devDependencies": {
-    "purgecss": "^6.0.0",
     "turndown": "^7.2.0",
     "vitest": "^2.1.0"
   }

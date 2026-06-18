@@ -28,7 +28,7 @@ Make The Difference เป็น website ที่มุ่งส่งเสร
 
 ### ประเภท
 
-[Web Application](/projects/web-application)
+Web Application
 
 ### ปีที่พัฒนา
 

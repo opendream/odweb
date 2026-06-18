@@ -31,7 +31,7 @@ UNICEF LINE Run งานวิ่งที่จัดขึ้นเพื่�
 
 ### ประเภท
 
-[Web Application](/projects/Web-Application), [Online Donation](/projects/online-donation), [Online Ticketing System](/projects/online-ticketing-system)
+Web Application, Online Donation, Online Ticketing System
 
 ### ปีที่พัฒนา
 

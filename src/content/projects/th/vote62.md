@@ -38,7 +38,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/Web-application), [Crowdsourcing](/projects/Crowdsourcing)
+Web Application, Crowdsourcing
 
 ### ปีที่พัฒนา
 

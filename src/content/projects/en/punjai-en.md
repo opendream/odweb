@@ -27,8 +27,8 @@ Online Payment
 
 ### Type of project
 
-[Web Application](/projects_en/web-application), [Online Crowdfunding](/projects_en/crowdfunding),  
-[Online Donation](/projects_en/online-donation)
+Web Application, Online Crowdfunding,  
+Online Donation
 
 ### Year of introduction
 

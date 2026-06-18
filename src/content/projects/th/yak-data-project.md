@@ -33,7 +33,7 @@ partners:
 
 ### ประเภท
 
-[Open Data](/projects/open-data)
+Open Data
 
 ### ปีที่พัฒนา
 

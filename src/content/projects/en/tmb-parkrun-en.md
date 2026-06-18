@@ -29,7 +29,7 @@ Online Payment
 
 ### Type of project
 
-[Web Application](/projects_en/web-application), [Online Donation](/projects_en/online-donation), [Online Ticketing System](/projects_en/online-ticketing-system)
+Web Application, Online Donation, Online Ticketing System
 
 ### Year of introduction
 

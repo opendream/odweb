@@ -32,7 +32,7 @@ year: 2017 / 2018
 
 ### ประเภท
 
-[Mobile Game (Android)](/projects/mobilegame)
+Mobile Game (Android)
 
 ### ปีที่พัฒนา
 

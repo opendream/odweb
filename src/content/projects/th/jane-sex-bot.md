@@ -32,7 +32,7 @@ year: 2019
 
 ### ประเภท
 
-[Chatbot, Page](/projects/chatbot)
+Chatbot, Page
 
 ### ปีที่พัฒนา
 

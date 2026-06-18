@@ -35,7 +35,7 @@ Health
 
 ### Type of project
 
-[Mobile Application (iOS/Android)](/projects_en/mobile-application)
+Mobile Application (iOS/Android)
 
 ### Year of introduction
 

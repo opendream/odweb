@@ -1,40 +1,6 @@
-/* Vendor theme CSS ported from the live site (fidelity-first; trim later). */
-/* Import order matters: Divi core first, then customizer overrides, then child theme overrides */
-/* divi-parent = themes/Divi/style.css — the base Divi grid (.et_pb_row{margin:auto} +
-   responsive @media) the live child theme @imports first. Without it, designed pages
-   (raw .et_pb_section/.et_pb_row markup) box left and don't reflow. Must load first. */
-@import "./vendor/divi-parent.css";
-@import "./vendor/divi-unified.css";
-@import "./vendor/divi-customizer.css";
-@import "./vendor/theme.css";
-@import "./vendor/theme2.css";
-@import "./vendor/theme3.css";
-/* Modern de-Divi'd styles for data-driven surfaces — last so it wins over vendor Divi CSS. */
+/* Global stylesheet. The site is now fully de-Divi'd: all styling lives in modern.css (.od-*),
+   so there is no vendor theme CSS to import and no PurgeCSS step. */
 @import "./modern.css";
 
 :root { color-scheme: light; }
 img { max-width: 100%; height: auto; }
-
-/* Divi scroll-reveal animations are JS-driven: .et-waypoint / .et_animated start at
-   opacity:0 and Divi's JS fades them in when scrolled into view. This static build runs
-   no Divi JS, so the parent grid's initial opacity:0 leaves animated modules and images
-   (project tiles, fullwidth images) permanently invisible. Force them visible and cancel
-   the never-triggered animation. */
-.et-waypoint, .et_animated { opacity: 1 !important; animation: none !important; }
-
-/* (Header offset removed — the header is now `position: sticky` via modern.css, so it
-   occupies normal flow and never overlaps content. No #page-container padding needed.) */
-
-/* Divi lays out the portfolio grid with isotope JS, which sets an explicit container
-   height. Statically the floated .et_pb_portfolio_item children collapse their wrapper to
-   height 0, so the sections that follow overlap the grid. Contain the floats. */
-.et_pb_portfolio_items::after { content: ""; display: table; clear: both; }
-
-/* (Blog grid + hero moved to modern.css as .od-postgrid / .od-hero.) */
-
-.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
-.project-card__cover { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-.project-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
-.project-filter button { cursor: pointer; }
-.project-filter button.is-active { font-weight: 700; text-decoration: underline; }
-.project-card__cat, .single-project__cat { display: inline-block; margin-right: .4rem; font-size: .8em; opacity: .75; }

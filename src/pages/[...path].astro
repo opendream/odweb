@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import PostLayout from '../layouts/PostLayout.astro';
 import ProjectLayout from '../layouts/ProjectLayout.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
 import ComposedLayout from '../layouts/ComposedLayout.astro';
 import Hero from '../components/content/Hero.astro';
@@ -13,47 +12,29 @@ import Gallery from '../components/content/Gallery.astro';
 import Map from '../components/content/Map.astro';
 import CTA from '../components/content/CTA.astro';
 import Button from '../components/content/Button.astro';
-import manifest from '../content/pages/manifest.json';
 
 // Components available to `pages` MDX without per-file imports (clean, CMS-friendly content).
 const mdxComponents = { Hero, Section, Blurbs, Blurb, Gallery, Map, CTA, Button };
 
 export async function getStaticPaths() {
-  const pageHtml = import.meta.glob('../content/pages/**/*.html', { query: '?raw', import: 'default', eager: true });
-  const pageCss = import.meta.glob('../styles/pages/*.css', { query: '?raw', import: 'default', eager: true });
-
   const posts = await getCollection('posts');
   const projects = await getCollection('projects');
   const policies = await getCollection('policies');
   const pages = await getCollection('pages');
   const col = (entry, kind) => ({ params: { path: entry.data.path.replace(/^\//, '') }, props: { kind, entry } });
-  const designed = manifest
-    .filter((m) => m.path !== '/' && m.path !== '/en/' && m.path !== '/projects' && m.path !== '/en/projects_en')
-    .map((m) => ({
-      params: { path: m.path.replace(/^\//, '') },
-      props: {
-        kind: 'page',
-        page: m,
-        html: pageHtml[`../content/pages/${m.lang}/${m.slug}.html`],
-        css: pageCss[`../styles/pages/${m.lang}-${m.slug}.css`],
-      },
-    }));
-  return [...posts.map((e) => col(e, 'post')), ...projects.map((e) => col(e, 'project')), ...policies.map((e) => col(e, 'policy')), ...pages.map((e) => col(e, 'page-mdx')), ...designed];
+  return [
+    ...posts.map((e) => col(e, 'post')),
+    ...projects.map((e) => col(e, 'project')),
+    ...policies.map((e) => col(e, 'policy')),
+    ...pages.map((e) => col(e, 'page-mdx')),
+  ];
 }
 
 const props = Astro.props;
-let Content = null;
-let d = null;
-if (props.kind !== 'page') {
-  Content = (await render(props.entry)).Content;
-  d = props.entry.data;
-}
+const { Content } = await render(props.entry);
+const d = props.entry.data;
 ---
-{props.kind === 'page' ? (
-  <BaseLayout title={props.page.title} description={props.page.description} lang={props.page.lang} path={props.page.path} pageStyles={props.css} bodyClass={props.page.bodyClass}>
-    <Fragment set:html={props.html} />
-  </BaseLayout>
-) : props.kind === 'project' ? (
+{props.kind === 'project' ? (
   <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt} issues={d.issues} type={d.type} year={d.year} partners={d.partners}>
     <Content />
   </ProjectLayout>

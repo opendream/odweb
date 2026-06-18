@@ -34,7 +34,7 @@ partners:
 
 ### ประเภท
 
-[Web Application / Chatbot](/projects/chatbot)
+Web Application / Chatbot
 
 ### ปีที่พัฒนา
 

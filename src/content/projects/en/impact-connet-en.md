@@ -24,7 +24,7 @@ Other
 
 ### Type of project
 
-[Web Portal](/projects_en/web-portal)
+Web Portal
 
 ### Year of introduction
 

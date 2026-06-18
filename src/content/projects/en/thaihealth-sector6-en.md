@@ -29,7 +29,7 @@ Other
 
 ### Type of project
 
-[Web Application](/projects_en/Web-Application) / [Intranet](/projects_en/intranet)
+Web Application / Intranet
 
 ### Year of introduction
 

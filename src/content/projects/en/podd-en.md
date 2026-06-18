@@ -56,7 +56,7 @@ Health
 
 ### Type of project
 
-[Surveillance System](/projects_en/project)
+Surveillance System
 
 ### Year of introduction
 

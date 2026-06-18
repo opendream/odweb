@@ -26,7 +26,7 @@ year: 2016
 
 ### ประเภท
 
-[Web Portal](/projects/web-portal)
+Web Portal
 
 ### ปีที่พัฒนา
 

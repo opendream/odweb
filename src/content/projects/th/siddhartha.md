@@ -30,7 +30,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/web-application) / [Online Payment](/projects/online-payment)
+Web Application / Online Payment
 
 ### ปีที่พัฒนา
 

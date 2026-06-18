@@ -26,7 +26,7 @@ partners:
 
 ### ประเภท
 
-[Chatbot](/projects/chatbot)
+Chatbot
 
 ### ปีที่พัฒนา
 

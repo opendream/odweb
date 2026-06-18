@@ -38,8 +38,8 @@ partners:
 
 ### ประเภท
 
-[Web Application / Website  
-Online Donation](/projects/website)
+Web Application / Website  
+Online Donation
 
 ### ปีที่พัฒนา
 

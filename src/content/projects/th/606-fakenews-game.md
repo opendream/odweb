@@ -34,7 +34,7 @@ partners:
 
 ### ประเภท
 
-[Mobile Game (iOS, Android)](/projects/mobilegame)
+Mobile Game (iOS, Android)
 
 ### ปีที่พัฒนา
 

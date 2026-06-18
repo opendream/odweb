@@ -28,7 +28,7 @@ Other / การเงินอิเล็กทรอนิกส์
 
 ### Type of project
 
-[Web Application](/en/projects/Web-Application),[Website](/en/projects/website), [Online Payment](/en/projects/online-payment)
+Web Application,Website, Online Payment
 
 ### Year of introduction
 

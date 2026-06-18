@@ -27,8 +27,8 @@ year: 2016
 
 ### ประเภท
 
-[Web Application](/projects/web-application), [Online Crowdfunding](/projects/crowdfunding),  
-[Online Donation](/projects/online-donation)
+Web Application, Online Crowdfunding,  
+Online Donation
 
 ### ปีที่พัฒนา
 

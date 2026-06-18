@@ -26,7 +26,7 @@ Health
 
 ### Type of project
 
-[Web Application](/en/projects/Web-Application)
+Web Application
 
 ### Year of introduction
 

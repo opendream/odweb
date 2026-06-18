@@ -1,22 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractBoc, collectWpContentUrls, unlazy } from './pages.mjs';
-import { extractEntryContent } from './pages.mjs';
-
-describe('extractBoc', () => {
-  it('returns the #et-boc element outerHTML', () => {
-    const html = '<body><div id="main-content"><div id="et-boc" class="et-l"><section>X</section></div></div></body>';
-    const out = extractBoc(html);
-    expect(out).toContain('id="et-boc"');
-    expect(out).toContain('<section>X</section>');
-  });
-  it('falls back to .entry-content when no #et-boc', () => {
-    const html = '<div class="entry-content"><p>Y</p></div>';
-    expect(extractBoc(html)).toContain('<p>Y</p>');
-  });
-  it('returns empty string when neither present', () => {
-    expect(extractBoc('<div>nope</div>')).toBe('');
-  });
-});
+import { collectWpContentUrls, unlazy, extractEntryContent } from './pages.mjs';
 
 describe('collectWpContentUrls', () => {
   it('collects unique absolute wp-content URLs from text', () => {

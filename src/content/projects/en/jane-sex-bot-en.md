@@ -32,7 +32,7 @@ Health , Education
 
 ### Type of project
 
-[Chatbot, Page](/en/projects_en/chatbot)
+Chatbot, Page
 
 ### Year of introduction
 

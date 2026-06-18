@@ -29,7 +29,7 @@ partners:
 
 ### ประเภท
 
-[Web Application,](/projects/web-application) [Online Donation](/projects/online-donation)
+Web Application, Online Donation
 
 ### ปีที่พัฒนา
 

@@ -31,7 +31,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/Web-Application) / [Intranet](/projects/intranet)
+Web Application / Intranet
 
 ### ปีที่พัฒนา
 

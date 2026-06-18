@@ -32,7 +32,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/web-application)
+Web Application
 
 ### ปีที่พัฒนา
 

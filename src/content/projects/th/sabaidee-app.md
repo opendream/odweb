@@ -37,7 +37,7 @@ partners:
 
 ### ประเภท
 
-[Mobile Application](/projects/mobileapplication), การดูแลสุขภาพด้วยตนเอง
+Mobile Application, การดูแลสุขภาพด้วยตนเอง
 
 ### ปีที่พัฒนา
 

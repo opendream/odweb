@@ -29,7 +29,7 @@ Health
 
 ### Type of project
 
-[Chatbot](/en/projects/chatbot)
+Chatbot
 
 ### Year of introduction
 

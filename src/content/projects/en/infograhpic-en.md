@@ -26,7 +26,7 @@ Other
 
 ### Type of project
 
-[Graphic Design](/projects_en/graphic-design)
+Graphic Design
 
 ### Year of introduction
 

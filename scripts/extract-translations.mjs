@@ -10,17 +10,16 @@ const strip = (u) => u.replace(/https?:\/\/(?:www\.)?(?:localhost:8080|opendream
 
 async function ourPaths() {
   const paths = new Set();
-  for (const col of ['posts', 'projects', 'policies']) {
+  // posts/projects/policies are markdown; `pages` (about/contact/join-us/announcement) are MDX.
+  for (const col of ['posts', 'projects', 'policies', 'pages']) {
     const base = join(ROOT, 'src/content', col);
     const walk = async (d) => { for (const e of await readdir(d, { withFileTypes: true })) {
       const p = join(d, e.name);
       if (e.isDirectory()) await walk(p);
-      else if (e.name.endsWith('.md')) { const m = (await readFile(p, 'utf8')).match(/^path:\s*"?([^"\n]+)"?/m); if (m) paths.add(strip(m[1])); }
+      else if (e.name.endsWith('.md') || e.name.endsWith('.mdx')) { const m = (await readFile(p, 'utf8')).match(/^path:\s*"?([^"\n]+)"?/m); if (m) paths.add(strip(m[1])); }
     }};
     await walk(base).catch(() => {});
   }
-  const man = JSON.parse(await readFile(join(ROOT, 'src/content/pages/manifest.json'), 'utf8'));
-  for (const m of man) paths.add(strip(m.path));
   return paths;
 }
 

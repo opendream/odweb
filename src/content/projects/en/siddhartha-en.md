@@ -28,7 +28,7 @@ Online Payment, Other
 
 ### Type of project
 
-[Web Application](/projects_en/web-application) / [Online Payment](/projects_en/online-payment)
+Web Application / Online Payment
 
 ### Year of introduction
 

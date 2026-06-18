@@ -31,7 +31,7 @@ partners:
 
 ### ประเภท
 
-[Web Application](/projects/Web-Application) / [Online Payment](/projects/online-payment)
+Web Application / Online Payment
 
 ### ปีที่พัฒนา
 

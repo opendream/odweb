@@ -27,7 +27,7 @@ Other
 
 ### Type of project
 
-[Web Application](/en/projects/web-application) / [Online Donation](/en/projects/online-donation)
+Web Application / Online Donation
 
 ### Year of introduction
 

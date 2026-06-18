@@ -31,7 +31,7 @@ Health
 
 ### Type of project
 
-[Interactive Infographic](/projects_en/interactive-infographic)
+Interactive Infographic
 
 ### Year of introduction
 

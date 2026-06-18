@@ -1,11 +1,5 @@
 import { parse } from 'node-html-parser';
 
-export function extractBoc(html) {
-  const root = parse(html);
-  const el = root.querySelector('#et-boc') || root.querySelector('.entry-content');
-  return el ? el.outerHTML.trim() : '';
-}
-
 // Matches absolute (http://host/wp-content/...) AND root-relative (/wp-content/...) refs.
 const WP_CONTENT_RE = /(?:https?:\/\/[^"')\s]+)?\/wp-content\/[^"')\s]+/g;
 export function collectWpContentUrls(text) {

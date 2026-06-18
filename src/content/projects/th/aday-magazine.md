@@ -30,7 +30,7 @@ partners:
 
 ### ประเภท
 
-[Website](/projects/website)
+Website
 
 ### ปีที่พัฒนา
 

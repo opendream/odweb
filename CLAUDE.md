@@ -79,13 +79,9 @@ committed markdown + media are the source of truth.
   consulted by `BaseLayout` + threaded to the lang switcher, listing-fallback when unpaired; safe
   PurgeCSS pass — see Global CSS note). Pending: human visual check; then Cloudflare Pages deploy.
   See `docs/2026-06-17-static-migration-phase3{c,d}-spec.md`, `-pre-deploy-polish-plan.md`.
-- **Global CSS note:** `src/styles/global.css` imports `vendor/divi-parent.css` (the full Divi theme
-  stylesheet, ~825 KB — the base `.et_pb_row` grid + responsive `@media`; without it designed pages
-  box left). Divi's JS-driven reveal animations are neutralised site-wide
-  (`.et-waypoint, .et_animated { opacity: 1 !important }`) since there's no Divi JS. The `build` script
-  runs `scripts/purge-css.mjs` (PurgeCSS) after `astro build`, trimming the bundle 852 KB → ~165 KB
-  (88 KB → 22 KB gzipped) with a Divi-aware safelist; per-page inline `et-core-unified` styles are untouched.
-- **Modernisation (de-Divi), in progress — phased.** We're progressively replacing the ported Divi
+- **Global CSS note:** Divi is fully removed (see Phase 5 below). `src/styles/global.css` now only
+  `@import`s `modern.css` plus base resets; there is no `vendor/` CSS and no PurgeCSS step.
+- **Modernisation (de-Divi), COMPLETE — phased.** We progressively replaced the ported Divi
   scaffolding/classes with a clean design system in `src/styles/modern.css` (`.od-*`), on the surfaces
   we control. **Done:** the **chrome** (Header/Footer/Nav/LangSwitcher rebuilt clean — sticky `.od-header`,
   animated hamburger → dropdown nav, `.od-footer`; no `#main-header`/`#top-menu`/`et_pb_*`, no body-class
@@ -100,15 +96,16 @@ committed markdown + media are the source of truth.
   (`src/components/content/*`) and rendered by `ComposedLayout` (route kind `page-mdx` in
   `[...path].astro`, which passes the components to `<Content/>` so MDX needs no per-file imports).
   The parallax + "Our Clients" logos sections were dropped by decision. See
-  `docs/2026-06-18-content-architecture-spec.md` + `-phase4-pages-plan.md`. **Remaining = Phase 5
-  cleanup:** drop the ~33 `services` pages (`/projects/<slug>`, `/en/projects_en/<slug>`) + their
-  manifest/HTML/CSS, then remove `vendor/divi-parent.css`, the PurgeCSS step, and `DEFAULT_BODY_CLASS`
-  (the lone remaining Divi leak — a stale `et_pb_*` class string still applied to `<body>`).
-- **Global CSS note (legacy/Divi):** `vendor/divi-parent.css` (full Divi theme) still backs the
-  not-yet-modernised surfaces (designed pages, detail layouts). Divi reveal animations neutralised
-  (`.et-waypoint,.et_animated{opacity:1!important}`); designed-page grids that relied on isotope/salvattore
-  JS are laid out with plain CSS.
-- **Deploy (Cloudflare Pages)** — deferred until the whole site is converted.
+  `docs/2026-06-18-content-architecture-spec.md` + `-phase4-pages-plan.md`.
+  **Phase 5 — de-Divi cleanup — DONE** (`-phase5-cleanup-plan.md`): dropped the ~33 `services` pages
+  + the manifest + all preserved-HTML + per-page CSS + the `vendor/` Divi CSS + the `public/wp-content/
+  {et-cache,themes}` dirs; removed the PurgeCSS step (+ dep) and `DEFAULT_BODY_CLASS`/`bodyClass`/
+  `pageStyles`; simplified `[...path].astro` (no manifest/glob/`kind:'page'`); delinked 124 now-dead
+  `/projects/<svc>` links in project bodies (label kept); rebuilt 404 in `.od-*`; added a self-contained
+  type system to `modern.css` (Open Sans/Noto Sans Thai body, Montserrat headings — all loaded via
+  BaseLayout). **The site is now fully de-Divi'd:** `dist` has zero `et_pb_`/`divi-parent`/`#et-boc`,
+  and the CSS bundle is **~12.5 KB** (was ~165 KB). `global.css` now just imports `modern.css` + base resets.
+- **Deploy (Cloudflare Pages)** — deferred (per decision); the build is `astro build` → static `dist/`.
 
 ## When making changes
 

@@ -33,7 +33,7 @@ Others
 
 ### Type of project
 
-[Open Data](/en/projects_en/open-data)
+Open Data
 
 ### Years
 

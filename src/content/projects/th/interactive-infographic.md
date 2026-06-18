@@ -33,7 +33,7 @@ partners:
 
 ### ประเภท
 
-[Interactive Infographic](/projects/interactive-infographic)
+Interactive Infographic
 
 ### ปีที่พัฒนา
 

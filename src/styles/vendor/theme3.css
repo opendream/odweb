@@ -1,8 +1,0 @@
-/* Change columns from 4-3 */
- 
-.et_pb_column_4_4 .et_pb_portfolio_grid .project,
-.et_pb_column_4_4 .et_pb_filterable_portfolio_grid .project {
-  clear: none !important;
-  margin: 0 5% 54px 0 !important;
-  width: 30% !important;
-}

@@ -34,7 +34,7 @@ Others / active citizenship
 
 ### Type of project
 
-[Web Site](/projects_en/website), [Crowdsourcing](/projects_en/Crowdsourcing)
+Web Site, Crowdsourcing
 
 ### Year of introduction
 

@@ -36,7 +36,7 @@ Education
 
 ### Type of project
 
-[Mobile Game (iOS, Android)](/en/projects/mobilegame)
+Mobile Game (iOS, Android)
 
 ### Year of introduction
 

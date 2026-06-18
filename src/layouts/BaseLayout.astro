@@ -10,14 +10,8 @@ interface Props {
   lang: 'th' | 'en';
   path: string;
   altPath?: string;
-  pageStyles?: string;
-  bodyClass?: string;
 }
-const { title, description, lang, path, altPath, pageStyles, bodyClass } = Astro.props;
-// Divi body classes drive the header/chrome styling (logo sizing, fixed nav, etc.).
-// Pages that scrape their own bodyClass pass it; everything else (listings, posts,
-// projects) needs these standard classes or the header renders unstyled.
-const DEFAULT_BODY_CLASS = 'page-template-default page et_pb_button_helper_class et_fixed_nav et_show_nav et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_pb_footer_columns1 et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css';
+const { title, description, lang, path, altPath } = Astro.props;
 // canonical/hreflang must be absolute; derive from the Astro `site` config (single source of truth)
 const site = Astro.site?.origin ?? 'https://opendream.co.th';
 const alt = altPath ?? translations[path as keyof typeof translations];
@@ -51,9 +45,8 @@ const thHref = lang === 'th' ? path : (alt ?? '/blog');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&subset=cyrillic,cyrillic-ext,latin,latin-ext,vietnamese&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr:200,300,400,500,600,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansthai.css" />
-    {pageStyles && <style set:html={pageStyles}></style>}
   </head>
-  <body class={bodyClass ?? DEFAULT_BODY_CLASS}>
+  <body>
     <div id="page-container">
       <Header lang={lang} thHref={thHref} enHref={enHref} />
       <main><slot /></main>
