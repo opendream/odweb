@@ -3,8 +3,8 @@ title: "The MATTER คุยกับ Opendream เรื่อง &#8220;เก
 date: 2017-02-22T17:49:01.000Z
 modified: 2017-12-12T20:07:26.000Z
 lang: th
-slug: the-matter-คุยกับ-opendream-เรื่อง-เกม-corrupt-คุ
-path: /blog/the-matter-คุยกับ-opendream-เรื่อง-เกม-corrupt-คุ
+slug: the-matter-corrupt-game-interview
+path: /blog/the-matter-corrupt-game-interview
 categories:
   - Blog
 tags:

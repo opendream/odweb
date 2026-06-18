@@ -3,8 +3,8 @@ title: รายการคิดนอกจอ กับแอปพลิเ
 date: 2016-02-28T14:18:55.000Z
 modified: 2017-12-13T17:04:13.000Z
 lang: th
-slug: doctorme-คิดนอกจอ
-path: /blog/doctorme-คิดนอกจอ
+slug: doctorme-on-kid-nok-jor-tv
+path: /blog/doctorme-on-kid-nok-jor-tv
 categories:
   - Blog
 tags: []

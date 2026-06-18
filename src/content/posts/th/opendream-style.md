@@ -3,8 +3,8 @@ title: สไตล์โอเพ่นดรีม!
 date: 2013-09-20T11:21:53.000Z
 modified: 2017-01-06T17:35:41.000Z
 lang: th
-slug: สไตล์โอเพ่นดรีม
-path: /blog/สไตล์โอเพ่นดรีม
+slug: opendream-style
+path: /blog/opendream-style
 categories:
   - Blog
 tags:

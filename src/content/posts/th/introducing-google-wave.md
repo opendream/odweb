@@ -3,8 +3,8 @@ title: แนะนำ Google Wave
 date: 2009-10-20T13:40:32.000Z
 modified: 2017-01-06T17:35:42.000Z
 lang: th
-slug: แนะนำ-google-wave
-path: /blog/แนะนำ-google-wave
+slug: introducing-google-wave
+path: /blog/introducing-google-wave
 categories:
   - Blog
 tags:

@@ -3,8 +3,8 @@ title: กาละแมร์ แนะนำแอปพลิเคชัน
 date: 2014-11-30T14:27:40.000Z
 modified: 2017-12-12T14:30:47.000Z
 lang: th
-slug: กาละแมร์-แนะนำ-doctorme
-path: /blog/กาละแมร์-แนะนำ-doctorme
+slug: kalamare-recommends-doctorme
+path: /blog/kalamare-recommends-doctorme
 categories:
   - Blog
 tags: []

@@ -3,8 +3,8 @@ title: เกมส์สายฟ้าตะลุยน้ำท่วม
 date: 2014-01-16T11:18:52.000Z
 modified: 2020-10-07T16:42:47.000Z
 lang: th
-slug: เกมส์สายฟ้าตะลุยน้ำท่ว
-path: /blog/เกมส์สายฟ้าตะลุยน้ำท่ว
+slug: saifah-flood-game
+path: /blog/saifah-flood-game
 categories:
   - Blog
 tags: []

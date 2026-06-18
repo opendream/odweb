@@ -3,8 +3,8 @@ title: "ID CHANGE: ตลาดนักกฎหมายประชาชน"
 date: 2010-03-30T13:34:08.000Z
 modified: 2017-01-06T17:35:42.000Z
 lang: th
-slug: id-change-ตลาดนักกฎหมายประชาชน
-path: /blog/id-change-ตลาดนักกฎหมายประชาชน
+slug: id-change-citizen-lawyer-marketplace
+path: /blog/id-change-citizen-lawyer-marketplace
 categories:
   - Blog
 tags:

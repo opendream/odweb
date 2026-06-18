@@ -3,8 +3,8 @@ title: โอเพ่นดรีมร่วมมือกับ สวทช
 date: 2010-12-30T13:11:42.000Z
 modified: 2020-10-07T16:47:50.000Z
 lang: th
-slug: โอเพ่นดรีมร่วมมือกับ-สว
-path: /blog/โอเพ่นดรีมร่วมมือกับ-สว
+slug: openbiblio-hotrai-nstda
+path: /blog/openbiblio-hotrai-nstda
 categories:
   - Blog
 tags:

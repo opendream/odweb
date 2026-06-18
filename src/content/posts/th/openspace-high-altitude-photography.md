@@ -3,8 +3,8 @@ title: โอเพ่นสเปซ โครงการถ่ายภาพ
 date: 2011-03-22T13:08:38.000Z
 modified: 2020-10-07T16:16:02.000Z
 lang: th
-slug: โอเพ่นสเปซ-โครงการถ่ายภ
-path: /blog/โอเพ่นสเปซ-โครงการถ่ายภ
+slug: openspace-high-altitude-photography
+path: /blog/openspace-high-altitude-photography
 categories:
   - Blog
 tags: []
