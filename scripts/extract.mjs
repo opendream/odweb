@@ -7,6 +7,16 @@ const BASE = process.env.WP_BASE || 'http://localhost:8080';
 const API = `${BASE}/wp-json/wp/v2`;
 const ROOT = new URL('..', import.meta.url).pathname;
 
+// Featured images whose attachment is REST-forbidden (attachment's post_parent is a
+// draft → inherit-status attachment is hidden from anonymous REST, so _embed yields an
+// error object instead of source_url). Maps attachment ID → uploads-relative path so
+// extraction still recovers the cover. Discovered 2026-06-18 (judies/parkrun/infographic).
+const FORBIDDEN_FEATURED = {
+  26829: '2017/06/judies_main@2x.png',        // จูดี้ (Judies) — th & en
+  28557: '2017/02/parkrun-thumbnail@2x.jpg',  // TMB Parkrun 2018 — en
+  26227: '2017/02/infographic@2x.jpg',        // INFOGRAHPIC (NBCT) — en
+};
+
 async function fetchAll(type) {
   const out = [];
   for (let page = 1; ; page++) {
@@ -71,7 +81,22 @@ async function extractType({ type, dir, catTaxonomy }) {
     for (const img of extractImageUrls(html)) await downloadMedia(img);
     let cover;
     const feat = p._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-    if (feat) cover = await downloadMedia(feat);
+    if (feat) {
+      cover = await downloadMedia(feat);
+    } else if (p.featured_media) {
+      // The post has a featured image, but its source_url didn't resolve via _embed.
+      // Known cause: the attachment's post_parent is a draft, so an *inherit*-status
+      // attachment is rest_forbidden to anonymous REST (the embed returns an error
+      // object, not the media). The front-end still renders it (no permission check),
+      // so the cover exists — we just can't read it over REST. Recover via a small
+      // override map of attachment ID → uploads path; warn for any other unresolved id.
+      const known = FORBIDDEN_FEATURED[p.featured_media];
+      if (known) {
+        cover = await downloadMedia(`${BASE}/wp-content/uploads/${known}`);
+      } else {
+        console.warn(`featured media ${p.featured_media} unresolved for ${p.slug} (REST-forbidden? add to FORBIDDEN_FEATURED) — no cover`);
+      }
+    }
     const cleaned = rewriteMediaUrls(stripDiviCruft(html));
     // Also rewrite relative /wp-content/uploads/ paths left after HTML→MD conversion
     const body = toSiteRelative(htmlToMarkdown(cleaned)).replace(/\/wp-content\/uploads\//g, '/media/');

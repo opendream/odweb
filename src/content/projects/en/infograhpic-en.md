@@ -9,6 +9,7 @@ categories:
   - Graphic Design
   - Other
 tags: []
+cover: /media/2017/02/infographic@2x.jpg
 type: Graphic Design
 year: 2016
 partners:

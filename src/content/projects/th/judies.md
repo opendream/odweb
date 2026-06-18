@@ -9,6 +9,7 @@ categories:
   - Mobile Game
   - การศึกษา
 tags: []
+cover: /media/2017/06/judies_main@2x.png
 type: Mobile Game (Android)
 year: 2017 / 2018
 ---

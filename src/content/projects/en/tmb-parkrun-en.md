@@ -12,6 +12,7 @@ categories:
   - Other
   - Web Application
 tags: []
+cover: /media/2017/02/parkrun-thumbnail@2x.jpg
 type: Web Application, Online Donation, Online Ticketing System
 year: 2016 – 2018
 partners:
