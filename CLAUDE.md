@@ -91,9 +91,19 @@ committed markdown + media are the source of truth.
   animated hamburger → dropdown nav, `.od-footer`; no `#main-header`/`#top-menu`/`et_pb_*`, no body-class
   coupling, no fixed-header `#page-container` offset) and the **listings** (`/projects` = centered
   `.od-container` + centered pill `.od-filter` + 1:1 `.od-card` grid w/ hover; `/blog` = `.od-postgrid`
-  of `.od-postcard` under `BlogHero`). PurgeCSS safelist keeps `/^od-/`. **Remaining phases:** detail
-  layouts (Post/Project/Page prose), BlogHero, then the scraped designed pages (home/about/services) —
-  after which `vendor/divi-parent.css` + the PurgeCSS crutch can be dropped.
+  of `.od-postcard` under `BlogHero`). PurgeCSS safelist keeps `/^od-/`. **Also done:** detail layouts
+  (Post/Project/Page prose); the bespoke **home** (`index.astro` + `/en/`, showcase tiles from
+  `src/data/projects.config.json`, 1:1 covers w/ deterministic gradient placeholders via
+  `src/lib/gradient.mjs`); and **Phase 4 — the designed pages** (`about-us`/`contact`/`join-us`/
+  `announcement` TH + `about_en`/`contact_en`/`join-us_en` EN) converted from preserved Divi HTML to
+  **MDX** in the new `pages` collection, composed from the `.od-*` content components
+  (`src/components/content/*`) and rendered by `ComposedLayout` (route kind `page-mdx` in
+  `[...path].astro`, which passes the components to `<Content/>` so MDX needs no per-file imports).
+  The parallax + "Our Clients" logos sections were dropped by decision. See
+  `docs/2026-06-18-content-architecture-spec.md` + `-phase4-pages-plan.md`. **Remaining = Phase 5
+  cleanup:** drop the ~33 `services` pages (`/projects/<slug>`, `/en/projects_en/<slug>`) + their
+  manifest/HTML/CSS, then remove `vendor/divi-parent.css`, the PurgeCSS step, and `DEFAULT_BODY_CLASS`
+  (the lone remaining Divi leak — a stale `et_pb_*` class string still applied to `<body>`).
 - **Global CSS note (legacy/Divi):** `vendor/divi-parent.css` (full Divi theme) still backs the
   not-yet-modernised surfaces (designed pages, detail layouts). Divi reveal animations neutralised
   (`.et-waypoint,.et_animated{opacity:1!important}`); designed-page grids that relied on isotope/salvattore
