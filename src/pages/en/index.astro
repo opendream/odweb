@@ -12,21 +12,19 @@ const tiles = (projectConfig.en.featured ?? []).map((s) => bySlug[s]).filter(Boo
     <p class="od-home-hero__pre">We create</p>
     <h1 class="od-home-hero__title">Sustainable Social Impact<br />with <span>Technology</span></h1>
   </section>
-  <section class="od-section">
-    <div class="od-container">
-      <div class="od-showcase">
-        {tiles.map((t) => (
-          <a href={t.path} class="od-showcase__tile">
-            {t.cover
-              ? <img src={t.cover} alt={t.title} />
-              : <span class="od-ph" style={`background:${gradientFor(t.slug)}`}>{t.title}</span>}
-            <div class="od-showcase__cap">
-              <span class="od-showcase__name">{t.title}</span>
-              {t.type && <span class="od-showcase__type">{t.type}</span>}
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+  <div class="od-showcase">
+    {tiles.map((t) => (
+      <a href={t.path} class="od-showcase__tile">
+        {t.cover
+          ? <img src={t.cover} alt={t.title} />
+          : <span class="od-ph" style={`background:${gradientFor(t.slug)}`}>{t.title}</span>}
+        {t.cover && (
+          <div class="od-showcase__overlay">
+            <span class="od-showcase__name">{t.title}</span>
+            {t.type && <span class="od-showcase__type">{t.type}</span>}
+          </div>
+        )}
+      </a>
+    ))}
+  </div>
 </BaseLayout>

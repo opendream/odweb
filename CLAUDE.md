@@ -89,7 +89,9 @@ committed markdown + media are the source of truth.
   `.od-container` + centered pill `.od-filter` + 1:1 `.od-card` grid w/ hover; `/blog` = `.od-postgrid`
   of `.od-postcard` under `BlogHero`). PurgeCSS safelist keeps `/^od-/`. **Also done:** detail layouts
   (Post/Project/Page prose); the bespoke **home** (`index.astro` + `/en/`, showcase tiles from
-  `src/data/projects.config.json`, 1:1 covers w/ deterministic gradient placeholders via
+  `src/data/projects.config.json`, rendered as a full-bleed magazine grid — edge-to-edge 1:1 covers,
+  2 columns on landscape / 1 on portrait via `@media (orientation)`, name + zoom on hover; 1:1 covers
+  w/ deterministic gradient placeholders via
   `src/lib/gradient.mjs`); and **Phase 4 — the designed pages** (`about-us`/`contact`/`join-us`/
   `announcement` TH + `about_en`/`contact_en`/`join-us_en` EN) converted from preserved Divi HTML to
   **MDX** in the new `pages` collection, composed from the `.od-*` content components
