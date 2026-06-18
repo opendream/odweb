@@ -36,5 +36,17 @@ const policies = defineCollection({
     path: z.string(),
   }),
 });
+// Bespoke designed pages (about/join-us/announcement/contact) authored as MDX composed from the
+// .od-* content components, rendered by ComposedLayout. Replaces the preserved-Divi-HTML versions.
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/pages' }),
+  schema: z.object({
+    title: z.string(),
+    lang: z.enum(['th', 'en']),
+    slug: z.string(),
+    path: z.string(),
+    description: z.string().optional(),
+  }),
+});
 
-export const collections = { posts, projects, policies };
+export const collections = { posts, projects, policies, pages };

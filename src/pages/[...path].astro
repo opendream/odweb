@@ -4,7 +4,19 @@ import PostLayout from '../layouts/PostLayout.astro';
 import ProjectLayout from '../layouts/ProjectLayout.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
+import ComposedLayout from '../layouts/ComposedLayout.astro';
+import Hero from '../components/content/Hero.astro';
+import Section from '../components/content/Section.astro';
+import Blurbs from '../components/content/Blurbs.astro';
+import Blurb from '../components/content/Blurb.astro';
+import Gallery from '../components/content/Gallery.astro';
+import Map from '../components/content/Map.astro';
+import CTA from '../components/content/CTA.astro';
+import Button from '../components/content/Button.astro';
 import manifest from '../content/pages/manifest.json';
+
+// Components available to `pages` MDX without per-file imports (clean, CMS-friendly content).
+const mdxComponents = { Hero, Section, Blurbs, Blurb, Gallery, Map, CTA, Button };
 
 export async function getStaticPaths() {
   const pageHtml = import.meta.glob('../content/pages/**/*.html', { query: '?raw', import: 'default', eager: true });
@@ -13,6 +25,7 @@ export async function getStaticPaths() {
   const posts = await getCollection('posts');
   const projects = await getCollection('projects');
   const policies = await getCollection('policies');
+  const pages = await getCollection('pages');
   const col = (entry, kind) => ({ params: { path: entry.data.path.replace(/^\//, '') }, props: { kind, entry } });
   const designed = manifest
     .filter((m) => m.path !== '/' && m.path !== '/en/' && m.path !== '/projects' && m.path !== '/en/projects_en')
@@ -25,7 +38,7 @@ export async function getStaticPaths() {
         css: pageCss[`../styles/pages/${m.lang}-${m.slug}.css`],
       },
     }));
-  return [...posts.map((e) => col(e, 'post')), ...projects.map((e) => col(e, 'project')), ...policies.map((e) => col(e, 'policy')), ...designed];
+  return [...posts.map((e) => col(e, 'post')), ...projects.map((e) => col(e, 'project')), ...policies.map((e) => col(e, 'policy')), ...pages.map((e) => col(e, 'page-mdx')), ...designed];
 }
 
 const props = Astro.props;
@@ -48,6 +61,10 @@ if (props.kind !== 'page') {
   <PageLayout title={d.title} lang={d.lang} path={d.path}>
     <Content />
   </PageLayout>
+) : props.kind === 'page-mdx' ? (
+  <ComposedLayout title={d.title} lang={d.lang} path={d.path} description={d.description}>
+    <Content components={mdxComponents} />
+  </ComposedLayout>
 ) : (
   <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt}>
     <Content />

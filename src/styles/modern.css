@@ -150,6 +150,45 @@ a.od-blurb:hover .od-blurb__title { color: var(--od-accent); }
 }
 @media (max-width: 460px) { .od-blurbs { grid-template-columns: 1fr; } }
 
+/* ---- designed pages (about/join-us/announcement/contact) ---- */
+/* Brand banner hero for inner pages (distinct from the light home hero) */
+.od-hero--brand { background: linear-gradient(135deg, #0e2a47, #1b4a73); }
+.od-hero--brand .od-hero__inner { padding: 72px 24px; }
+
+/* Section heading (announcement, join-us "For individuals") */
+.od-section__title { font-size: 28px; font-weight: 800; color: var(--od-ink); margin: 0 0 24px; }
+.od-section__title--center { text-align: center; }
+
+/* Centered intro / closing prose inside a Section */
+.od-prose--center { max-width: 760px; margin: 0 auto; text-align: center; }
+.od-prose--center :is(h1,h2,h3) { text-align: center; }
+
+/* Full-width banner image inside a Section (about team photo) */
+.od-banner { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+/* Project logos in about: square, uncropped */
+.od-logos .od-blurb { text-align: center; }
+.od-logos .od-blurb__img { aspect-ratio: 1 / 1; object-fit: cover; background: #fff; }
+.od-logos .od-blurb__title { font-size: 15px; font-weight: 600; }
+
+/* Contact: map + address two-column */
+.od-contact { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start; }
+.od-contact address { font-style: normal; }
+@media (max-width: 760px) { .od-contact { grid-template-columns: 1fr; } }
+
+/* Join-us role cards: icon + title + text */
+.od-roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 32px; }
+.od-role { text-align: center; }
+.od-role__icon { height: 64px; width: auto; margin: 0 auto 14px; display: block; }
+.od-role h3 { font-size: 19px; font-weight: 700; margin: 0 0 10px; color: var(--od-ink); }
+.od-role p { color: var(--od-muted); font-size: 15px; line-height: 1.7; margin: 0 0 10px; text-align: left; }
+@media (max-width: 760px) { .od-roles { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Announcement item */
+.od-announce__item { border: 1px solid var(--od-line); border-radius: 12px; padding: 22px 24px; }
+.od-announce__date { color: var(--od-muted); font-size: 14px; margin: 0 0 6px; }
+.od-announce__desc { color: var(--od-ink); margin: 0 0 16px; line-height: 1.6; }
+
 /* ===== Article detail (posts / projects / policies): centered readable prose ===== */
 .od-article { max-width: 820px; margin: 0 auto; padding: 56px 24px 80px; }
 .od-article__title { font-size: 34px; line-height: 1.25; font-weight: 800; margin: 0 0 14px; color: var(--od-ink); }

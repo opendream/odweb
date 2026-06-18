@@ -1,10 +1,10 @@
 ---
-interface Props { title: string; subtitle?: string; image?: string; bg?: string; dark?: boolean; }
-const { title, subtitle, image, bg, dark } = Astro.props;
+interface Props { title: string; subtitle?: string; image?: string; bg?: string; dark?: boolean; class?: string; }
+const { title, subtitle, image, bg, dark, class: cls } = Astro.props;
 const styles = [bg && `background-color:${bg}`, image && `background-image:url('${image}')`].filter(Boolean).join(';');
 const isDark = dark ?? Boolean(bg || image);
 ---
-<section class:list={['od-hero', { 'od-hero--dark': isDark }]} style={styles || undefined}>
+<section class:list={['od-hero', cls, { 'od-hero--dark': isDark }]} style={styles || undefined}>
   <div class="od-hero__inner">
     <h1 class="od-hero__title">{title}</h1>
     {subtitle && <p class="od-hero__subtitle">{subtitle}</p>}
