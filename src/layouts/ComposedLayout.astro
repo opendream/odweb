@@ -1,7 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-// Works both as a collection layout (direct props from [...path].astro) and as an MDX page
-// `layout:` target (props arrive under `frontmatter`).
+// For component-composed pages (home/about/contact): the MDX content sits directly in <main>
+// so full-bleed components (Hero) and contained ones (Section > .od-container) manage their own
+// width — unlike PageLayout's narrow prose column (for policies/plain text).
+// Dual-mode: direct props (collection route) or MDX `layout:` frontmatter.
 const p = Astro.props;
 const fm = (p.frontmatter ?? {}) as Record<string, any>;
 const title = p.title ?? fm.title;
@@ -10,8 +12,5 @@ const path = p.path ?? fm.path;
 const description = p.description ?? fm.description;
 ---
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
-  <article class="od-article">
-    <h1 class="od-article__title">{title}</h1>
-    <div class="od-prose"><slot /></div>
-  </article>
+  <slot />
 </BaseLayout>

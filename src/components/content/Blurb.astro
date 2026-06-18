@@ -1,0 +1,10 @@
+---
+interface Props { title?: string; image?: string; href?: string; }
+const { title, image, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+<Tag class="od-blurb" {...(href ? { href } : {})}>
+  {image && <img class="od-blurb__img" src={image} alt={title ?? ''} loading="lazy" />}
+  {title && <h3 class="od-blurb__title">{title}</h3>}
+  <div class="od-blurb__text"><slot /></div>
+</Tag>

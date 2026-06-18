@@ -1,0 +1,45 @@
+---
+layout: ../layouts/ComposedLayout.astro
+title: Component Styleguide
+lang: th
+path: /styleguide
+---
+import Hero from '../components/content/Hero.astro';
+import Section from '../components/content/Section.astro';
+import Blurbs from '../components/content/Blurbs.astro';
+import Blurb from '../components/content/Blurb.astro';
+import Gallery from '../components/content/Gallery.astro';
+import Map from '../components/content/Map.astro';
+import CTA from '../components/content/CTA.astro';
+import Button from '../components/content/Button.astro';
+
+<Hero title="Hero Title" subtitle="A subtitle goes here" bg="#664f9e" />
+
+<Section>
+  <Blurbs cols={3}>
+    <Blurb title="Web Application">We build robust web apps for impact.</Blurb>
+    <Blurb title="Chat Bot">Conversational tools that help people.</Blurb>
+    <Blurb title="Open Data">Turning data into public good.</Blurb>
+  </Blurbs>
+</Section>
+
+<Section bg="#f6fafe">
+  <Gallery cols={4} images={[
+    { src: '/media/logo_foot.png', alt: 'one' },
+    { src: '/media/logo_foot.png', alt: 'two' },
+    { src: '/media/logo_foot.png', alt: 'three' },
+    { src: '/media/logo_foot.png', alt: 'four' },
+  ]} />
+</Section>
+
+<Section>
+  <p><Button href="/projects">Solid button</Button> &nbsp; <Button href="/projects" variant="outline">Outline button</Button></p>
+</Section>
+
+<Section>
+  <CTA title="Work with us" text="Let's build sustainable social impact together." href="/contact" label="Get in touch" />
+</Section>
+
+<Section>
+  <Map src="https://www.google.com/maps?q=Bangkok&output=embed" title="Office" />
+</Section>

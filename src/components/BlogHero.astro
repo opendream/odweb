@@ -1,11 +1,7 @@
 ---
-// Clean, de-Divi'd hero banner for the blog/press listing (was the live blog section_0).
+// Blog/press banner — now just the shared <Hero> with the purple bg.
+import Hero from './content/Hero.astro';
 interface Props { title: string; subtitle: string; }
 const { title, subtitle } = Astro.props;
 ---
-<section class="od-hero">
-  <div class="od-hero__inner">
-    <h1 class="od-hero__title">{title}</h1>
-    <p class="od-hero__subtitle">{subtitle}</p>
-  </div>
-</section>
+<Hero title={title} subtitle={subtitle} bg="#664f9e" image="/wp-content/uploads/2016/12/bg-head-blog.jpg" />

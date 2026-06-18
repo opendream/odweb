@@ -1,0 +1,10 @@
+---
+interface Props { title?: string; text?: string; href?: string; label?: string; }
+const { title, text, href, label } = Astro.props;
+---
+<div class="od-cta">
+  {title && <h3 class="od-cta__title">{title}</h3>}
+  {text && <p class="od-cta__text">{text}</p>}
+  <slot />
+  {href && label && <a class="od-btn" href={href}>{label}</a>}
+</div>

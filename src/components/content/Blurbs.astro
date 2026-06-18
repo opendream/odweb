@@ -1,0 +1,5 @@
+---
+interface Props { cols?: number; }
+const { cols = 3 } = Astro.props;
+---
+<div class="od-blurbs" style={`--od-blurb-cols:${cols}`}><slot /></div>

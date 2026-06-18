@@ -1,0 +1,7 @@
+---
+interface Props { bg?: string; class?: string; }
+const { bg, class: cls } = Astro.props;
+---
+<section class:list={['od-section', cls]} style={bg ? `background:${bg}` : undefined}>
+  <div class="od-container"><slot /></div>
+</section>

@@ -1,0 +1,5 @@
+---
+interface Props { src: string; title?: string; }
+const { src, title = 'Map' } = Astro.props;
+---
+<div class="od-map"><iframe src={src} title={title} loading="lazy" allowfullscreen></iframe></div>

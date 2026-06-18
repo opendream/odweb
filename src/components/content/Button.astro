@@ -1,0 +1,5 @@
+---
+interface Props { href: string; variant?: 'solid' | 'outline'; }
+const { href, variant = 'solid' } = Astro.props;
+---
+<a class:list={['od-btn', `od-btn--${variant}`]} href={href}><slot /></a>
