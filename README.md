@@ -72,9 +72,41 @@ docs/           the full migration record: specs and plans, phase by phase
   cover`, and so on. It renders at its `path`, in both the listing and at its own URL.
 - **Designed pages** such as about and contact. MDX in `src/content/pages/`, composed from the
   components in `src/components/content/`: `<Hero>`, `<Blurbs>`, `<CTA>`, `<Map>`, `<Button>`, and more.
-- **Home showcase and project order.** Curated in `src/data/projects.config.json`.
+- **Home showcase and project order.** Configured in `src/data/projects.config.json`, explained in
+  the next section.
 
 Then run `make rebuild` and refresh.
+
+## Ordering the front page and the projects page
+
+Both orders live in one file, `src/data/projects.config.json`, which has a `th` block and an `en`
+block. A short example:
+
+```json
+{
+  "th": {
+    "featured": ["podd", "doctorme", "taejai"],
+    "order": ["podd", "vote62"]
+  },
+  "en": {
+    "featured": ["podd-en", "doctorme-en", "taejai"],
+    "order": []
+  }
+}
+```
+
+- **`featured`** drives the **front page** showcase. List the project slugs you want, in the order
+  you want them. The home page shows exactly those tiles, in that order. It is a curated subset, so
+  only the projects you list appear there.
+- **`order`** drives the **projects page** at `/projects` and `/en/projects_en`. Slugs listed here
+  are pinned to the top, in that order. Every other project follows, newest first. Leave it as an
+  empty list for purely newest-first.
+
+A slug is the `slug` value in a project's frontmatter, for example `podd` or `doctorme`. Thai and
+English keep separate lists because their slugs differ, such as `podd` for Thai and `podd-en` for
+English. A few projects share one slug across both languages, such as `taejai`.
+
+After editing the file, run `make rebuild` and refresh.
 
 ## Regenerating from the original site
 
