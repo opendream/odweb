@@ -11,6 +11,13 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2017/02/logo-siddhartha@2x-scaled.jpg
+issues:
+  - การเงินอิเล็กทรอนิกส์
+  - อื่น ๆ
+type: Web Application / Online Payment
+year: 2016
+partners:
+  - สำนักพิมพ์ Openbooks
 ---
 
 # สิทธารถะ

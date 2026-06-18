@@ -11,6 +11,12 @@ categories:
 tags: []
 cover: /media/2018/10/infofed-thumbnail.png
 excerpt: ระบบแสดงผล Virtual Tour ที่สามารถจัดการรวบรวมข้อมูลการติดต่อ ข้อมูลพื้นฐานของธุรกิจหลากหลายแขนงออกมาในรูปแบบ 360°
+issues:
+  - อื่น ๆ
+type: Web Application
+year: 2017
+partners:
+  - Infofed Co,. Ltd
 ---
 
 # INFOFED | Virtual Tour Platform

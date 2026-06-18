@@ -11,6 +11,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2021/09/SE-thumbnail.jpg
+issues:
+  - อื่นๆ
+type: Website / Web Application
+year: 2018
+partners:
+  - กองทุนเพื่อความเสมอภาคทางการศึกษา
 ---
 
 # SE Thailand

@@ -10,6 +10,12 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2016/12/corrupt@2x.png
+type: Mobile Game (iOS, Android)
+year: 2015-2017
+partners:
+  - Khonthai Foundation
+  - TDRI
+  - CBEE
 ---
 
 # CORRUPT THE GAME

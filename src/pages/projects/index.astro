@@ -3,8 +3,11 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { SECTORS } from '../../../scripts/lib/categories.mjs';
+import projectConfig from '../../data/projects.config.json';
+const order = projectConfig.th?.order ?? [];
+const rank = (slug) => { const i = order.indexOf(slug); return i === -1 ? Infinity : i; };
 const items = (await getCollection('projects', (p) => p.data.lang === 'th'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => (rank(a.data.slug) - rank(b.data.slug)) || (b.data.date.getTime() - a.data.date.getTime()));
 ---
 <BaseLayout title="งานของเรา — Opendream" lang="th" path="/projects" altPath="/en/projects_en">
   <section class="od-listing">

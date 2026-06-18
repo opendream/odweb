@@ -10,6 +10,10 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2020/06/sbd_thumbnail.png
+type: Chatbot
+year: 2020
+partners:
+  - สำนักงานนวัตกรรมแห่งชาติ (NIA)
 ---
 
 # สบายดี แชตบอท

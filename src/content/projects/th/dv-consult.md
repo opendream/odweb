@@ -10,6 +10,12 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2018/02/dv-consult-thumbnail-1.png
+issues:
+  - สุขภาพ
+type: Empower Telemedicine
+year: 2016-2017
+partners:
+  - มูลนิธิเทพรัตนเวชานุกูล จังหวัดเชียงใหม่
 ---
 
 # DV Consult

@@ -11,6 +11,10 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2019/08/bhc_thumbnail.jpg
+type: ระบบดูแลผู้ป่วยหรือสูงอายุ
+year: 2019
+partners:
+  - มูลนิธิพัฒนางานผู้สูงอายุ
 ---
 
 # บั๊ดดี้โฮมแคร์ Buddy HomeCare

@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2018/02/the-momentum-thumbnail-1.png
+issues:
+  - อื่น ๆ
+type: Website
+year: 2017
+partners:
+  - The Momentum
 ---
 
 # The Momentum

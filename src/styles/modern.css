@@ -140,6 +140,14 @@ a.od-blurb:hover .od-blurb__title { color: var(--od-accent); }
 .od-article__meta { color: var(--od-muted); font-size: 14px; margin: 0 0 26px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
 .od-article__meta .od-cat { background: #f3f4f6; border-radius: 999px; padding: 3px 11px; font-size: 13px; }
 .od-article__cover { width: 100%; border-radius: 12px; margin: 6px 0 34px; display: block; }
+.od-meta { margin: 0 0 32px; padding: 20px 24px; background: #f6f8fa; border-radius: 12px; font-size: 15px; }
+.od-meta__row { display: flex; gap: 14px; padding: 8px 0; }
+.od-meta__row + .od-meta__row { border-top: 1px solid var(--od-line); }
+.od-meta dt { flex: 0 0 130px; color: var(--od-muted); font-weight: 600; }
+.od-meta dd { margin: 0; color: var(--od-ink); }
+.od-meta dd ul { margin: 0; padding-left: 1.1em; }
+.od-meta dd li + li { margin-top: 2px; }
+@media (max-width: 560px) { .od-meta__row { flex-direction: column; gap: 2px; } .od-meta dt { flex: none; } }
 
 .od-prose { font-size: 17px; line-height: 1.78; color: #2b2f36; }
 .od-prose > :first-child { margin-top: 0; }

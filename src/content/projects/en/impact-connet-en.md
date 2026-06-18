@@ -10,6 +10,8 @@ categories:
   - Web Portal
 tags: []
 cover: /media/2016/12/Impact-connect-Copy@2x.png
+type: Web Portal
+year: 2016
 ---
 
 # IMPACT CONNECT

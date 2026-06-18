@@ -11,6 +11,12 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2016/12/ทาน่า-1.jpg
+type: Mobile Game (iOS, Android)
+year: 2015
+partners:
+  - American Red Cross
+  - USAID
+  - UNESCO Bangkok
 ---
 
 # TANAH : THE TSUNAMI & EARTHQUAKE FIGHTER

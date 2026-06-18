@@ -10,6 +10,15 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2016/12/หมอชาวบ้าน@2x.png
+issues:
+  - สุขภาพ
+  - การศึกษา
+type: Web Application
+year: 2011
+partners:
+  - มูลนิธิหมอชาวบ้าน
+  - สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)
+  - Change Fusion
 ---
 
 # หมอชาวบ้าน

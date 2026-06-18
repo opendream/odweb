@@ -10,6 +10,10 @@ categories:
   - Web Portal
 tags: []
 cover: /media/2017/01/Mask@2x.png
+type: Web Portal
+year: 2016
+partners:
+  - Stock Exchange of Thailand
 ---
 
 # STARTUP PORTAL

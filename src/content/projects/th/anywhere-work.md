@@ -10,6 +10,12 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/07/AW_thumbnail.jpg
+issues:
+  - ความเป็นอยู่
+type: พัฒนาคุณภาพชีวิต
+year: 2020-2021
+partners:
+  - เข้ารับการฟูมฟักจาก Banpu Champion for Change Season 10
 ---
 
 # โครงการ Anywhere Work

@@ -10,6 +10,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2017/01/makethedifference@2x.png
+type: Web Application
+year: 2015
+partners:
+  - TMB Bank
 ---
 
 # Make THE Difference

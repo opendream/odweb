@@ -10,6 +10,10 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2016/12/Impact-connect-Copy@2x.png
+issues:
+  - อื่น ๆ
+type: Web Portal
+year: 2016
 ---
 
 # Impact Connect

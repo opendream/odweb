@@ -11,6 +11,10 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2021/09/SBD_app_thumbnail.png
+type: Mobile Application, การดูแลสุขภาพด้วยตนเอง
+year: 2020
+partners:
+  - Rocket Media Lab
 ---
 
 # สบายดี แอปพลิเคชัน

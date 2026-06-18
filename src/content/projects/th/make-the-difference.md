@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2017/01/makethedifference@2x.png
+issues:
+  - อื่น ๆ
+type: Web Application
+year: 2015
+partners:
+  - ธนาคารทหารไทย
 ---
 
 # Make THE Difference

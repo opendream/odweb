@@ -11,6 +11,12 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2017/01/รักจัดหนัก@2x-1.png
+type: Mobile Game (iOS/Android)
+year: 2011
+partners:
+  - Film Maker of “Love Not Yet”
+  - Ork Pai Dern Co., Ltd
+  - Change Fusion
 ---
 
 # LOVE NOT YET

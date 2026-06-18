@@ -11,6 +11,12 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2018/10/TCFE-thumbnail-2.jpg
+issues:
+  - การเงินอิเล็กทรอนิกส์
+type: Web Application / Online Donation / Online Crowdfunding
+year: 2018
+partners:
+  - มูลนิธิเพื่อคนไทย
 ---
 
 # ร้อยพลังการศึกษา

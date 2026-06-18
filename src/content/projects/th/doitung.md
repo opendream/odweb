@@ -12,6 +12,10 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2021/03/thumbnail-doitung.jpg
+type: Web Application,Website, Online Payment
+year: 2018 – 2021
+partners:
+  - มูลนิธิแม่ฟ้าหลวง
 ---
 
 # DoiTung

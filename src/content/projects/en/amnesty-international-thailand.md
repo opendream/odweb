@@ -12,6 +12,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2017/06/amnesty_thumbnail-1.png
+type: Web Application, Online Donation
+year: 2016
+partners:
+  - AMNESTY INTERNATIONAL THAILAND
 ---
 
 ## AMNESTY INTERNATIONAL THAILAND

@@ -10,6 +10,12 @@ categories:
   - Other
 tags: []
 cover: /media/2019/07/vote62-banner@2x.png
+type: Web Site, Crowdsourcing
+year: 2019
+partners:
+  - The MOMENTUM
+  - a day BULLETIN
+  - iLaw
 ---
 
 # VOTE 62

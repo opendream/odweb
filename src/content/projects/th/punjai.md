@@ -11,6 +11,10 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2016/12/ปันใจ@2x.png
+issues:
+  - การเงินอิเล็กทรอนิกส์
+type: Web Application, Online Crowdfunding, Online Donation
+year: 2016
 ---
 
 # ปันใจ

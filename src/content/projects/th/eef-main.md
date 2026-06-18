@@ -12,6 +12,12 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/09/EEF-เว็บหลัก-thumbnail-1.jpg
+issues:
+  - อื่นๆ
+type: Web Application / Website Online Donation
+year: 2019 – 2021
+partners:
+  - กองทุนเพื่อความเสมอภาคทางการศึกษา (กสศ.)
 ---
 
 # เว็บไซต์กองทุนเพื่อความเสมอภาคทางการศึกษา (กสศ.)

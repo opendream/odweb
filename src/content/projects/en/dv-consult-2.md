@@ -9,6 +9,10 @@ categories:
   - Health
 tags: []
 cover: /media/2018/02/dv-consult-thumbnail-1.png
+type: Empower Telemedicine
+year: 2016-2017
+partners:
+  - Debaratana Vejjanukula Foundation
 ---
 
 # DV Consult

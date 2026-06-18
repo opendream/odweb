@@ -9,6 +9,15 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2019/07/vote62-banner@2x.png
+issues:
+  - อื่น ๆ
+  - Civic Tech
+type: Web Application, Crowdsourcing
+year: 2019
+partners:
+  - The MOMENTUM
+  - a day BULLETIN
+  - iLaw
 ---
 
 # VOTE 62

@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2018/10/aday-thumbnail@2x-1.jpg
+issues:
+  - อื่นๆ
+type: Website
+year: 2018
+partners:
+  - บริษัท เดย์ โพเอทส์ จำกัด
 ---
 
 # a day Magazine

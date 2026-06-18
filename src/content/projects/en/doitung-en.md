@@ -12,6 +12,10 @@ categories:
   - Website
 tags: []
 cover: /media/2021/03/thumbnail-doitung.jpg
+type: Web Application,Website, Online Payment
+year: 2021
+partners:
+  - Doi Tung
 ---
 
 # DoiTung

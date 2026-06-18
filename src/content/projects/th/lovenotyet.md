@@ -10,6 +10,15 @@ categories:
   - การศึกษา
 tags: []
 cover: /media/2017/01/รักจัดหนัก@2x-1.png
+issues:
+  - สุขภาพ
+  - การศึกษา
+type: Mobile Game (iOS/Android)
+year: 2011
+partners:
+  - ผู้สร้างหนัง รักจัดหนัก
+  - บริษัท ออกไปเดิน จำกัด
+  - Change Fusion
 ---
 
 # รักจัดหนัก

@@ -10,6 +10,12 @@ categories:
   - การศึกษา
 tags: []
 cover: /media/2021/07/606-thumbnail.jpg
+issues:
+  - การศึกษา
+type: Mobile Game (iOS, Android)
+year: 2020
+partners:
+  - กองทุนพัฒนาสื่อปลอดภัยและสร้างสรรค์
 ---
 
 # 606 FAKE NEWS GAME

@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2021/09/pankan-thumbnail-.jpg
+issues:
+  - อื่นๆ
+type: Website
+year: 2021
+partners:
+  - มูลนิธิยุวพัฒน์
 ---
 
 # ปันกัน

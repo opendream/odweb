@@ -11,6 +11,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2021/03/thumbnail-ระบบบริจาคUnicef.jpg
+issues:
+  - อื่นๆ
+type: Web Application / Online Donation
+year: 2020
+partners:
+  - Unicef Thailand
 ---
 
 # ระบบบริจาค UNICEF Thailand

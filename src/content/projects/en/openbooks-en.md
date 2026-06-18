@@ -10,6 +10,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2018/10/openbooks-thumbnail-1@2x.jpg
+type: Web Application / Online Payment
+year: 2018
+partners:
+  - Openbooks Publishing
 ---
 
 # openbooks

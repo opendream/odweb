@@ -20,7 +20,12 @@ const posts = defineCollection({
 });
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
-  schema: baseSchema,
+  schema: baseSchema.extend({
+    issues: z.array(z.string()).default([]),   // ประเด็น (displayed; sparse on source)
+    type: z.string().optional(),               // ประเภท
+    year: z.union([z.number(), z.string()]).optional(), // ปีที่พัฒนา
+    partners: z.array(z.string()).default([]),  // ร่วมกับองค์กร
+  }),
 });
 const policies = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/policies' }),

@@ -13,6 +13,11 @@ categories:
   - Web Application
 tags: []
 cover: /media/2021/07/taejai-thumbnail.png
+type: Web Application, Online Donation, Online Crowdfunding
+year: 2016
+partners:
+  - Change Fusion
+  - Khonthai Foundation
 ---
 
 # TAEJAI

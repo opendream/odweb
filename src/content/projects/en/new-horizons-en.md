@@ -10,6 +10,10 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2021/03/newhorizons-thumbnail.png
+type: Mobile Game (iOS, Android)
+year: 2020
+partners:
+  - PTT Public Company Limited
 ---
 
 # New Horizons

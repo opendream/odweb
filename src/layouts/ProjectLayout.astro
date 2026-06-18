@@ -1,15 +1,34 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-interface Props { title: string; lang: 'th' | 'en'; path: string; cover?: string; categories?: string[]; description?: string; }
-const { title, lang, path, cover, categories = [], description } = Astro.props;
+interface Props {
+  title: string; lang: 'th' | 'en'; path: string; cover?: string; description?: string;
+  issues?: string[]; type?: string; year?: string | number; partners?: string[];
+}
+const { title, lang, path, cover, description, issues = [], type, year, partners = [] } = Astro.props;
+const L = lang === 'en'
+  ? { issue: 'Issue', type: 'Type', year: 'Year', partners: 'Partners' }
+  : { issue: 'ประเด็น', type: 'ประเภท', year: 'ปีที่พัฒนา', partners: 'ร่วมกับองค์กร' };
+const rows = [
+  issues.length ? { label: L.issue, value: issues } : null,
+  type ? { label: L.type, value: type } : null,
+  year ? { label: L.year, value: String(year) } : null,
+  partners.length ? { label: L.partners, value: partners } : null,
+].filter(Boolean) as { label: string; value: string | string[] }[];
 ---
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
-    {categories.length > 0 && (
-      <p class="od-article__meta">{categories.map((c) => <span class="od-cat">{c}</span>)}</p>
-    )}
     {cover && <img class="od-article__cover" src={cover} alt={title} />}
+    {rows.length > 0 && (
+      <dl class="od-meta">
+        {rows.map((r) => (
+          <div class="od-meta__row">
+            <dt>{r.label}</dt>
+            <dd>{Array.isArray(r.value) ? <ul>{r.value.map((v) => <li>{v}</li>)}</ul> : r.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
     <div class="od-prose"><slot /></div>
   </article>
 </BaseLayout>

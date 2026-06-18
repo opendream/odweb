@@ -11,6 +11,14 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/07/taejai-thumbnail.png
+issues:
+  - การเงินอิเล็กทรอนิกส์
+type: Web Application, Online Donation, Online Crowdfunding
+year: 2016
+partners:
+  - Change Fusion
+  - มูลนิธิเพื่อคนไทย
+  - Thai Young Philanthropist Network (TYPN)
 ---
 
 # เทใจ

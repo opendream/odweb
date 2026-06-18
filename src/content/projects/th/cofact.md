@@ -11,6 +11,13 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/07/cofact-thumbnail.jpg
+type: Web Application / Chatbot
+year: 2020
+partners:
+  - สสส.
+  - Center for Humanitarian Dialogue (HD)
+  - Friedrich Naumann Foundation for Freedom (FNF)
+  - ChangeFusion
 ---
 
 # Cofact

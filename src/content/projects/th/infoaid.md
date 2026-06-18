@@ -10,6 +10,10 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2021/06/infoaid-thumbnail.jpg
+type: Web Application
+year: 2020
+partners:
+  - Change Fusion
 ---
 
 # InfoAid

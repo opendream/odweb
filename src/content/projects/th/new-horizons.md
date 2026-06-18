@@ -10,6 +10,12 @@ categories:
   - การศึกษา
 tags: []
 cover: /media/2021/03/newhorizons-thumbnail.png
+issues:
+  - การศึกษา
+type: Mobile Game (iOS, Android)
+year: 2019
+partners:
+  - PTT Public Company Limited
 ---
 
 # New Horizons

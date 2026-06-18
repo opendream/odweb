@@ -10,6 +10,12 @@ categories:
   - การศึกษา
 tags: []
 cover: /media/2023/01/banner-logo-606-echo-school@2x.jpg
+issues:
+  - การศึกษา
+type: Mobile Game (iOS, Android)
+year: 2023
+partners:
+  - กองทุนพัฒนาสื่อปลอดภัยและสร้างสรรค์
 ---
 
 # 606 โรงเรียนเสียงสะท้อน

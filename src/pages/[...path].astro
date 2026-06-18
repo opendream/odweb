@@ -41,7 +41,7 @@ if (props.kind !== 'page') {
     <Fragment set:html={props.html} />
   </BaseLayout>
 ) : props.kind === 'project' ? (
-  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} categories={d.categories} description={d.excerpt}>
+  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt} issues={d.issues} type={d.type} year={d.year} partners={d.partners}>
     <Content />
   </ProjectLayout>
 ) : props.kind === 'policy' ? (

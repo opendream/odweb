@@ -11,6 +11,8 @@ categories:
   - Web Application
 tags: []
 cover: /media/2019/08/yak_data_thumbnail@2x.jpg
+type: Open Data
+year: 2019
 ---
 
 # YAK DATA project

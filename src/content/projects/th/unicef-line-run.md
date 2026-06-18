@@ -12,6 +12,13 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2017/11/unicef-thumbnail.png
+issues:
+  - การเงินอิเล็กทรอนิกส์
+type: Web Application, Online Donation, Online Ticketing System
+year: 2017
+partners:
+  - UNICEF Thailand
+  - Pixel One
 ---
 
 # UNICEF LINE RUN

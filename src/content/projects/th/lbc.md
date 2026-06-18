@@ -10,6 +10,12 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/09/LBC-thumbnail-.jpg
+issues:
+  - อื่นๆ
+type: Website
+year: 2021
+partners:
+  - กองทุนเพื่อความเสมอภาคทางการศึกษา (กสศ.)
 ---
 
 # เว็บไซต์ Little Big Community

@@ -11,6 +11,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2018/10/TCFE-thumbnail-1.jpg
+type: Web Application / Online Donation / Online Crowdfunding
+year: 2018
+partners:
+  - Khonthai Foundation
 ---
 
 # Thailand Collaboration for Education : TCFE

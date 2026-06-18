@@ -10,6 +10,14 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2018/04/Doctorme_Banner@2x.jpg
+issues:
+  - สุขภาพ
+type: Mobile Application (iOS/Android)
+year: 2015
+partners:
+  - มูลนิธิหมอชาวบ้าน
+  - สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)
+  - Change Fusion
 ---
 
 # DoctorMe

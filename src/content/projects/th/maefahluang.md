@@ -10,6 +10,12 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/09/thumbnail-maefahluang-1.jpg
+issues:
+  - อื่นๆ
+type: Web Application
+year: 2020
+partners:
+  - กองทุนเพื่อความเสมอภาคทางการศึกษา
 ---
 
 # มูลนิธิแม่ฟ้าหลวง

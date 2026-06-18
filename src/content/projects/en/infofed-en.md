@@ -10,6 +10,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2018/10/infofed-thumbnail.png
+type: Web Application
+year: 2017
+partners:
+  - Infofed Co,. Ltd
 ---
 
 # INFOFED | Virtual Tour Platform

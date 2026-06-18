@@ -10,6 +10,11 @@ categories:
   - Interactive Infographic
 tags: []
 cover: /media/2016/12/interactive-info-copy@2x.png
+type: Interactive Infographic
+year: 2014-2015
+partners:
+  - Folk Doctor Foundation
+  - Thai Health Promotion Foundation
 ---
 
 # สร้างเสริมสุขภาพดีทั้ง 3 อ.

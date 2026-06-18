@@ -10,6 +10,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2018/10/aday-thumbnail@2x-1.jpg
+type: Web Application
+year: 2018
+partners:
+  - day poets co., ltd.
 ---
 
 # a day Magazine

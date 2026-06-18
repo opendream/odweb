@@ -11,6 +11,10 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/06/thumbnail-youthpoll.jpg
+type: Web Application
+year: 2020
+partners:
+  - สสส.
 ---
 
 # YOUTH POLL

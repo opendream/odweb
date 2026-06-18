@@ -1,0 +1,5 @@
+{
+  "_note": "Central project config. `order`: slugs in the order they should appear in the /projects listing (any not listed fall back to newest-first after the ordered ones). `featured`: slugs shown on the home showcase (Phase 3), in order. Edit to curate.",
+  "th": { "featured": [], "order": [] },
+  "en": { "featured": [], "order": [] }
+}

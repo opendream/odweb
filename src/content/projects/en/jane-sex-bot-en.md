@@ -12,6 +12,8 @@ categories:
   - Type
 tags: []
 cover: /media/2019/08/jane_sexbot_thumbnail.png
+type: Chatbot, Page
+year: 2019
 ---
 
 # Jane Sex Bot

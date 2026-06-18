@@ -10,6 +10,10 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2017/01/สายฟ้า@2x-1.png
+type: Mobile Game (iOS/Android)
+year: 2014
+partners:
+  - UNESCO Bangkok
 ---
 
 # SAIFAH : THE FLOOD FIGHTER

@@ -11,6 +11,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2017/01/สำนัก6@2x.png
+type: Web Application / Intranet
+year: 2016
+partners:
+  - Thai Health Promotion Foundation
 ---
 
 # Expenditure Tracking System for Health Promotion Innovation and Open Grant Plan (Sector 6)

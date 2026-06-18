@@ -9,6 +9,10 @@ categories:
   - Graphic Design
   - Other
 tags: []
+type: Graphic Design
+year: 2016
+partners:
+  - Office of The National Broadcasting and Telecommunications Commission
 ---
 
 # INFOGRAHPIC (NBCT)

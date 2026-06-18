@@ -9,6 +9,8 @@ categories:
   - Education
   - Mobile Game
 tags: []
+type: Mobile Game (Android)
+year: 2017
 ---
 
 # JUDIES

@@ -12,6 +12,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2017/11/bnk48-thumbnail-1.png
+type: Web Application, Online Payment
+year: 2017
+partners:
+  - MADVR
 ---
 
 # BNK48

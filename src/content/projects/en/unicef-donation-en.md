@@ -11,6 +11,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2021/03/thumbnail-ระบบบริจาคUnicef.jpg
+type: Web Application / Online Donation
+year: 2020
+partners:
+  - UNICEF Thailand
 ---
 
 # Launching UNICEF Thailand’s New Donation Website

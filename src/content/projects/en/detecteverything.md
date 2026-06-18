@@ -10,6 +10,10 @@ categories:
   - Open Data
   - Project
 tags: []
+type: Surveillance System
+year: 2024-Present
+partners:
+  - Skoll Foundation
 ---
 
 # The DetectEverything Project

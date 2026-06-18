@@ -11,6 +11,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2021/03/thumbnail-ระบบรายงานความก้าวหน้าEN.jpg
+type: Web Application
+year: 2020
+partners:
+  - Equitable Education Fund (EEF
 ---
 
 # Project Tracking System for the Equitable Education Fund (EEF)

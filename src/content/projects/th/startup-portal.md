@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2017/01/Mask@2x.png
+issues:
+  - อื่น ๆ
+type: Web Portal
+year: 2016
+partners:
+  - ตลาดหลักทรัพย์แห่งประเทศไทย
 ---
 
 # Startup Portal

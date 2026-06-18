@@ -11,6 +11,12 @@ categories:
   - Web Application
 tags: []
 cover: /media/2016/12/หมอชาวบ้าน@2x.png
+type: Web Application
+year: 2011
+partners:
+  - Folk Doctor Foundation
+  - Thai Health Promotion Foundation
+  - Change Fusion
 ---
 
 # FOLK DOCTOR

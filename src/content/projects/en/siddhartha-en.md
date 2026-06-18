@@ -12,6 +12,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2016/12/logo-สิทธารถะ@2x-scaled.jpg
+type: Web Application / Online Payment
+year: 2016
+partners:
+  - Openbooks Publishing
 ---
 
 # SIDDHARTHA

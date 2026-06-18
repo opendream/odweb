@@ -10,6 +10,13 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2018/10/openbooks-thumbnail-1@2x.jpg
+issues:
+  - การเงินอิเล็กทรอนิกส์
+  - อื่นๆ
+type: Web Application / Online Payment
+year: 2018
+partners:
+  - สำนักพิมพ์ Openbooks
 ---
 
 # openbooks

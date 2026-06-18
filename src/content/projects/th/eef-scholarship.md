@@ -10,6 +10,12 @@ categories:
   - อื่น ๆ
 tags: []
 cover: /media/2021/09/thumbnail-eef-scholarship.png
+issues:
+  - อื่นๆ
+type: Web Application
+year: 2020
+partners:
+  - กองทุนเพื่อความเสมอภาคทางการศึกษา
 ---
 
 # ระบบบริหารจัดการและดูแลนักศึกษาทุนนวัตกรรมสายอาชีพชั้นสูงออนไลน์

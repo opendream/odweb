@@ -11,6 +11,12 @@ categories:
 tags: []
 cover: /media/2018/04/Doctorme_Banner@2x.jpg
 excerpt: DoctorMe is a mobile self-care Application that enables users to take care of themselves preliminarily or administer first aid when minor ailments arise. The App aims to promote wellbeing among users so that they have the appropriate knowledge and tools to cope with various health conditions.
+type: Mobile Application (iOS/Android)
+year: 2015
+partners:
+  - Folk Doctor Foundation
+  - Thai Health Promotion Foundation
+  - Change Fusion
 ---
 
 # DoctorMe

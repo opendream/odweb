@@ -12,6 +12,11 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2021/07/SBD-commu-thumbnail-.jpg
+type: ระบบดูแลสุขภาพสมาชิกในชุมชน
+year: 2020
+partners:
+  - สถาบันพัฒนาสุขภาพองค์รวม (สพบ.)
+  - สำนักงานนวัตกรรมแห่งชาติ (NIA)
 ---
 
 # Sabaidee Community

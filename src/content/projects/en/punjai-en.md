@@ -13,6 +13,8 @@ categories:
   - Web Application
 tags: []
 cover: /media/2016/12/ปันใจ@2x.png
+type: Web Application, Online Crowdfunding, Online Donation
+year: 2016
 ---
 
 # PUNJAI

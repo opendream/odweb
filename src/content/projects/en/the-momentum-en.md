@@ -10,6 +10,10 @@ categories:
   - Web Application
 tags: []
 cover: /media/2018/02/the-momentum-thumbnail-1.png
+type: Web Application
+year: 2017
+partners:
+  - The Momentum
 ---
 
 # The Momentum

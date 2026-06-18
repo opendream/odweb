@@ -10,6 +10,12 @@ categories:
   - Project
 tags: []
 cover: /media/2016/12/PODD@2.png
+type: Surveillance System
+year: 2014-2016
+partners:
+  - Skoll Global Threats Fund
+  - Faculty of Veterinary Science, Chiangmai University
+  - One Health Network, Chiangmai
 ---
 
 # PODD

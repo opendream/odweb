@@ -10,6 +10,13 @@ categories:
   - สุขภาพ
 tags: []
 cover: /media/2016/12/interactive-info-copy@2x.png
+issues:
+  - สุขภาพ
+type: Interactive Infographic
+year: 2014-2015
+partners:
+  - มูลนิธิหมอชาวบ้าน
+  - สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)
 ---
 
 # Health Promotion on Nutrition, Exercise, and Emotion Management

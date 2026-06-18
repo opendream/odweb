@@ -10,6 +10,10 @@ categories:
   - Mobile Game
 tags: []
 cover: /media/2017/01/ผู้พิทักษ์@2x.png
+type: Mobile Game (iOS)
+year: 2015
+partners:
+  - Change Fusion
 ---
 
 # CLIMATE CHANGE

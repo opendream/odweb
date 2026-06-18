@@ -10,6 +10,10 @@ categories:
   - ความเป็นอยู่
 tags: []
 cover: /media/2021/07/sm-thumbnail-2.jpg
+type: Mobile Application
+year: 2020
+partners:
+  - Air Asia Foundation
 ---
 
 # Small World

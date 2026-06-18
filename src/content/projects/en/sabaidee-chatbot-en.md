@@ -11,6 +11,10 @@ categories:
   - Livelihood
 tags: []
 cover: /media/2020/06/sbd_thumbnail.png
+type: Chatbot
+year: 2020
+partners:
+  - National Innovation Agency (PublicOrganization) (NIA)
 ---
 
 # Sabaidee Bot

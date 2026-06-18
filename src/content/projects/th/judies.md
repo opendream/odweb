@@ -9,6 +9,8 @@ categories:
   - Mobile Game
   - การศึกษา
 tags: []
+type: Mobile Game (Android)
+year: 2017 / 2018
 ---
 
 # จูดี้ (JUDIES)
