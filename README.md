@@ -1,59 +1,91 @@
-# odweb — Astro static site (Dockerized)
+# opendream.co.th
 
-Faithful static rebuild of opendream.co.th (Phase 1: posts). **Built and served entirely in
-Docker — the host needs only Docker** (no Node / `node_modules` on the host).
+The Opendream company website — a fast, static rebuild of our long-running WordPress site,
+designed so content stays easy to update while the site itself is lightweight and secure.
 
-- **SSG:** Astro 5 · **Serve:** nginx (static) · **i18n:** TH at `/`, EN at `/en/`
-- **Content source:** the local WordPress Docker stack in `../local` (http://localhost:8080)
+> **Open by Design. Impact by Default.**
 
-## Run (build + serve)
+## The story
 
-```bash
-docker compose up -d --build      # build dist/ in Docker, serve at http://localhost:4321
-docker compose down               # stop
-docker compose up -d --build web  # rebuild after content/code changes
-```
+opendream.co.th ran on **WordPress** (with a Divi theme) for over a decade. It had grown heavy and
+hard to maintain, and an aging install is a security liability. We rebuilt it as a **static site**
+with three goals:
 
-Open **http://localhost:4321** (compare against the WordPress source at http://localhost:8080).
+1. **Safer** — no database, no PHP, no plugins to patch; just pre-built HTML/CSS served from a CDN.
+2. **Lighter & faster** — static pages, self-hosted fonts, a tiny (~15 KB) stylesheet, no heavy framework.
+3. **Sustainable to edit** — content lives as **Markdown/MDX in git**, cleanly separated from the
+   templates. Adding a blog post or project is just writing a markdown file; the designed pages are
+   composed from a small set of reusable components.
 
-## Regenerate content from the local WordPress
+The original look — bilingual **TH/EN**, the magazine-style project grid, the page designs — is
+preserved, but the WordPress/Divi scaffolding is **entirely gone**: every style is a clean `.od-*`
+rule we own, and there are no third-party CDNs at runtime.
 
-Extraction reads the WP REST API, which the `disable-json-api` plugin blocks — toggle it on the
-local stack (it's a disposable copy; never touch prod):
+## Stack
 
-```bash
-# 1) enable REST on the local WP
-(cd ../local && docker compose --profile tools run --rm -T wpcli wp plugin deactivate disable-json-api)
+- **[Astro](https://astro.build) 5** — static site generator · **nginx** (in Docker) serves the build
+- **Markdown / MDX** content with typed frontmatter (Astro content collections)
+- **Self-hosted** Noto Sans Thai Looped (SIL OFL) — no external font CDN
+- **i18n:** Thai at `/`, English at `/en/` · **Deploy target:** Cloudflare Pages (static `dist/`)
 
-# 2) extract posts → src/content/posts/{th,en} + media → public/media  (Node runs in a container)
-docker compose --profile tools run --rm extract
+Built and served **entirely in Docker** — the only thing you need installed is Docker.
 
-# 3) re-block REST on the local WP
-(cd ../local && docker compose --profile tools run --rm -T wpcli wp plugin activate disable-json-api)
-
-# 4) rebuild the static site with the new content
-docker compose up -d --build web
-```
-
-Nav menus (`src/data/nav.{th,en}.json`) are exported separately via wp-cli — see the Phase 1 plan.
-
-## Pipeline unit tests
+## Quick start
 
 ```bash
-docker compose --profile tools run --rm test   # Vitest tests for scripts/lib/convert.mjs
+docker compose up -d --build       # build + serve at http://localhost:4321
+docker compose up -d --build web   # rebuild after editing content/code
+docker compose down                # stop
 ```
 
-## Layout
+Open **http://localhost:4321**. Run the content-pipeline unit tests:
 
-- `Dockerfile` — multi-stage: Node builds `dist/`, nginx serves it.
-- `nginx.conf` — pretty-URL static serving for Astro's output.
-- `scripts/extract.mjs` + `scripts/lib/convert.mjs` — WP→markdown extraction (tested).
-- `src/content/posts/{th,en}/*.md` — generated content. `src/{layouts,components,pages,styles}` — the site.
-- `public/media`, `public/fonts` — assets.
+```bash
+docker compose --profile tools run --rm test
+```
 
-## Notes
+## Project structure
 
-- `node_modules`/`dist`/`.astro` are intentionally **not** on the host (see `.dockerignore`);
-  the build creates them inside the image. The `extract`/`test` containers keep their deps in the
-  `extract_modules` named volume.
-- Cloudflare Pages deploy is **deferred** until the whole site (projects + pages) is migrated.
+```
+src/
+  content/      markdown/MDX content — the source of truth
+    posts/        blog posts            (th/ + en/)
+    projects/     portfolio projects    (th/ + en/)
+    pages/        designed pages (about, contact, join-us, announcement) as MDX
+    policies/     privacy / policy pages
+  layouts/      BaseLayout + per-type layouts (Post, Project, Page, Composed)
+  components/   chrome (Header/Footer/Nav/LangSwitcher) + content/ (Hero, Blurbs, CTA, Map, …)
+  pages/        routes — home, listings, and [...path] (the content router)
+  styles/       modern.css (the .od-* design system) + fonts.css
+  data/         nav menus + projects.config.json (home showcase + listing order)
+public/         media, self-hosted fonts, robots.txt
+scripts/        content extraction/transform tooling (+ unit tests in scripts/lib)
+docs/           the full migration record — specs + plans, phase by phase
+```
+
+## Editing content
+
+- **Blog post / project** — add a markdown file under `src/content/posts/<lang>/` or
+  `src/content/projects/<lang>/` with the standard frontmatter (`title, date, lang, slug, path,
+  cover, …`). It renders at its `path`, in both the listing and at its own URL.
+- **Designed pages** (about/contact/…) — MDX in `src/content/pages/`, composed from the components
+  in `src/components/content/` (`<Hero>`, `<Blurbs>`, `<CTA>`, `<Map>`, `<Button>`, …).
+- **Home showcase & project order** — curated in `src/data/projects.config.json`.
+
+Then `docker compose up -d --build web` and refresh.
+
+## Regenerating from the original site
+
+The committed markdown is canonical. The `scripts/` (and the `extract` Docker service) can
+re-derive content from the original WordPress source, but that's only for a bulk re-import and needs
+access to that source — everyday editing is just markdown, no WordPress required.
+
+## Licensing
+
+Site **content** is licensed **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)**.
+The Noto Sans Thai Looped font is under the **SIL Open Font License** (see `public/fonts/OFL.txt`).
+
+## More
+
+- **`docs/`** — the phase-by-phase modernisation record (foundation → content → de-Divi → cleanup).
+- **`CLAUDE.md`** — orientation for contributors (and AI assistants) working in this repo.

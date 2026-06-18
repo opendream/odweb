@@ -13,7 +13,7 @@
 - **Content:** markdown-in-git, edited by developers
 - **Conversion:** render-and-scrape the local Docker site (it renders Divi correctly)
 - **Contact form:** replace with an email link (implemented in a later phase)
-- **Source of truth:** `backups/20260616-clean-final/`, served locally at `http://localhost:8080` via `local/` (WP 5.7.15, malware-free, despammed).
+- **Source of truth:** `backups/20260616-clean-final/`, served locally at `http://localhost:8080` via `local/` (WP 5.7.15, clean verified snapshot).
 
 This spec covers **Phase 1 only**. Later phases (separate specs): P2 projects, P3 designed
 pages incl. home, P4 SEO/redirects + DNS cutover + WP decommission.

@@ -22,7 +22,7 @@ partners:
 
 ### Problem & Concept
 
-![](/media/2026/02/Screenshot-2026-02-16-at-5.50.11 PM.png)
+![](/media/2026/02/Screenshot-2026-02-16-at-5.50.11-PM.png)
 
 Intensive livestock farming, driven by urbanization and global population growth, has altered the human-animal interface, creating opportunities for the spillover and amplification of emerging zoonotic diseases. 
 
