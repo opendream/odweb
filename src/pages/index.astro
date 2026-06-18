@@ -1,10 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import manifest from '../content/pages/manifest.json';
-import html from '../content/pages/th/home.html?raw';
-import css from '../styles/pages/th-home.css?raw';
-const page = manifest.find((m) => m.path === '/' && m.lang === 'th');
+import { getCollection } from 'astro:content';
+import projectConfig from '../data/projects.config.json';
+const all = await getCollection('projects');
+const bySlug = Object.fromEntries(all.map((p) => [p.data.slug, p.data]));
+const tiles = (projectConfig.th.featured ?? []).map((s) => bySlug[s]).filter(Boolean);
 ---
-<BaseLayout title={page?.title ?? 'Opendream'} description={page?.description} lang="th" path="/" altPath="/en/" pageStyles={css} bodyClass={page?.bodyClass}>
-  <Fragment set:html={html} />
+<BaseLayout title="Opendream — Sustainable Social Impact with Technology" lang="th" path="/" altPath="/en/">
+  <section class="od-home-hero">
+    <p class="od-home-hero__pre">We create</p>
+    <h1 class="od-home-hero__title">Sustainable Social Impact<br />with <span>Technology</span></h1>
+  </section>
+  <section class="od-section">
+    <div class="od-container">
+      <div class="od-showcase">
+        {tiles.map((t) => (
+          <a href={t.path} class="od-showcase__tile">
+            {t.cover && <img src={t.cover} alt={t.title} />}
+            <div class="od-showcase__cap">
+              <span class="od-showcase__name">{t.title}</span>
+              {t.type && <span class="od-showcase__type">{t.type}</span>}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>

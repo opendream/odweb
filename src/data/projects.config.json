@@ -1,5 +1,11 @@
 {
-  "_note": "Central project config. `order`: slugs in the order they should appear in the /projects listing (any not listed fall back to newest-first after the ordered ones). `featured`: slugs shown on the home showcase (Phase 3), in order. Edit to curate.",
-  "th": { "featured": [], "order": [] },
-  "en": { "featured": [], "order": [] }
+  "_note": "Central project config. `featured`: slugs shown on the home showcase (in order). `order`: slugs for the /projects listing order (any not listed fall back to newest-first). Edit to curate.",
+  "th": {
+    "featured": ["podd", "doctorme", "sabaidee-chatbot", "taejai", "eef-proposal", "unicef-donation", "yak-data-project", "vote62", "corrupt", "judies"],
+    "order": []
+  },
+  "en": {
+    "featured": ["podd-en", "doctorme-en", "sabaidee-chatbot-en", "taejai", "eef-proposal", "unicef-donation-en", "yak-data-project-en", "vote62-en", "corrupt-en", "judies-en"],
+    "order": []
+  }
 }

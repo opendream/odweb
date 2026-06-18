@@ -94,6 +94,20 @@
   .od-menu__lang a { display: inline-block; margin: 8px 24px; }
 }
 
+/* ===== home (hero + project showcase) ===== */
+.od-home-hero { text-align: center; padding: 76px 24px 4px; }
+.od-home-hero__pre { font-size: 18px; color: var(--od-muted); margin: 0 0 6px; }
+.od-home-hero__title { font-size: 40px; line-height: 1.25; font-weight: 800; color: var(--od-ink); margin: 0; }
+.od-home-hero__title span { color: var(--od-accent); }
+.od-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+.od-showcase__tile { display: block; text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; background: #f3f4f6; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.od-showcase__tile img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; transition: transform .4s ease; }
+.od-showcase__tile:hover img { transform: scale(1.04); }
+.od-showcase__cap { padding: 16px 18px; }
+.od-showcase__name { display: block; font-size: 18px; font-weight: 700; color: var(--od-ink); }
+.od-showcase__type { display: block; font-size: 14px; color: var(--od-muted); margin-top: 3px; }
+@media (max-width: 640px) { .od-home-hero { padding: 44px 20px 4px; } .od-home-hero__title { font-size: 29px; } .od-showcase { grid-template-columns: 1fr; gap: 20px; } }
+
 /* ===== content components (MDX) ===== */
 /* Hero banner (bg color/image via props; white text when over a bg) */
 .od-hero { background-position: center; background-size: cover; background-repeat: no-repeat; }
