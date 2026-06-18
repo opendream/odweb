@@ -3,5 +3,6 @@
 @import "./fonts.css";   /* self-hosted Noto Sans Thai Looped @font-face (OFL) */
 @import "./modern.css";
 
+*, *::before, *::after { box-sizing: border-box; }
 :root { color-scheme: light; }
 img { max-width: 100%; height: auto; }
