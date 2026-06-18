@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Thai Looped', system-ui, -apple
 .od-home-hero__title span { color: var(--od-accent); }
 /* Full-bleed magazine grid: square covers touching edge-to-edge — 2 columns on landscape
    (wide) screens, 1 full-width column on portrait (vertical) screens. Name + subtle zoom on hover. */
-.od-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.od-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: var(--od-max); margin: 0 auto; }
 @media (orientation: portrait) { .od-showcase { grid-template-columns: 1fr; } }
 .od-showcase__tile { position: relative; display: block; overflow: hidden; aspect-ratio: 1 / 1; background: #f3f4f6; text-decoration: none; color: inherit; }
 .od-showcase__tile img, .od-showcase__tile .od-ph { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s ease; }
