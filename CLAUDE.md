@@ -1,120 +1,102 @@
 # CLAUDE.md
 
-This file guides Claude Code (claude.ai/code) when working in this repository — the Astro
-static rebuild of **opendream.co.th**.
+This file guides Claude Code and other contributors working in this repository, the Astro static
+rebuild of **opendream.co.th**.
 
 ## What this is
 
-A faithful static rebuild of opendream.co.th (a bilingual **TH/EN** site, originally WordPress)
-in **Astro**, intended to replace WordPress. Built and served entirely in **Docker**; content is
-**markdown-in-git**. The original site's design is reproduced faithfully.
+opendream.co.th rebuilt as a fast, fully static **Astro** site that replaces a legacy WordPress and
+Divi install. It is bilingual **TH and EN**, content is **markdown and MDX in git**, and it is built
+and served entirely in **Docker**. The original look is preserved, but all the WordPress and Divi
+scaffolding is gone: every style is a clean `.od-*` rule and there are no third-party CDNs at runtime.
+The migration is complete and the repo is published at `opendream/odweb`.
 
-## Stack & conventions
+## Stack and conventions
 
-- **Astro 5** (static output), served by **nginx** in Docker.
-- **i18n:** Thai is the default at `/`; English at `/en/` (mirrors the original).
-- **URL preservation:** each content entry keeps its original URL via its frontmatter `path`;
-  `src/pages/[...path].astro` routes posts at those exact paths.
-- **Faithful replica:** theme CSS (Divi-based `opendraemrises`) is ported into
-  `src/styles/vendor/`; fonts self-hosted in `public/fonts`.
-- **Content:** markdown in `src/content/posts/{th,en}/` (schema in `src/content.config.ts`);
-  media in `public/media`; nav menus in `src/data/nav.{th,en}.json`.
+- **Astro 5** static output, served by **nginx** in Docker.
+- **i18n**: Thai is the default at `/`, English at `/en/`.
+- **URL preservation**: each content entry keeps its original URL via its frontmatter `path`;
+  `src/pages/[...path].astro` routes posts, projects, policies, and MDX pages at those exact paths.
+- **Styling**: one stylesheet, `src/styles/modern.css`, the `.od-*` design system. `global.css`
+  imports it plus `fonts.css` and base resets, including a site-wide `box-sizing: border-box`. There
+  is no vendor or Divi CSS.
+- **Font**: one self-hosted typeface, **Noto Sans Thai Looped** under the SIL OFL, covering Thai and
+  Latin. The woff2 subsets live in `public/fonts/` with `public/fonts/OFL.txt`, and the `@font-face`
+  rules are in `src/styles/fonts.css`. No external font CDN.
+- **Content**: markdown and MDX under `src/content/` with typed frontmatter, schema in
+  `src/content.config.ts`. Media in `public/media`; nav menus in `src/data/nav.{th,en}.json`.
 
-## Dev workflow (Docker — the host needs only Docker)
+## Dev workflow
+
+Everything runs in Docker; the host needs only Docker. A `Makefile` wraps the tasks:
 
 ```bash
-docker compose up -d --build          # build dist/ + serve at http://localhost:4321
-docker compose up -d --build web      # rebuild after content/code changes
-docker compose down                   # stop
-docker compose --profile tools run --rm test     # Vitest pipeline tests
+make up        # build and serve at http://localhost:4321
+make rebuild   # rebuild after editing content or code
+make down      # stop
+make test      # run the content-pipeline unit tests
+make help      # list every target
 ```
-Regenerating content from the WordPress source (the local dev WordPress stack) uses the
-`extract` service — see `README.md`. Builds have **no build-time dependency** on WordPress; the
-committed markdown + media are the source of truth.
 
-## Content pipeline
-
-- `scripts/extract.mjs` reads the WordPress source's REST API and writes markdown + downloads
-  media. Pure transforms (HTML→markdown, URL/path rewriting, frontmatter) live in
-  `scripts/lib/convert.mjs` and are unit-tested (`scripts/lib/convert.test.mjs`).
-- Run the tests after changing `convert.mjs`.
+The raw equivalents are `docker compose up -d --build`, then `... --build web` to rebuild,
+`docker compose down`, and `docker compose --profile tools run --rm test`. Builds have no build-time
+dependency on WordPress; the committed markdown and media are the source of truth.
 
 ## Structure
 
-- `src/layouts/` — `BaseLayout` (head/meta/hreflang), `PostLayout`.
-- `src/components/` — `Header`, `Footer`, `Nav`, `LangSwitcher`, `PostCard`.
-- `src/pages/` — `[...path].astro` (post detail, path-preserving), `blog/` + `en/blogs/` listings, `index.astro`.
-- `scripts/` — extraction + tested transform lib. `public/` — media + fonts.
-- `Dockerfile` (multi-stage Node→nginx), `docker-compose.yml`, `nginx.conf`.
+- `src/content/` markdown and MDX content: `posts/`, `projects/`, `pages/` for the MDX designed
+  pages, and `policies/`. Schema in `src/content.config.ts`.
+- `src/layouts/` `BaseLayout` for head, meta, and hreflang, plus `PostLayout`, `ProjectLayout`,
+  `PageLayout`, and `ComposedLayout`.
+- `src/components/` chrome: `Header`, `Footer`, `Nav`, `LangSwitcher`, `PostCard`, `ProjectCard`.
+  Reusable MDX building blocks are in `src/components/content/`: `Hero`, `Section`, `Blurbs`, `Blurb`,
+  `Gallery`, `Map`, `CTA`, `Button`.
+- `src/pages/` routes: `index.astro` and `en/index.astro` for the home, the blog and projects
+  listings, and `[...path].astro` which routes posts, projects, policies, and MDX pages.
+- `src/styles/` `modern.css`, `global.css`, `fonts.css`.
+- `src/data/` `nav.{th,en}.json`, `projects.config.json`, `translations.json`.
+- `src/lib/gradient.mjs` deterministic gradient for cover-less project placeholders.
+- `scripts/` content extraction and transform tooling, with unit tests in `scripts/lib/`.
+- `public/` media, self-hosted fonts, robots.txt. `Dockerfile` is multi-stage Node then nginx;
+  `docker-compose.yml`, `nginx.conf`.
 
-## Migration phases
+## Content model and ordering
 
-- **Phase 1 — DONE:** foundation + i18n + design system + extraction pipeline + all posts
-  (TH/EN) rendering at preserved URLs. See `docs/2026-06-16-static-migration-phase1-spec.md`
-  and `docs/2026-06-16-static-migration-phase1-plan.md`.
-- **Phase 2 — DONE:** all 92 projects (52 TH / 40 EN) rendering at preserved `/project/<slug>`
-  URLs via `ProjectLayout`, plus `/projects` + `/en/projects_en` listings with a client-side
-  category filter (`ProjectCard` grid). Detail bodies are markdown. See
-  `docs/2026-06-16-static-migration-phase2-spec.md` and `-plan.md`. *Deferred to Phase 3: the
-  pixel-faithful Divi filterable-portfolio design for the listings.*
-- **Phase 3 — designed pages + home** (preserve rendered Divi HTML + per-page CSS, not markdown).
-  Decomposed: **3a home — DONE** (scrape pipeline `scripts/extract-pages.mjs` + `scripts/lib/pages.mjs`;
-  home TH `/` + EN `/en/` rendered from `src/content/pages/**` + `src/styles/pages/**`, Divi assets
-  mirrored under `public/wp-content/`; `BaseLayout` gained `pageStyles`+`bodyClass`; nginx `absolute_redirect off` keeps link host:port).
-  **3b core pages — DONE** (about/contact/join-us/announcement TH+EN via the generic manifest-driven
-  route in `[...path].astro`; header search box removed).
-  **3c service pages + faithful projects — DONE** (33 service pages — TH `/projects/<slug>`, EN
-  `/en/projects_en/<slug>` — via the preserve-HTML pipeline; the `/projects` + `/en/projects_en`
-  landings rebuilt as data-driven Divi filterable-portfolio grids — `ProjectCard` emits
-  `et_pb_portfolio_item` markup styled by the global `divi-parent.css`, filtered by the 4 sector
-  categories via tested `scripts/lib/categories.mjs`. The landings' two trailing sections after the
-  grid — a parallax strip + an "Our Clients" logos section — are restored from the scraped landing
-  HTML via `scripts/extract-trailing.mjs` → `*-trailing.html` partials rendered after the portfolio.)
-  **3d policy pages — DONE** (15 privacy/policy pages render-scraped from `article .entry-content` →
-  markdown in the `policies` collection via `scripts/extract-content-pages.mjs` + `extractEntryContent`;
-  rendered as prose by the new minimal `PageLayout`, routed by `[...path].astro` kind `policy`; lang per
-  page from `<html lang>`; `blueflagshops` dropped by decision). **Content conversion is now complete.**
-  **Pre-deploy polish — DONE** (robots.txt + auto sitemap + custom 404 + favicon/OG meta;
-  per-page TH↔EN hreflang pairing via `scripts/extract-translations.mjs` → `src/data/translations.json`
-  consulted by `BaseLayout` + threaded to the lang switcher, listing-fallback when unpaired; safe
-  PurgeCSS pass — see Global CSS note). Pending: human visual check; then Cloudflare Pages deploy.
-  See `docs/2026-06-17-static-migration-phase3{c,d}-spec.md`, `-pre-deploy-polish-plan.md`.
-- **Global CSS note:** Divi is fully removed (see Phase 5 below). `src/styles/global.css` now only
-  `@import`s `modern.css` plus base resets; there is no `vendor/` CSS and no PurgeCSS step.
-- **Modernisation (de-Divi), COMPLETE — phased.** We progressively replaced the ported Divi
-  scaffolding/classes with a clean design system in `src/styles/modern.css` (`.od-*`), on the surfaces
-  we control. **Done:** the **chrome** (Header/Footer/Nav/LangSwitcher rebuilt clean — sticky `.od-header`,
-  animated hamburger → dropdown nav, `.od-footer`; no `#main-header`/`#top-menu`/`et_pb_*`, no body-class
-  coupling, no fixed-header `#page-container` offset) and the **listings** (`/projects` = centered
-  `.od-container` + centered pill `.od-filter` + 1:1 `.od-card` grid w/ hover; `/blog` = `.od-postgrid`
-  of `.od-postcard` under `BlogHero`). PurgeCSS safelist keeps `/^od-/`. **Also done:** detail layouts
-  (Post/Project/Page prose); the bespoke **home** (`index.astro` + `/en/`, showcase tiles from
-  `src/data/projects.config.json`, rendered as a full-bleed magazine grid — edge-to-edge 1:1 covers,
-  2 columns on landscape / 1 on portrait via `@media (orientation)`, name + zoom on hover; 1:1 covers
-  w/ deterministic gradient placeholders via
-  `src/lib/gradient.mjs`); and **Phase 4 — the designed pages** (`about-us`/`contact`/`join-us`/
-  `announcement` TH + `about_en`/`contact_en`/`join-us_en` EN) converted from preserved Divi HTML to
-  **MDX** in the new `pages` collection, composed from the `.od-*` content components
-  (`src/components/content/*`) and rendered by `ComposedLayout` (route kind `page-mdx` in
-  `[...path].astro`, which passes the components to `<Content/>` so MDX needs no per-file imports).
-  The parallax + "Our Clients" logos sections were dropped by decision. See
-  `docs/2026-06-18-content-architecture-spec.md` + `-phase4-pages-plan.md`.
-  **Phase 5 — de-Divi cleanup — DONE** (`-phase5-cleanup-plan.md`): dropped the ~33 `services` pages
-  + the manifest + all preserved-HTML + per-page CSS + the `vendor/` Divi CSS + the `public/wp-content/
-  {et-cache,themes}` dirs; removed the PurgeCSS step (+ dep) and `DEFAULT_BODY_CLASS`/`bodyClass`/
-  `pageStyles`; simplified `[...path].astro` (no manifest/glob/`kind:'page'`); delinked 124 now-dead
-  `/projects/<svc>` links in project bodies (label kept); rebuilt 404 in `.od-*`; added a self-contained
-  type system to `modern.css` (one site-wide font — **Noto Sans Thai Looped**, covering Thai + Latin;
-  system-sans fallback). The font is **self-hosted** (OFL 1.1): woff2 subsets (latin + thai, weights
-  400/600/700/800) in `public/fonts/` with `public/fonts/OFL.txt`, `@font-face` in `src/styles/fonts.css`,
-  the 400 weight preloaded by BaseLayout — no external font CDN. **The site is now fully de-Divi'd:**
-  `dist` has zero `et_pb_`/`divi-parent`/`#et-boc`,
-  and the CSS bundle is **~12.5 KB** (was ~165 KB). `global.css` now just imports `modern.css` + base resets.
-- **Deploy (Cloudflare Pages)** — deferred (per decision); the build is `astro build` → static `dist/`.
+- **Posts and projects**: add a markdown file under `src/content/posts/<lang>/` or
+  `src/content/projects/<lang>/` with the standard frontmatter `title, date, lang, slug, path, cover,
+  excerpt, categories, tags`. Projects also carry `issues, type, year, partners`, rendered as the
+  metadata block by `ProjectLayout`. That block shows a value plain when there is one item and as a
+  list only when there are two or more.
+- **Designed pages**: about, contact, join-us, and announcement, written as MDX in
+  `src/content/pages/`, composed from the `src/components/content/` building blocks and rendered by
+  `ComposedLayout`. `[...path].astro` passes the components to `<Content/>` so the MDX needs no
+  per-file imports.
+- **Ordering**: `src/data/projects.config.json`, per language. `featured` is the ordered list of
+  slugs for the home showcase, a curated subset. `order` pins slugs to the top of the projects
+  listing, with the rest newest first. The README has the details.
+
+## Key notes
+
+- **De-Divi is complete.** `dist` has zero `et_pb_`, `divi-parent`, or `#et-boc`, and the CSS bundle
+  is about 15 KB. Keep new styling in `modern.css` as `.od-*`.
+- **Project covers** come from the WordPress featured image. A few were lost to a REST-forbidden
+  quirk and are recovered via a small map in `scripts/extract.mjs`. A project with no cover renders a
+  deterministic gradient placeholder with the name centered.
+- **hreflang**: per-page TH and EN pairing in `src/data/translations.json`, consulted by
+  `BaseLayout` and the language switcher, with a listing fallback when a page is unpaired.
+- **Deploy**: Cloudflare Pages is the intended target and is deferred. The build output is a plain
+  static `dist/`, so `astro build` is all it needs.
 
 ## When making changes
 
-- Preserve the faithful-replica intent and original URLs.
-- Add content as markdown with the established frontmatter (`title, date, lang, slug, path,
-  categories, tags, cover, excerpt`).
-- Keep `node_modules`/`dist`/`.astro` out of git (see `.gitignore`); the build creates them in Docker.
+- Preserve the original URLs and the faithful look.
+- Add content as markdown or MDX with the established frontmatter.
+- Keep `node_modules`, `dist`, and `.astro` out of git; the build creates them in Docker.
+- Run `make test` after changing anything in `scripts/lib/`.
+
+## More
+
+- `docs/` holds the full phase-by-phase migration record, from foundation to content to de-Divi to
+  cleanup.
+- Licensing: code and theme are MIT, content is CC BY 4.0, and the font is under the SIL OFL. The
+  README has the summary.
