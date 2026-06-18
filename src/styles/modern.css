@@ -118,13 +118,12 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Thai Looped', system-ui, -apple
 .od-showcase__tile img, .od-showcase__tile .od-ph { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s ease; }
 .od-showcase__tile:hover img { transform: scale(1.05); }
 .od-showcase__overlay {
-  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 26px; background: linear-gradient(to top, rgba(0,0,0,.62), rgba(0,0,0,0) 55%);
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  padding: 24px; text-align: center; background: rgba(0,0,0,.5);
   opacity: 0; transition: opacity .3s ease;
 }
 .od-showcase__tile:hover .od-showcase__overlay { opacity: 1; }
-.od-showcase__name { color: #fff; font-size: 22px; font-weight: 700; line-height: 1.25; }
-.od-showcase__type { color: #fff; opacity: .9; font-size: 14px; margin-top: 4px; }
+.od-showcase__name { color: #fff; font-size: 22px; font-weight: 700; line-height: 1.3; }
 @media (max-width: 640px) { .od-home-hero { padding: 44px 20px 36px; } .od-home-hero__title { font-size: 29px; } }
 
 /* ===== content components (MDX) ===== */
