@@ -11,6 +11,20 @@ and served entirely in **Docker**. The original look is preserved, but all the W
 scaffolding is gone: every style is a clean `.od-*` rule and there are no third-party CDNs at runtime.
 The migration is complete and the repo is published at `opendream/odweb`.
 
+## Next steps
+
+The build is complete and the repo is live. The immediate next task is to deploy a **test site on
+Cloudflare Pages** before any production cutover:
+
+- Create a Cloudflare Pages project connected to the `opendream/odweb` repo. Set the build command
+  to `npm run build`, the build output directory to `dist`, and leave environment variables empty.
+- Or deploy a locally built `dist/` with `wrangler pages deploy dist`. Build `dist/` first with
+  `make up`.
+- Treat this as a test or preview deployment. Review the deployed build, then handle the production
+  domain cutover as a separate step.
+- There is nothing server-side to provision. The output is plain static files plus the self-hosted
+  fonts and media already in the repo.
+
 ## Stack and conventions
 
 - **Astro 5** static output, served by **nginx** in Docker.
@@ -84,8 +98,6 @@ dependency on WordPress; the committed markdown and media are the source of trut
   deterministic gradient placeholder with the name centered.
 - **hreflang**: per-page TH and EN pairing in `src/data/translations.json`, consulted by
   `BaseLayout` and the language switcher, with a listing fallback when a page is unpaired.
-- **Deploy**: Cloudflare Pages is the intended target and is deferred. The build output is a plain
-  static `dist/`, so `astro build` is all it needs.
 
 ## When making changes
 
