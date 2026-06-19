@@ -6,7 +6,7 @@ TOOLS   := $(COMPOSE) --profile tools run --rm
 URL     := http://localhost:4321
 
 .DEFAULT_GOAL := help
-.PHONY: help up down rebuild restart logs ps test extract open clean
+.PHONY: help up down rebuild dist restart logs ps test extract open clean
 
 help: ## Show this help
 	@grep -hE '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*## "}{printf "  \033[36m%-9s\033[0m %s\n", $$1, $$2}'
@@ -21,6 +21,13 @@ down: ## Stop and remove the containers
 rebuild: ## Rebuild just the web service after content/code changes
 	$(COMPOSE) up -d --build web
 	@echo "→ rebuilt, serving at $(URL)"
+
+dist: ## Export a clean, deploy-ready static build to ./dist (for `wrangler pages deploy dist`)
+	$(COMPOSE) up -d --build web
+	@rm -rf dist && mkdir dist
+	$(COMPOSE) cp web:/usr/share/nginx/html/. dist
+	@rm -f dist/50x.html
+	@echo "→ exported clean dist/ ($$(find dist -type f | wc -l | tr -d ' ') files)"
 
 restart: ## Restart the running web container (no rebuild)
 	$(COMPOSE) restart web
