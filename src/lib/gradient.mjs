@@ -1,5 +1,4 @@
-// Deterministic, minimal 2-stop gradient derived from a key (e.g. a project slug/path),
-// used as a 1:1 placeholder for project tiles that have no cover image.
+// Deterministic, minimal 2-stop gradient derived from a key, used for coverless content placeholders.
 export function gradientFor(key = '') {
   let h = 0;
   for (let i = 0; i < key.length; i++) h = (key.charCodeAt(i) + ((h << 5) - h)) | 0;
