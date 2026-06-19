@@ -1,0 +1,16 @@
+{
+  // Static-assets-only Cloudflare Worker config for the Astro `dist/` output.
+  // NO `main` field on purpose: this is a pure static site (no SSR / no _worker.js).
+  // An earlier SSR config with `main: ./dist/_worker.js/index.js` broke the build —
+  // do not add an adapter or a `main` here.
+  "name": "odweb",
+  "compatibility_date": "2026-06-17",
+  "assets": {
+    "directory": "./dist",
+    // Serve non-trailing-slash URLs with 200 (e.g. /blog), redirecting /blog/ -> /blog.
+    // Matches our non-trailing canonicals/sitemap and the original WordPress URL form.
+    "html_handling": "drop-trailing-slash",
+    // Serve the built dist/404.html (styled) for unmatched routes, with a 404 status.
+    "not_found_handling": "404-page"
+  }
+}
