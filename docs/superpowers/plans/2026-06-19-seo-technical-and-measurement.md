@@ -4,11 +4,11 @@
 
 **Goal:** Add rich, correct SEO metadata (per-page descriptions, real social-share images, Open Graph article tags, JSON-LD structured data, hreflang/sitemap polish, alt-text audit) plus privacy-first measurement (Cloudflare Web Analytics + Google Search Console) to the Astro rebuild of opendream.co.th.
 
-**Architecture:** All head metadata moves into one `src/components/SEO.astro` driven by pure, unit-tested helpers in `src/lib/seo.mjs`. `BaseLayout` keeps its existing hreflang math and renders `<SEO/>`; layouts/pages pass new props (`description`, `cover`, `type`, `publishedTime`, `section`, `jsonLd`). Organization facts and measurement tokens live in JSON data files. Measurement is config-gated (empty token = no output) so nothing tracks until filled post-deploy.
+**Architecture:** All head metadata moves into one `src/components/SEO.astro` driven by pure, unit-tested helpers in `src/lib/seo.mjs`. `BaseLayout` keeps its existing hreflang math and renders `<SEO/>`; layouts/pages pass new props (`description`, `cover`, `type`, `publishedTime`, `section`, `jsonLd`). Dynamic content descriptions are derived centrally in `src/pages/[...path].astro` from frontmatter `description`/`excerpt` first and stripped body text as a fallback, so posts, projects, policies, and MDX pages all get usable descriptions. Sitemap hreflang uses the same URL-pairing source as the head (`translations.json` plus service landing pairs) through a custom serializer, because this site preserves WordPress paths that do not match Astro's default locale-stripped path pairing. Organization facts and measurement tokens live in JSON data files. Measurement is config-gated (empty token = no output) so nothing tracks until filled post-deploy.
 
 **Tech Stack:** Astro 5, `@astrojs/sitemap`, Vitest (via Vite, in Docker), schema.org JSON-LD, macOS `sips` for the one-off image conversion.
 
-**Scope note:** This plan covers spec Phases 1 (technical) + 3 (measurement). Phase 2 (the reusable `seo-audit` skill) is a separate skill-creator flow; Phase 4 (bilingual keyword strategy) is a separate deep-research activity whose output later refines the description/title copy added here.
+**Scope note:** This plan covers spec Phases 1 (technical) + 3 (measurement). Phase 2 (the reusable `seo-audit` skill) is a separate skill-creator flow and should be planned immediately after this lands, once the final metadata conventions are real in code. Phase 4 (bilingual keyword strategy) is a separate deep-research activity whose output later refines the description/title copy added here.
 
 **How to run things (no Node on host — everything is Docker):**
 - Unit tests: `docker compose --profile tools run --rm test`
@@ -24,6 +24,8 @@
 - `src/data/site.json` — measurement config (`cfBeaconToken`, `googleSiteVerification`); empty by default.
 - `src/lib/seo.mjs` — pure helpers: URL resolution, description handling, JSON-LD builders.
 - `src/lib/seo.test.mjs` — Vitest unit tests for `seo.mjs`.
+- `src/lib/sitemap-hreflang.mjs` — pure sitemap hreflang helper using preserved URL pairs.
+- `src/lib/sitemap-hreflang.test.mjs` — Vitest unit tests for custom sitemap links.
 - `src/components/SEO.astro` — renders all `<head>` metadata, JSON-LD, analytics, verification.
 - `scripts/lib/alt.mjs` + `scripts/lib/alt.test.mjs` — pure empty-alt detector.
 - `scripts/audit-alt.mjs` — runner that reports empty-alt images across content.
@@ -35,14 +37,15 @@
 - `src/layouts/PostLayout.astro` — article OG + BlogPosting/Breadcrumb JSON-LD.
 - `src/layouts/ProjectLayout.astro` — cover OG + CreativeWork/Breadcrumb JSON-LD.
 - `src/layouts/ComposedLayout.astro` — pass `noindex` through (dual-mode).
-- `src/pages/[...path].astro` — pass `section` (first category) + `modified` to PostLayout.
+- `src/pages/[...path].astro` — derive descriptions for all dynamic entries; pass `section` (first category) + `modified` to PostLayout.
 - `src/pages/index.astro`, `src/pages/en/index.astro` — home description + Organization/WebSite JSON-LD.
 - `src/pages/blog/index.astro`, `src/pages/en/blogs/index.astro`, `src/pages/projects/index.astro`, `src/pages/en/projects_en/index.astro` — listing descriptions.
 - `src/pages/projects/[service].astro`, `src/pages/en/projects_en/[service].astro` — service descriptions.
 - `src/pages/404.astro` — `noindex`.
 - `src/pages/styleguide.mdx` — `noindex: true` frontmatter.
-- `astro.config.mjs` — sitemap i18n + exclude `/styleguide`.
+- `astro.config.mjs` — sitemap custom hreflang serializer + exclude `/styleguide`.
 - `vitest.config.ts` — also include `src/**/*.test.mjs`.
+- `docker-compose.yml` — remove the hardcoded `scripts/lib/` Vitest path filter so Docker runs all configured tests.
 
 ---
 
@@ -101,20 +104,37 @@ git commit -m "feat(seo): add org facts and measurement config data files"
 - Create: `src/lib/seo.mjs`
 - Test: `src/lib/seo.test.mjs`
 - Modify: `vitest.config.ts`
+- Modify: `docker-compose.yml`
 
-- [ ] **Step 1: Make Vitest pick up `src` tests** — replace the contents of `vitest.config.ts`:
+- [ ] **Step 1: Make Vitest pick up all configured tests**
+
+Replace the contents of `vitest.config.ts`:
 
 ```ts
 import { defineConfig } from 'vitest/config';
 export default defineConfig({ test: { include: ['scripts/**/*.test.mjs', 'src/**/*.test.mjs'] } });
 ```
 
+Then update the `test` service command in `docker-compose.yml`. Replace the existing command:
+
+```yaml
+    command: sh -c "npm install --no-save turndown@^7.2.0 vitest@^2.1.0 node-html-parser@^6.1.13 >/dev/null 2>&1 && npx vitest run scripts/lib/"
+```
+
+with:
+
+```yaml
+    command: sh -c "npm install --no-save turndown@^7.2.0 vitest@^2.1.0 node-html-parser@^6.1.13 >/dev/null 2>&1 && npx vitest run"
+```
+
+Rationale: the current Docker command hardcodes `scripts/lib/`, so `src/lib/seo.test.mjs` would be silently skipped even after updating `vitest.config.ts`.
+
 - [ ] **Step 2: Write the failing test** — create `src/lib/seo.test.mjs`:
 
 ```js
 import { describe, it, expect } from 'vitest';
 import {
-  absUrl, resolveOgImage, stripMarkdown, clampDescription, metaDescription,
+  absUrl, resolveOgImage, stripMarkdown, clampDescription, metaDescription, organizationRef,
   organizationLd, websiteLd, blogPostingLd, creativeWorkLd, breadcrumbLd,
   DEFAULT_OG_IMAGE,
 } from './seo.mjs';
@@ -178,6 +198,16 @@ describe('organizationLd', () => {
   });
 });
 
+describe('organizationRef', () => {
+  it('builds a compact self-contained Organization reference', () => {
+    const ref = organizationRef(SITE);
+    expect(ref['@type']).toBe('Organization');
+    expect(ref['@id']).toBe('https://opendream.co.th/#organization');
+    expect(ref.name).toBe('Opendream Co., Ltd.');
+    expect(ref.logo).toBe('https://opendream.co.th/media/od_logo.svg');
+  });
+});
+
 describe('websiteLd', () => {
   it('references the organization as publisher and sets inLanguage', () => {
     const ld = websiteLd(SITE, 'en');
@@ -199,6 +229,7 @@ describe('blogPostingLd', () => {
     expect(ld.image).toBe('https://opendream.co.th/c.png');
     expect(ld.datePublished).toBe('2020-01-01T00:00:00.000Z');
     expect(ld.author['@id']).toBe('https://opendream.co.th/#organization');
+    expect(ld.publisher.logo).toBe('https://opendream.co.th/media/od_logo.svg');
     expect(ld.articleSection).toBe('News');
     expect(ld.inLanguage).toBe('th');
   });
@@ -252,6 +283,15 @@ export function absUrl(site, pathOrUrl) {
 
 export function resolveOgImage(site, { image, cover } = {}) {
   return absUrl(site, image || cover || DEFAULT_OG_IMAGE);
+}
+
+export function organizationRef(site) {
+  return {
+    '@type': 'Organization',
+    '@id': ORG_ID(site),
+    name: org.name,
+    logo: absUrl(site, org.logo),
+  };
 }
 
 export function stripMarkdown(md = '') {
@@ -310,7 +350,7 @@ export function websiteLd(site, lang) {
     name: org.name,
     url: absUrl(site, '/'),
     inLanguage: lang === 'en' ? 'en' : 'th',
-    publisher: { '@id': ORG_ID(site) },
+    publisher: organizationRef(site),
   };
 }
 
@@ -322,8 +362,8 @@ export function blogPostingLd(site, { path, title, description, image, datePubli
     inLanguage: lang === 'en' ? 'en' : 'th',
     datePublished,
     mainEntityOfPage: absUrl(site, path),
-    author: { '@id': ORG_ID(site) },
-    publisher: { '@id': ORG_ID(site) },
+    author: organizationRef(site),
+    publisher: organizationRef(site),
   };
   if (description) ld.description = description;
   if (image) ld.image = absUrl(site, image);
@@ -339,7 +379,7 @@ export function creativeWorkLd(site, { path, title, image, issues = [], lang }) 
     name: title,
     inLanguage: lang === 'en' ? 'en' : 'th',
     url: absUrl(site, path),
-    creator: { '@id': ORG_ID(site) },
+    creator: organizationRef(site),
   };
   if (image) ld.image = absUrl(site, image);
   if (issues.length) ld.about = issues;
@@ -368,7 +408,7 @@ Expected: PASS — all `seo.test.mjs` cases green, plus the existing `scripts/**
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/lib/seo.mjs src/lib/seo.test.mjs vitest.config.ts
+git add src/lib/seo.mjs src/lib/seo.test.mjs vitest.config.ts docker-compose.yml
 git commit -m "feat(seo): add pure SEO helpers (urls, descriptions, JSON-LD) with tests"
 ```
 
@@ -452,7 +492,7 @@ const isDefaultImage = ogImage.endsWith('/media/og-default.png');
 {site.googleSiteVerification && <meta name="google-site-verification" content={site.googleSiteVerification} />}
 {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
 {site.cfBeaconToken && (
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${site.cfBeaconToken}"}`}></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cfBeaconToken })}></script>
 )}
 ```
 
@@ -570,7 +610,7 @@ git commit -m "feat(seo): render SEO component from BaseLayout"
 
 ---
 
-## Task 5: Posts — article OG + BlogPosting/Breadcrumb JSON-LD
+## Task 5: Dynamic descriptions + posts — article OG + BlogPosting/Breadcrumb JSON-LD
 
 **Files:**
 - Modify: `src/layouts/PostLayout.astro`
@@ -629,15 +669,47 @@ const jsonLd = [
 </BaseLayout>
 ```
 
-- [ ] **Step 2: Pass `section` + `modified` from the router** — in `src/pages/[...path].astro`, replace the PostLayout branch (the final `: (` block) with:
+- [ ] **Step 2: Derive descriptions in the dynamic router and pass `section` + `modified` to posts**
+
+In `src/pages/[...path].astro`, add this import after the existing layout imports:
 
 ```astro
+import { metaDescription } from '../lib/seo.mjs';
+```
+
+After `const d = props.entry.data;`, add:
+
+```astro
+const description = metaDescription({
+  description: d.description,
+  excerpt: d.excerpt,
+  body: props.entry.body,
+});
+```
+
+Then replace the render branches at the bottom with:
+
+```astro
+{props.kind === 'project' ? (
+  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} description={description} issues={d.issues} type={d.type} year={d.year} partners={d.partners}>
+    <Content />
+  </ProjectLayout>
+) : props.kind === 'policy' ? (
+  <PageLayout title={d.title} lang={d.lang} path={d.path} description={description}>
+    <Content />
+  </PageLayout>
+) : props.kind === 'page-mdx' ? (
+  <ComposedLayout title={d.title} lang={d.lang} path={d.path} description={description}>
+    <Content components={mdxComponents} />
+  </ComposedLayout>
 ) : (
-  <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt} section={d.categories?.[0]} modified={d.modified}>
+  <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={description} section={d.categories?.[0]} modified={d.modified}>
     <Content />
   </PostLayout>
 )}
 ```
+
+Rationale: many posts/projects lack `excerpt`, and policies do not have a description field at all. This route-level fallback makes the spec's "meta descriptions everywhere" requirement real without widening every content schema immediately.
 
 - [ ] **Step 3: Build and verify a post**
 
@@ -648,7 +720,7 @@ Pick any built post under `dist/blog/` (e.g. `ls dist/blog/*/index.html | head -
 
 ```bash
 git add src/layouts/PostLayout.astro src/pages/[...path].astro
-git commit -m "feat(seo): article OG tags + BlogPosting/Breadcrumb JSON-LD for posts"
+git commit -m "feat(seo): dynamic descriptions + article metadata for posts"
 ```
 
 ---
@@ -919,20 +991,156 @@ git commit -m "feat(seo): add 1200x630 default OG share image (PNG)"
 
 ---
 
-## Task 11: Sitemap i18n + exclude styleguide
+## Task 11: Sitemap preserved hreflang + exclude styleguide
 
 **Files:**
+- Create: `src/lib/sitemap-hreflang.mjs`
+- Test: `src/lib/sitemap-hreflang.test.mjs`
 - Modify: `astro.config.mjs`
 
-- [ ] **Step 1: Replace the contents of `astro.config.mjs`**
+- [ ] **Step 1: Write the failing test** — create `src/lib/sitemap-hreflang.test.mjs`:
 
 ```js
+import { describe, it, expect } from 'vitest';
+import { alternatePathFor, sitemapLinksForPath, withSitemapHreflang } from './sitemap-hreflang.mjs';
+
+const SITE = 'https://opendream.co.th';
+const translations = {
+  '/blog': '/en/blogs',
+  '/en/blogs': '/blog',
+};
+const serviceLandings = {
+  th: [{ slug: 'chatbot', title: 'Chatbot', altPath: '/en/projects_en/chatbot' }],
+  en: [{ slug: 'chatbot', title: 'Chatbot', altPath: '/projects/chatbot' }],
+};
+
+describe('alternatePathFor', () => {
+  it('uses translations.json pairs first', () => {
+    expect(alternatePathFor('/blog', translations, serviceLandings)).toBe('/en/blogs');
+    expect(alternatePathFor('/en/blogs/', translations, serviceLandings)).toBe('/blog');
+  });
+
+  it('falls back to service landing pairs', () => {
+    expect(alternatePathFor('/projects/chatbot', {}, serviceLandings)).toBe('/en/projects_en/chatbot');
+    expect(alternatePathFor('/en/projects_en/chatbot', {}, serviceLandings)).toBe('/projects/chatbot');
+  });
+
+  it('returns undefined when there is no real alternate', () => {
+    expect(alternatePathFor('/projects/e-commerce', {}, serviceLandings)).toBeUndefined();
+  });
+});
+
+describe('sitemapLinksForPath', () => {
+  it('emits th, en, and x-default links with the TH URL as default', () => {
+    expect(sitemapLinksForPath(SITE, '/en/blogs', translations, serviceLandings)).toEqual([
+      { lang: 'th-TH', url: 'https://opendream.co.th/blog' },
+      { lang: 'en-US', url: 'https://opendream.co.th/en/blogs' },
+      { lang: 'x-default', url: 'https://opendream.co.th/blog' },
+    ]);
+  });
+});
+
+describe('withSitemapHreflang', () => {
+  it('normalizes the sitemap item URL and adds translated links', () => {
+    const item = withSitemapHreflang(
+      { url: 'https://opendream.co.th/en/blogs/' },
+      SITE,
+      translations,
+      serviceLandings,
+    );
+    expect(item.url).toBe('https://opendream.co.th/en/blogs');
+    expect(item.links).toHaveLength(3);
+  });
+});
+```
+
+- [ ] **Step 2: Run the test to verify it fails**
+
+Run: `docker compose --profile tools run --rm test`
+Expected: FAIL — `Failed to resolve import "./sitemap-hreflang.mjs"`.
+
+- [ ] **Step 3: Create `src/lib/sitemap-hreflang.mjs`**
+
+```js
+import { absUrl } from './seo.mjs';
+
+function normalizePath(pathname = '/') {
+  const p = pathname.replace(/\/+$/, '');
+  return p === '' ? '/' : p;
+}
+
+function pathFromUrl(url) {
+  return normalizePath(new URL(url).pathname);
+}
+
+function servicePairs(serviceLandings = {}) {
+  const pairs = {};
+  for (const service of serviceLandings.th ?? []) {
+    if (!service.altPath) continue;
+    const thPath = `/projects/${service.slug}`;
+    pairs[normalizePath(thPath)] = normalizePath(service.altPath);
+    pairs[normalizePath(service.altPath)] = normalizePath(thPath);
+  }
+  for (const service of serviceLandings.en ?? []) {
+    if (!service.altPath) continue;
+    const enPath = `/en/projects_en/${service.slug}`;
+    pairs[normalizePath(enPath)] = normalizePath(service.altPath);
+    pairs[normalizePath(service.altPath)] = normalizePath(enPath);
+  }
+  return pairs;
+}
+
+export function alternatePathFor(path, translations = {}, serviceLandings = {}) {
+  const normalized = normalizePath(path);
+  return translations[normalized] ?? servicePairs(serviceLandings)[normalized];
+}
+
+export function sitemapLinksForPath(site, path, translations = {}, serviceLandings = {}) {
+  const current = normalizePath(path);
+  const alternate = alternatePathFor(current, translations, serviceLandings);
+  if (!alternate) return undefined;
+
+  const isEnglish = current.startsWith('/en/');
+  const thPath = isEnglish ? normalizePath(alternate) : current;
+  const enPath = isEnglish ? current : normalizePath(alternate);
+
+  return [
+    { lang: 'th-TH', url: absUrl(site, thPath) },
+    { lang: 'en-US', url: absUrl(site, enPath) },
+    { lang: 'x-default', url: absUrl(site, thPath) },
+  ];
+}
+
+export function withSitemapHreflang(item, site, translations = {}, serviceLandings = {}) {
+  const path = pathFromUrl(item.url);
+  const links = sitemapLinksForPath(site, path, translations, serviceLandings);
+  return links
+    ? { ...item, url: absUrl(site, path), links }
+    : { ...item, url: absUrl(site, path) };
+}
+```
+
+- [ ] **Step 4: Run the test to verify it passes**
+
+Run: `docker compose --profile tools run --rm test`
+Expected: PASS.
+
+- [ ] **Step 5: Replace the contents of `astro.config.mjs`**
+
+```js
+import { createRequire } from 'node:module';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import { withSitemapHreflang } from './src/lib/sitemap-hreflang.mjs';
+
+const require = createRequire(import.meta.url);
+const translations = require('./src/data/translations.json');
+const serviceLandings = require('./src/data/service-landings.json');
+const site = 'https://opendream.co.th';
 
 export default defineConfig({
-  site: 'https://opendream.co.th',
+  site,
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],
@@ -940,29 +1148,31 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      i18n: {
-        defaultLocale: 'th',
-        locales: { th: 'th-TH', en: 'en-US' },
-      },
-      filter: (page) => !page.includes('/styleguide'),
+      filter: (page) => !new URL(page).pathname.startsWith('/styleguide'),
+      serialize: (item) => withSitemapHreflang(item, site, translations, serviceLandings),
+      namespaces: { xhtml: true },
     }),
     mdx(),
   ],
 });
 ```
 
-- [ ] **Step 2: Build and verify the sitemap**
+Why this custom serializer instead of only `@astrojs/sitemap`'s `i18n` option: the integration pairs pages by the same path after removing the locale prefix. This site preserves WordPress-era URLs (`/blog` ↔ `/en/blogs`, `/projects` ↔ `/en/projects_en`, many `/project/*` pairs), so the built-in path matcher would miss important alternates.
+
+`lastmod` note: do **not** set a global build-time `lastmod`. That would claim every page changed on every build. If real sitemap `lastmod` becomes required, add a follow-up task that builds a per-path map from content frontmatter `modified ?? date` plus explicitly chosen static page dates.
+
+- [ ] **Step 6: Build and verify the sitemap**
 
 Run: `make rebuild`
-Confirm `dist/sitemap-index.xml` exists and references `sitemap-0.xml`; confirm `dist/sitemap-0.xml` contains `xhtml:link` hreflang alternates and does NOT list any `/styleguide` URL.
+Confirm `dist/sitemap-index.xml` exists and references `sitemap-0.xml`; confirm `dist/sitemap-0.xml` contains `xhtml:link` hreflang alternates for preserved URL pairs such as `/blog` ↔ `/en/blogs`, includes `x-default`, and does NOT list any `/styleguide` URL.
 
 Run: `grep -c "styleguide" dist/sitemap-0.xml` — expected: `0`.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add astro.config.mjs
-git commit -m "feat(seo): sitemap hreflang i18n + exclude styleguide"
+git add src/lib/sitemap-hreflang.mjs src/lib/sitemap-hreflang.test.mjs astro.config.mjs
+git commit -m "feat(seo): sitemap hreflang for preserved bilingual URLs"
 ```
 
 ---
@@ -1056,8 +1266,7 @@ console.log(`\n${total} image(s) with empty alt across ${files.length} content f
 
 - [ ] **Step 6: Run the audit and record the result**
 
-Run: `docker compose --profile tools run --rm test node scripts/audit-alt.mjs`
-(If the `test` service entrypoint is fixed to vitest, run instead via a one-off Node container: `docker compose run --rm --entrypoint node web scripts/audit-alt.mjs` — or run `node scripts/audit-alt.mjs` inside whichever tools container has Node.)
+Run: `docker compose --profile tools run --rm --entrypoint node test scripts/audit-alt.mjs`
 Expected: a list of files + a total count. **Fix the trivially-fixable ones** by editing the markdown to add descriptive `alt` text derived from the figure caption, surrounding heading, or filename. For images where the right alt is unclear, leave them and note the count in the commit message for human follow-up.
 
 - [ ] **Step 7: Commit**
@@ -1129,24 +1338,25 @@ git commit -m "docs(seo): post-deploy measurement + structured-data runbook"
 - [ ] **Step 1: Run the unit tests**
 
 Run: `docker compose --profile tools run --rm test`
-Expected: all tests pass (existing `scripts/**` tests + new `src/lib/seo.test.mjs` + `scripts/lib/alt.test.mjs`).
+Expected: all tests pass (existing `scripts/**` tests + new `src/lib/seo.test.mjs`, `src/lib/sitemap-hreflang.test.mjs`, and `scripts/lib/alt.test.mjs`).
 
 - [ ] **Step 2: Clean build**
 
 Run: `make rebuild`
 Expected: build completes with no errors.
 
-- [ ] **Step 3: Regression sweep over `dist/`** — confirm no page uses the favicon as its OG image, every page has a title + description, and JSON-LD is present where expected:
+- [ ] **Step 3: Regression sweep over `dist/`** — confirm no page uses the favicon as its OG image, every indexable page has a title + description, and JSON-LD is present where expected:
 
 ```bash
 echo "favicon-as-og (expect 0):"; grep -rl 'og:image" content=".*opendream-fav' dist | wc -l
-echo "pages missing description (review list):"; grep -rL '<meta name="description"' dist --include=index.html
+echo "indexable pages missing description (expect empty):"; grep -rL '<meta name="description"' dist --include=index.html | grep -v '^dist/404.html$' | grep -v '^dist/styleguide/index.html$' || true
 echo "Organization LD on home (expect >=1 each):"; grep -c '"Organization"' dist/index.html dist/en/index.html
 echo "BlogPosting LD across posts (expect >0):"; grep -rl '"BlogPosting"' dist/blog | wc -l
-echo "CreativeWork LD across projects (expect >0):"; grep -rl '"CreativeWork"' dist/project | wc -l
+echo "CreativeWork LD across projects (expect >0):"; grep -rl '"CreativeWork"' dist/project dist/en/project 2>/dev/null | wc -l
 echo "x-default hreflang present (expect >0):"; grep -rl 'hreflang="x-default"' dist | wc -l
+echo "sitemap preserved pair /blog <-> /en/blogs (expect >=2 xhtml links):"; grep -oE 'href="https://opendream.co.th/(en/blogs|blog)"' dist/sitemap-0.xml | wc -l
 ```
-Expected: favicon-as-og = 0; the "missing description" list is empty (or only intentional pages); Organization counts ≥1; BlogPosting/CreativeWork counts > 0; x-default > 0.
+Expected: favicon-as-og = 0; the "indexable pages missing description" list is empty; Organization counts ≥1; BlogPosting/CreativeWork counts > 0; x-default > 0; sitemap preserved-pair count ≥2.
 
 - [ ] **Step 4: Validate JSON-LD parses** — spot-check that the JSON-LD on the home page is valid JSON:
 
@@ -1174,16 +1384,16 @@ git commit -m "chore(seo): final verification pass" || echo "nothing to commit"
 - §4.1 SEO component → Tasks 3–4 ✓
 - §4.2 social images (default PNG, og:image:alt/width/height, summary_large_image, twitter:*) → Tasks 3, 10 ✓
 - §4.3 article metadata → Task 5 ✓
-- §4.4 descriptions everywhere → Tasks 7 (home), 8 (listings/services); posts/projects use `excerpt` already passed via `[...path].astro`/layouts ✓
+- §4.4 descriptions everywhere → Task 5 derives dynamic descriptions from frontmatter/body; Tasks 7–8 add hand-written home/listing/service descriptions ✓
 - §4.5 JSON-LD (Organization, WebSite no SearchAction, BlogPosting, CreativeWork, BreadcrumbList) → Tasks 2 (builders), 5, 6, 7 ✓
 - §4.6 robots noindex + x-default → Tasks 9, 3 ✓
-- §4.7 sitemap i18n → Task 11 ✓
+- §4.7 sitemap hreflang → Task 11 uses preserved URL-pair serialization and excludes styleguide. Real per-page `lastmod` is explicitly deferred to avoid fake build-time timestamps.
 - §4.8 alt-text audit → Task 12 ✓
 - §4.9 testing → Tasks 2, 12 (unit) + Task 14 (build/regression) ✓
 - §6 measurement (Cloudflare Web Analytics + Search Console, config-gated) → Tasks 1 (config), 3 (render), 13 (runbook) ✓
 
 **Placeholder scan:** No "TBD"/"add error handling"-style gaps; every code step has complete code. Descriptions are real copy (Phase 4 may later refine, but they ship complete and valid).
 
-**Type consistency:** Helper signatures are `fn(site, {options})`; layouts call them with `origin` + an options object matching the tested shapes. Prop names (`cover`, `type`, `publishedTime`, `modifiedTime`, `section`, `noindex`, `jsonLd`) are consistent across `SEO.astro`, `BaseLayout.astro`, and the layouts/pages that set them.
+**Type consistency:** Helper signatures are `fn(site, {options})` for SEO builders and `withSitemapHreflang(item, site, translations, serviceLandings)` for sitemap serialization; layouts call SEO helpers with `origin` + an options object matching the tested shapes. Prop names (`cover`, `type`, `publishedTime`, `modifiedTime`, `section`, `noindex`, `jsonLd`) are consistent across `SEO.astro`, `BaseLayout.astro`, and the layouts/pages that set them.
 
-**Out of scope (separate flows):** Phase 2 `seo-audit` skill (skill-creator); Phase 4 keyword strategy (deep-research); Cloudflare Pages deploy.
+**Out of scope (separate flows):** Phase 2 `seo-audit` skill (skill-creator); Phase 4 keyword strategy (deep-research); real per-page sitemap `lastmod`; Cloudflare Pages deploy.
