@@ -1,6 +1,6 @@
 import org from '../data/org.json';
 
-export const DEFAULT_OG_IMAGE = '/media/og-default.png';
+export const DEFAULT_OG_IMAGE = '/media/og-default.jpg';
 
 const ORG_ID = (site) => absUrl(site, '/#organization');
 
