@@ -4,3 +4,8 @@ dist/
 .wrangler/
 .DS_Store
 *.log
+
+# Local Cloudflare CLI/API credentials — NEVER commit the real values
+.cloudflare.env
+.dev.vars*
+.env*
