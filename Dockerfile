@@ -1,7 +1,7 @@
 # Multi-stage build: Node builds the Astro static site, nginx serves it.
 # Keeps the host clean — no Node/node_modules needed on the host.
 
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 # Install deps first (layer-cached unless package files change)
 COPY package.json package-lock.json* ./
