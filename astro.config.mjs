@@ -4,6 +4,8 @@ import mdx from '@astrojs/mdx';
 import { createRequire } from 'node:module';
 import { createSitemapSerializer, isSitemapIndexable } from './src/lib/sitemap-hreflang.mjs';
 
+import cloudflare from '@astrojs/cloudflare';
+
 const require = createRequire(import.meta.url);
 const translations = require('./src/data/translations.json');
 const serviceLandings = require('./src/data/service-landings.json');
@@ -12,11 +14,13 @@ const serializeSitemap = createSitemapSerializer({ site, translations, serviceLa
 
 export default defineConfig({
   site,
+
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],
     routing: { prefixDefaultLocale: false },
   },
+
   integrations: [
     sitemap({
       filter: isSitemapIndexable,
@@ -25,4 +29,6 @@ export default defineConfig({
     }),
     mdx(),
   ],
+
+  adapter: cloudflare(),
 });
