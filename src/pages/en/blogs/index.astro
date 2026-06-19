@@ -5,8 +5,9 @@ import PostCard from '../../../components/PostCard.astro';
 import BlogHero from '../../../components/BlogHero.astro';
 const posts = (await getCollection('posts', (p) => p.data.lang === 'en'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const description = 'News, articles, and perspectives from Opendream on social-impact technology, service design, and lessons from digital projects.';
 ---
-<BaseLayout title="News — Opendream" lang="en" path="/en/blogs" altPath="/blog">
+<BaseLayout title="News — Opendream" description={description} lang="en" path="/en/blogs" altPath="/blog">
   <BlogHero title="Press" subtitle="Where our stories are shared" />
   <section class="od-listing">
     <div class="od-container">

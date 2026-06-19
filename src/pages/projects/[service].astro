@@ -11,8 +11,9 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const path = `/projects/${service.slug}`;
+const description = `${service.title} โดย Opendream ดูผลงานและกรณีศึกษาที่เกี่ยวข้องจากโครงการดิจิทัลที่พัฒนาร่วมกับองค์กรเพื่อสังคม`;
 ---
-<BaseLayout title={`${service.title} — Opendream`} lang="th" path={path} altPath={service.altPath}>
+<BaseLayout title={`${service.title} — Opendream`} description={description} lang="th" path={path} altPath={service.altPath}>
   <section class="od-section">
     <div class="od-container">
       <div class="od-prose od-prose--center">
