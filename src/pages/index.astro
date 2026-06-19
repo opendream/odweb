@@ -7,7 +7,7 @@ import { organizationLd, websiteLd } from '../lib/seo.mjs';
 const all = await getCollection('projects');
 const bySlug = Object.fromEntries(all.map((p) => [p.data.slug, p.data]));
 const tiles = (projectConfig.th.featured ?? []).map((s) => bySlug[s]).filter(Boolean);
-const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const origin = Astro.site!.origin;
 const description = 'Opendream เป็นพาร์ตเนอร์ด้านเทคโนโลยีเพื่อสังคม ออกแบบและพัฒนาระบบดิจิทัลกับองค์กรที่ต้องการสร้างผลกระทบอย่างยั่งยืน';
 const jsonLd = [organizationLd(origin), websiteLd(origin, 'th')];
 ---

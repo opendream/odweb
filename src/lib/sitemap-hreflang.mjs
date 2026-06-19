@@ -1,6 +1,9 @@
+import { PRODUCTION_ORIGIN } from './site.mjs';
+
 const NOINDEX_PATHS = new Set(['/404', '/styleguide']);
 
-export function normalizeSitemapPath(pathOrUrl, site = 'https://opendream.co.th') {
+// `site` is only a parse base here (origin is discarded; we return the pathname).
+export function normalizeSitemapPath(pathOrUrl, site = PRODUCTION_ORIGIN) {
   const url = new URL(pathOrUrl, site);
   let path = url.pathname || '/';
   if (path.length > 1) path = path.replace(/\/+$/, '');

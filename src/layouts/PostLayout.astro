@@ -16,7 +16,7 @@ interface Props {
 
 const { title, date, lang, path, cover, description, section, modified } = Astro.props;
 const dateStr = date.toLocaleDateString(lang === 'en' ? 'en-US' : 'th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
-const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const origin = Astro.site!.origin;
 const blogHref = lang === 'en' ? '/en/blogs' : '/blog';
 const blogName = lang === 'en' ? 'News' : 'ข่าวสาร';
 const homePath = lang === 'en' ? '/en' : '/';

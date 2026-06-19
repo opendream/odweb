@@ -31,7 +31,7 @@ const rows = [
   year ? { label: L.year, items: [String(year)] } : null,
   partners.length ? { label: L.partners, items: partners } : null,
 ].filter(Boolean) as { label: string; items: string[] }[];
-const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const origin = Astro.site!.origin;
 const projectsHref = lang === 'en' ? '/en/projects_en' : '/projects';
 const projectsName = lang === 'en' ? 'Projects' : 'งานของเรา';
 const homePath = lang === 'en' ? '/en' : '/';

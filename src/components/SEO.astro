@@ -1,6 +1,7 @@
 ---
 import siteConfig from '../data/site.json';
 import { resolveOgImage } from '../lib/seo.mjs';
+import { PRODUCTION_ORIGIN, isPreviewOrigin } from '../lib/site.mjs';
 import { env } from 'node:process';
 
 interface Props {
@@ -41,7 +42,9 @@ const {
   jsonLd = [],
 } = Astro.props;
 
-const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const origin = Astro.site?.origin ?? PRODUCTION_ORIGIN;
+// Preview deploys (non-apex origin) self-canonical to their preview URL, so noindex them all.
+const robotsNoindex = noindex || isPreviewOrigin(origin);
 const canonical = origin + path;
 const ogImage = resolveOgImage(origin, { image, cover });
 const ogImageAlt = imageAlt ?? title;
@@ -54,7 +57,7 @@ const cfBeacon = JSON.stringify({ token: cfBeaconToken });
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 {description && <meta name="description" content={description} />}
-{noindex && <meta name="robots" content="noindex,follow" />}
+{robotsNoindex && <meta name="robots" content="noindex,follow" />}
 <link rel="canonical" href={canonical} />
 {hasAlt && <link rel="alternate" hreflang="th" href={origin + thHref} />}
 {hasAlt && <link rel="alternate" hreflang="en" href={origin + enHref} />}
