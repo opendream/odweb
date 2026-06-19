@@ -1,6 +1,7 @@
 ---
 import siteConfig from '../data/site.json';
 import { resolveOgImage } from '../lib/seo.mjs';
+import { env } from 'node:process';
 
 interface Props {
   title: string;
@@ -45,7 +46,9 @@ const canonical = origin + path;
 const ogImage = resolveOgImage(origin, { image, cover });
 const ogImageAlt = imageAlt ?? title;
 const isDefaultImage = ogImage.endsWith('/media/og-default.png');
-const cfBeacon = JSON.stringify({ token: siteConfig.cfBeaconToken });
+const googleSiteVerification = (env.GOOGLE_SITE_VERIFICATION || siteConfig.googleSiteVerification || '').trim();
+const cfBeaconToken = (env.CLOUDFLARE_WEB_ANALYTICS_TOKEN || siteConfig.cfBeaconToken || '').trim();
+const cfBeacon = JSON.stringify({ token: cfBeaconToken });
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -79,8 +82,8 @@ const cfBeacon = JSON.stringify({ token: siteConfig.cfBeaconToken });
 {description && <meta name="twitter:description" content={description} />}
 <meta name="twitter:image" content={ogImage} />
 
-{siteConfig.googleSiteVerification && <meta name="google-site-verification" content={siteConfig.googleSiteVerification} />}
+{googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
-{siteConfig.cfBeaconToken && (
+{cfBeaconToken && (
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={cfBeacon}></script>
 )}
