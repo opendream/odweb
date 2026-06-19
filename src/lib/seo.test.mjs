@@ -75,7 +75,7 @@ describe('organizationLd', () => {
     expect(ld['@id']).toBe('https://opendream.co.th/#organization');
     expect(ld.name).toBe('Opendream Co., Ltd.');
     expect(ld.alternateName).toBe('บริษัท โอเพ่นดรีม จำกัด');
-    expect(ld.logo).toBe('https://opendream.co.th/media/od_logo.svg');
+    expect(ld.logo).toBe('https://opendream.co.th/media/od_logo.png');
     expect(ld.sameAs).toContain('https://x.com/opendream');
     expect(ld.address['@type']).toBe('PostalAddress');
     expect(ld.address.addressCountry).toBe('TH');
@@ -90,7 +90,7 @@ describe('organizationRef', () => {
     expect(ref['@type']).toBe('Organization');
     expect(ref['@id']).toBe('https://opendream.co.th/#organization');
     expect(ref.name).toBe('Opendream Co., Ltd.');
-    expect(ref.logo).toBe('https://opendream.co.th/media/od_logo.svg');
+    expect(ref.logo).toBe('https://opendream.co.th/media/od_logo.png');
   });
 });
 
@@ -120,7 +120,7 @@ describe('blogPostingLd', () => {
     expect(ld.image).toBe('https://opendream.co.th/c.png');
     expect(ld.datePublished).toBe('2020-01-01T00:00:00.000Z');
     expect(ld.author['@id']).toBe('https://opendream.co.th/#organization');
-    expect(ld.publisher.logo).toBe('https://opendream.co.th/media/od_logo.svg');
+    expect(ld.publisher.logo).toBe('https://opendream.co.th/media/od_logo.png');
     expect(ld.articleSection).toBe('News');
     expect(ld.inLanguage).toBe('th');
   });
