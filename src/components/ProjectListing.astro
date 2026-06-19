@@ -1,0 +1,45 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { SECTORS } from '../lib/categories.mjs';
+
+interface Props {
+  items: any[];
+  lang: 'th' | 'en';
+}
+const { items, lang } = Astro.props;
+---
+<section class="od-listing">
+  <div class="od-container">
+    <ul class="od-filter">
+      {SECTORS.map((s) => (
+        <li>
+          <button type="button" class={s.slug === 'all' ? 'active' : undefined} data-category-slug={s.slug} aria-pressed={s.slug === 'all' ? 'true' : 'false'}>
+            {lang === 'en' ? s.en : s.th}
+          </button>
+        </li>
+      ))}
+    </ul>
+    <div class="od-grid">
+      {items.map((p) => <ProjectCard title={p.data.title} href={p.data.path} cover={p.data.cover} categories={p.data.categories} />)}
+    </div>
+  </div>
+</section>
+<script is:inline>
+  (() => {
+    const root = document.currentScript.closest('main') || document;
+    const buttons = root.querySelectorAll('.od-filter button');
+    const cards = root.querySelectorAll('.od-grid .od-card');
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      const slug = button.getAttribute('data-category-slug');
+      buttons.forEach((x) => {
+        const active = x === button;
+        x.classList.toggle('active', active);
+        x.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      cards.forEach((card) => {
+        const sectors = (card.getAttribute('data-sectors') || '').split(' ');
+        card.style.display = (slug === 'all' || sectors.includes(slug)) ? '' : 'none';
+      });
+    }));
+  })();
+</script>
