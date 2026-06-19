@@ -16,10 +16,17 @@ The migration is complete and the repo is published at `opendream/odweb`.
 The build is complete and the repo is live. The immediate next task is to deploy a **test site on
 Cloudflare Pages** before any production cutover:
 
-- Create a Cloudflare Pages project connected to the `opendream/odweb` repo. Set the build command
-  to `npm run build`, the build output directory to `dist`, and leave environment variables empty.
-- Or deploy a locally built `dist/` with `wrangler pages deploy dist`. Build `dist/` first with
-  `make up`.
+- **Recommended — git-connected build:** create a Cloudflare Pages project connected to the
+  `opendream/odweb` repo, with build command `npm run build` and output directory `dist`. Cloudflare
+  runs the build itself, so the deployed output is always fresh. Leave environment variables empty
+  for a plain test deploy; to turn on analytics/verification later, set
+  `CLOUDFLARE_WEB_ANALYTICS_TOKEN` and `GOOGLE_SITE_VERIFICATION` (see `docs/seo-setup.md`).
+- **Local / Wrangler build:** run **`make dist`** to export a clean, deploy-ready build to the host
+  `dist/`, then `wrangler pages deploy dist`. Do **not** use `make up` / `make rebuild` for this —
+  those build `dist` *inside* the Docker image and serve it at `:4321`; they never write the host
+  `dist/` folder, so deploying the host `dist/` after them would ship a stale (or empty) build.
+  `make dist` is the only command that produces a deploy-ready host `dist/` (it also strips nginx's
+  default `50x.html`, which is not part of the Astro output).
 - Treat this as a test or preview deployment. Review the deployed build, then handle the production
   domain cutover as a separate step.
 - There is nothing server-side to provision. The output is plain static files plus the self-hosted
@@ -47,6 +54,7 @@ Everything runs in Docker; the host needs only Docker. A `Makefile` wraps the ta
 ```bash
 make up        # build and serve at http://localhost:4321
 make rebuild   # rebuild after editing content or code
+make dist      # export a clean, deploy-ready build to ./dist (for wrangler)
 make down      # stop
 make test      # run the content-pipeline unit tests
 make help      # list every target
@@ -54,7 +62,10 @@ make help      # list every target
 
 The raw equivalents are `docker compose up -d --build`, then `... --build web` to rebuild,
 `docker compose down`, and `docker compose --profile tools run --rm test`. Builds have no build-time
-dependency on WordPress; the committed markdown and media are the source of truth.
+dependency on WordPress; the committed markdown and media are the source of truth. **`make up` /
+`make rebuild` build `dist` inside the Docker image and serve it via nginx at `:4321`; they do not
+write the host `dist/`.** When you need the built files on the host (e.g. for `wrangler pages deploy`
+or an offline audit), use `make dist`, which builds and then copies the output out of the container.
 
 ## Structure
 
