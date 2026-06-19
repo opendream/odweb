@@ -1,5 +1,5 @@
 ---
-title: "Opendream demonstrated smart phone application &#8220;DV Consult&#8221; to Her Royal Highness Princess Maha Chakri Sirindhorn"
+title: "Opendream demonstrated smart phone application “DV Consult” to Her Royal Highness Princess Maha Chakri Sirindhorn"
 date: 2018-02-19T13:31:22.000Z
 modified: 2018-02-21T16:31:38.000Z
 lang: en

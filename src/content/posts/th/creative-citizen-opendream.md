@@ -1,5 +1,5 @@
 ---
-title: "CREATIVE CITIZEN : &#8216;แมค &#038; โบจัง&#8217; สองนักออกแบบเกมจาก Opendream"
+title: "CREATIVE CITIZEN : ‘แมค & โบจัง’ สองนักออกแบบเกมจาก Opendream"
 date: 2018-10-29T15:17:06.000Z
 modified: 2018-10-29T15:25:10.000Z
 lang: th
