@@ -1,10 +1,14 @@
 ---
 // Clean, de-Divi'd blog post card: cover image, title, excerpt. Styled by .od-postcard in modern.css.
+// Posts without a cover fall back to a deterministic gradient block.
+import { gradientFor } from '../lib/gradient.mjs';
 interface Props { title: string; href: string; excerpt?: string; cover?: string; }
 const { title, href, excerpt, cover } = Astro.props;
 ---
 <a href={href} class="od-postcard">
-  {cover && <span class="od-postcard__img"><img src={cover} alt={title} loading="lazy" /></span>}
+  {cover
+    ? <span class="od-postcard__img"><img src={cover} alt={title} loading="lazy" /></span>
+    : <span class="od-postcard__img" style={`background:${gradientFor(href)}`}></span>}
   <h2 class="od-postcard__title">{title}</h2>
   {excerpt && <p class="od-postcard__excerpt">{excerpt}</p>}
 </a>
