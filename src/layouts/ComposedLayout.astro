@@ -10,7 +10,8 @@ const title = p.title ?? fm.title;
 const lang = (p.lang ?? fm.lang ?? 'th') as 'th' | 'en';
 const path = p.path ?? fm.path;
 const description = p.description ?? fm.description;
+const noindex = p.noindex ?? fm.noindex ?? false;
 ---
-<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
+<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path} noindex={noindex}>
   <slot />
 </BaseLayout>
