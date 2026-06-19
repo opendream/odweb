@@ -87,6 +87,6 @@ const cfBeacon = JSON.stringify({ token: cfBeaconToken });
 
 {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
-{cfBeaconToken && (
+{cfBeaconToken && !isPreviewOrigin(origin) && (
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={cfBeacon}></script>
 )}
