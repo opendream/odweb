@@ -42,7 +42,7 @@ services:
     volumes:
       - ./:/app
       - extract_modules:/app/node_modules
-    command: sh -c "npm install --no-save turndown@^7.2.0 vitest@^2.1.0 node-html-parser@^6.1.13 >/dev/null 2>&1 && npx vitest run scripts/lib/"
+    command: sh -c "npm install --no-save turndown@^7.2.0 vitest@^2.1.0 node-html-parser@^6.1.13 >/dev/null 2>&1 && npx vitest run"
     profiles: ["tools"]
 
 volumes:

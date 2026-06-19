@@ -1,0 +1,25 @@
+{
+  "name": "Opendream Co., Ltd.",
+  "alternateName": "บริษัท โอเพ่นดรีม จำกัด",
+  "logo": "/media/od_logo.svg",
+  "slogan": "Open by Design. Build for Impact.",
+  "foundingDate": "2007",
+  "email": "info@opendream.co.th",
+  "telephone": "+66.90.559.8288",
+  "sameAs": [
+    "https://www.facebook.com/opendream",
+    "https://x.com/opendream",
+    "https://github.com/opendream"
+  ],
+  "address": {
+    "streetAddress": "349 SJ Infinite One Business Complex, Floor 10 Unit 1004-1005, Vibhavadi-Rangsit Rd, Chompol, Chatuchak",
+    "addressLocality": "Bangkok",
+    "addressRegion": "Bangkok",
+    "postalCode": "10900",
+    "addressCountry": "TH"
+  },
+  "geo": {
+    "latitude": 13.8097085,
+    "longitude": 100.5563118
+  }
+}
