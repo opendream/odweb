@@ -1,0 +1,86 @@
+---
+import siteConfig from '../data/site.json';
+import { resolveOgImage } from '../lib/seo.mjs';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: 'th' | 'en';
+  path: string;
+  image?: string;
+  cover?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  noindex?: boolean;
+  hasAlt?: boolean;
+  thHref: string;
+  enHref: string;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  lang,
+  path,
+  image,
+  cover,
+  imageAlt,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  section,
+  noindex = false,
+  hasAlt = false,
+  thHref,
+  enHref,
+  jsonLd = [],
+} = Astro.props;
+
+const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const canonical = origin + path;
+const ogImage = resolveOgImage(origin, { image, cover });
+const ogImageAlt = imageAlt ?? title;
+const isDefaultImage = ogImage.endsWith('/media/og-default.png');
+const cfBeacon = JSON.stringify({ token: siteConfig.cfBeaconToken });
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+{noindex && <meta name="robots" content="noindex,follow" />}
+<link rel="canonical" href={canonical} />
+{hasAlt && <link rel="alternate" hreflang="th" href={origin + thHref} />}
+{hasAlt && <link rel="alternate" hreflang="en" href={origin + enHref} />}
+{hasAlt && <link rel="alternate" hreflang="x-default" href={origin + thHref} />}
+<link rel="icon" href="/media/2016/12/opendream-fav.png" />
+<link rel="apple-touch-icon" href="/media/2016/12/opendream-fav.png" />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Opendream" />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={ogImageAlt} />
+{isDefaultImage && <meta property="og:image:width" content="1200" />}
+{isDefaultImage && <meta property="og:image:height" content="630" />}
+<meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
+{type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+{type === 'article' && <meta property="article:author" content="Opendream" />}
+{type === 'article' && section && <meta property="article:section" content={section} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+{description && <meta name="twitter:description" content={description} />}
+<meta name="twitter:image" content={ogImage} />
+
+{siteConfig.googleSiteVerification && <meta name="google-site-verification" content={siteConfig.googleSiteVerification} />}
+{jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+{siteConfig.cfBeaconToken && (
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={cfBeacon}></script>
+)}
