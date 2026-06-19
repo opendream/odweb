@@ -11,26 +11,30 @@ and served entirely in **Docker**. The original look is preserved, but all the W
 scaffolding is gone: every style is a clean `.od-*` rule and there are no third-party CDNs at runtime.
 The migration is complete and the repo is published at `opendream/odweb`.
 
-## Next steps
+## Deployment (Cloudflare Pages)
 
-The build is complete and the repo is live. The immediate next task is to deploy a **test site on
-Cloudflare Pages** before any production cutover:
+**Branch model.** `main` is the **experimental** line and **never** goes to production. A long-lived
+**`production`** branch is Cloudflare Pages' production branch — production deploys only on a push to
+it. `main` and every other branch/PR get **preview** deployments (their own URLs) for click-testing.
 
-- **Recommended — git-connected build:** create a Cloudflare Pages project connected to the
-  `opendream/odweb` repo, with build command `npm run build` and output directory `dist`. Cloudflare
-  runs the build itself, so the deployed output is always fresh. Leave environment variables empty
-  for a plain test deploy; to turn on analytics/verification later, set
-  `CLOUDFLARE_WEB_ANALYTICS_TOKEN` and `GOOGLE_SITE_VERIFICATION` (see `docs/seo-setup.md`).
-- **Local / Wrangler build:** run **`make dist`** to export a clean, deploy-ready build to the host
-  `dist/`, then `wrangler pages deploy dist`. Do **not** use `make up` / `make rebuild` for this —
-  those build `dist` *inside* the Docker image and serve it at `:4321`; they never write the host
-  `dist/` folder, so deploying the host `dist/` after them would ship a stale (or empty) build.
-  `make dist` is the only command that produces a deploy-ready host `dist/` (it also strips nginx's
-  default `50x.html`, which is not part of the Astro output).
-- Treat this as a test or preview deployment. Review the deployed build, then handle the production
-  domain cutover as a separate step.
-- There is nothing server-side to provision. The output is plain static files plus the self-hosted
-  fonts and media already in the repo.
+**One-time Pages setup.** Create a Pages project connected to `opendream/odweb`: framework **Astro**,
+build command `npm run build`, output directory `dist`, and **set the production branch to
+`production`** (not `main`). Keep preview deployments enabled (the default). Do **not** add the
+`@astrojs/cloudflare` adapter — the site is static; Pages serves `dist/` directly. (A Workers/SSR
+adapter was tried and reverted; it expects a `_worker.js` this static build never emits.)
+
+**To release to production.** Fast-forward / merge a tested `main` into `production` and push —
+Pages builds and deploys it. Roll back with one click in the Pages dashboard (it keeps deploy
+history). Optionally tag the released commit `vX.Y.Z` for version history (tags don't trigger
+deploys; the `production` branch push does).
+
+**Environment variables.** Set `CLOUDFLARE_WEB_ANALYTICS_TOKEN` and `GOOGLE_SITE_VERIFICATION` on the
+**Production** environment only (leave Preview empty), so experimental builds emit no analytics or
+verification. See `docs/seo-setup.md`.
+
+**Local / offline build.** `make dist` exports a clean, deploy-ready `dist/` on the host (it also
+strips nginx's default `50x.html`). `make up` / `make rebuild` build inside the Docker image and
+serve at `:4321`; they do **not** write the host `dist/`.
 
 ## Stack and conventions
 
