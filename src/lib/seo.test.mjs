@@ -132,11 +132,18 @@ describe('blogPostingLd', () => {
 });
 
 describe('creativeWorkLd', () => {
-  it('builds a CreativeWork with creator ref and about[] from issues', () => {
-    const ld = creativeWorkLd(SITE, { path: '/project/y', title: 'Y', image: '/d.png', issues: ['health'], lang: 'en' });
+  it('builds a CreativeWork with creator ref and about[] from issues and type', () => {
+    const ld = creativeWorkLd(SITE, {
+      path: '/project/y',
+      title: 'Y',
+      image: '/d.png',
+      issues: ['health'],
+      type: ['Mobile Application'],
+      lang: 'en',
+    });
     expect(ld['@type']).toBe('CreativeWork');
     expect(ld.creator['@id']).toBe('https://opendream.co.th/#organization');
-    expect(ld.about).toEqual(['health']);
+    expect(ld.about).toEqual(['health', 'Mobile Application']);
     expect(ld.url).toBe('https://opendream.co.th/project/y');
   });
 });

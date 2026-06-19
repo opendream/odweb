@@ -108,7 +108,13 @@ export function blogPostingLd(site, { path, title, description, image, datePubli
   return ld;
 }
 
-export function creativeWorkLd(site, { path, title, image, issues = [], lang }) {
+function arrayOf(value) {
+  if (!value) return [];
+  return Array.isArray(value) ? value.filter(Boolean) : [value].filter(Boolean);
+}
+
+export function creativeWorkLd(site, { path, title, image, issues = [], type, lang }) {
+  const about = [...arrayOf(issues), ...arrayOf(type)];
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
@@ -118,7 +124,7 @@ export function creativeWorkLd(site, { path, title, image, issues = [], lang }) 
     creator: organizationRef(site),
   };
   if (image) ld.image = absUrl(site, image);
-  if (issues.length) ld.about = issues;
+  if (about.length) ld.about = about;
   return ld;
 }
 
