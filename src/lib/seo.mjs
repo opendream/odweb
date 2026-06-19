@@ -35,7 +35,7 @@ export function stripMarkdown(md = '') {
     .trim();
 }
 
-export function clampDescription(text = '', max = 160) {
+export function clampDescription(text = '', max = 155) {
   const t = String(text).replace(/\s+/g, ' ').trim();
   if (t.length <= max) return t;
   const cut = t.slice(0, max - 3);
@@ -43,7 +43,7 @@ export function clampDescription(text = '', max = 160) {
   return (lastSpace > 40 ? cut.slice(0, lastSpace) : cut).trimEnd() + '...';
 }
 
-export function metaDescription({ description, excerpt, body } = {}, max = 160) {
+export function metaDescription({ description, excerpt, body } = {}, max = 155) {
   const source = description || excerpt || stripMarkdown(body || '');
   return source ? clampDescription(source, max) : undefined;
 }

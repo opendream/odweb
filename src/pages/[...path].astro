@@ -4,6 +4,7 @@ import PostLayout from '../layouts/PostLayout.astro';
 import ProjectLayout from '../layouts/ProjectLayout.astro';
 import PageLayout from '../layouts/PageLayout.astro';
 import ComposedLayout from '../layouts/ComposedLayout.astro';
+import { metaDescription } from '../lib/seo.mjs';
 import Hero from '../components/content/Hero.astro';
 import Section from '../components/content/Section.astro';
 import Blurbs from '../components/content/Blurbs.astro';
@@ -33,21 +34,26 @@ export async function getStaticPaths() {
 const props = Astro.props;
 const { Content } = await render(props.entry);
 const d = props.entry.data;
+const description = metaDescription({
+  description: d.description,
+  excerpt: d.excerpt,
+  body: props.entry.body ?? '',
+});
 ---
 {props.kind === 'project' ? (
-  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt} issues={d.issues} type={d.type} year={d.year} partners={d.partners}>
+  <ProjectLayout title={d.title} lang={d.lang} path={d.path} cover={d.cover} description={description} issues={d.issues} type={d.type} year={d.year} partners={d.partners}>
     <Content />
   </ProjectLayout>
 ) : props.kind === 'policy' ? (
-  <PageLayout title={d.title} lang={d.lang} path={d.path}>
+  <PageLayout title={d.title} lang={d.lang} path={d.path} description={description}>
     <Content />
   </PageLayout>
 ) : props.kind === 'page-mdx' ? (
-  <ComposedLayout title={d.title} lang={d.lang} path={d.path} description={d.description}>
+  <ComposedLayout title={d.title} lang={d.lang} path={d.path} description={description}>
     <Content components={mdxComponents} />
   </ComposedLayout>
 ) : (
-  <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={d.excerpt}>
+  <PostLayout title={d.title} date={d.date} lang={d.lang} path={d.path} cover={d.cover} description={description} section={d.categories?.[0]} modified={d.modified}>
     <Content />
   </PostLayout>
 )}

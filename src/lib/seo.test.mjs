@@ -62,6 +62,10 @@ describe('metaDescription', () => {
     expect(metaDescription({ body: '# B body' })).toBe('B body');
     expect(metaDescription({})).toBeUndefined();
   });
+
+  it('uses a 155 character default limit', () => {
+    expect(metaDescription({ body: 'word '.repeat(80) }).length).toBeLessThanOrEqual(155);
+  });
 });
 
 describe('organizationLd', () => {
