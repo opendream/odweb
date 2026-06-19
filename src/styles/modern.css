@@ -240,6 +240,7 @@ a.od-blurb:hover .od-blurb__title { color: var(--od-accent); }
 .od-article__meta { color: var(--od-muted); font-size: 14px; margin: 0 0 26px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
 .od-article__meta .od-cat { background: #f3f4f6; border-radius: 999px; padding: 3px 11px; font-size: 13px; }
 .od-article__cover { width: 100%; border-radius: 12px; margin: 6px 0 34px; display: block; }
+.od-article__cover--ph { aspect-ratio: 16 / 9; }
 .od-meta { margin: 0 0 32px; padding: 20px 24px; background: #f6f8fa; border-radius: 12px; font-size: 15px; }
 .od-meta__row { display: flex; gap: 14px; padding: 8px 0; }
 .od-meta__row + .od-meta__row { border-top: 1px solid var(--od-line); }

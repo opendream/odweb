@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { DEFAULT_OG_IMAGE, blogPostingLd, breadcrumbLd } from '../lib/seo.mjs';
+import { gradientFor } from '../lib/gradient.mjs';
 
 interface Props {
   title: string;
@@ -54,7 +55,9 @@ const jsonLd = [
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
     <p class="od-article__meta"><time datetime={date.toISOString()}>{dateStr}</time></p>
-    {cover && <img class="od-article__cover" src={cover} alt={title} />}
+    {cover
+      ? <img class="od-article__cover" src={cover} alt={title} />
+      : <div class="od-article__cover od-article__cover--ph" style={`background:${gradientFor(path)}`}></div>}
     <div class="od-prose"><slot /></div>
   </article>
 </BaseLayout>
