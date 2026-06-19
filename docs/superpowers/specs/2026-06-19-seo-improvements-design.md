@@ -67,9 +67,12 @@ canonical/hreflang logic moves verbatim.
   omit for covers (unknown dimensions — wrong dims are worse than none).
 - Twitter: change `summary` → **`summary_large_image`**; add `twitter:title`, `twitter:description`,
   `twitter:image`.
-- **New asset:** `public/media/og-default.png`, 1200×630, branded (logo + slogan on brand
-  background). Raster (PNG) — LINE/Facebook do not render SVG OG images. Generated as a build/one-off
-  step from the SVG logo; committed to the repo.
+- **New asset:** `public/media/og-default.png`, **1200×630**, committed to the repo. Source artwork
+  supplied by the user at `~/Downloads/od-og-default.webp` (3402×1786, ≈1.91:1 — already the exact OG
+  ratio: "opendream" wordmark on white with a brand-cyan base bar). Convert + downscale with the
+  built-in macOS `sips` (`sips -s format png -z 630 1200 <src> --out public/media/og-default.png`).
+  **PNG, not WebP** — chosen because LINE, LinkedIn, and WhatsApp (the user's key TH + B2B channels)
+  do not reliably render WebP `og:image`; PNG is lossless and universal for this flat-color wordmark.
 
 ### 4.3 Article metadata for posts
 When `type='article'` (posts): emit `og:type=article`, `article:published_time` (post date),
@@ -169,8 +172,8 @@ skills location; documented in the site README.
   separate work).
 
 ## 9. Risks & mitigations
-- **OG image generation** needs a raster step; mitigate by committing a single static
-  `og-default.png` (no per-page dynamic generation in v1).
+- **OG image** is a single committed static `og-default.png` (no per-page dynamic generation in v1);
+  PNG over WebP for crawler compatibility (see §4.2).
 - **JSON-LD email exposure** — business email is already public on the contact page; acceptable.
 - **hreflang x-default / pairing** — existing `translations.json` is incomplete; audit skill flags
   unpaired pages so the listing fallback is intentional, not silent breakage.
