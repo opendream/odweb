@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { DEFAULT_OG_IMAGE, breadcrumbLd, creativeWorkLd } from '../lib/seo.mjs';
+
 interface Props {
   title: string; lang: 'th' | 'en'; path: string; cover?: string; description?: string;
   issues?: string[]; type?: string; year?: string | number; partners?: string[];
@@ -21,15 +23,35 @@ const splitMulti = (s: string): string[] => {
   if (cur.trim()) out.push(cur.trim());
   return out.filter(Boolean);
 };
+const typeItems = type ? splitMulti(type) : [];
 // Each row carries an items array; a single item renders plain, two or more render as a list.
 const rows = [
   issues.length ? { label: L.issue, items: issues } : null,
-  type ? { label: L.type, items: splitMulti(type) } : null,
+  typeItems.length ? { label: L.type, items: typeItems } : null,
   year ? { label: L.year, items: [String(year)] } : null,
   partners.length ? { label: L.partners, items: partners } : null,
 ].filter(Boolean) as { label: string; items: string[] }[];
+const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const projectsHref = lang === 'en' ? '/en/projects_en' : '/projects';
+const projectsName = lang === 'en' ? 'Projects' : 'งานของเรา';
+const homePath = lang === 'en' ? '/en' : '/';
+const jsonLd = [
+  creativeWorkLd(origin, {
+    path,
+    title,
+    image: cover || DEFAULT_OG_IMAGE,
+    issues,
+    type: typeItems,
+    lang,
+  }),
+  breadcrumbLd(origin, [
+    { name: 'Opendream', path: homePath },
+    { name: projectsName, path: projectsHref },
+    { name: title, path },
+  ]),
+];
 ---
-<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
+<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path} cover={cover} jsonLd={jsonLd}>
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
     {cover && <img class="od-article__cover" src={cover} alt={title} />}

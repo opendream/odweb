@@ -1,5 +1,5 @@
 ---
-title: "[27 Jan] &#8220;Digital media standards for services in the age of knowledge society&#8221; seminar"
+title: "[27 Jan] “Digital media standards for services in the age of knowledge society” seminar"
 date: 2010-01-26T13:37:03.000Z
 modified: 2020-10-07T16:48:54.000Z
 lang: th

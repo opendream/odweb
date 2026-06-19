@@ -1,10 +1,56 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-interface Props { title: string; date: Date; lang: 'th' | 'en'; path: string; cover?: string; description?: string; }
-const { title, date, lang, path, cover, description } = Astro.props;
+import { DEFAULT_OG_IMAGE, blogPostingLd, breadcrumbLd } from '../lib/seo.mjs';
+
+interface Props {
+  title: string;
+  date: Date;
+  lang: 'th' | 'en';
+  path: string;
+  cover?: string;
+  description?: string;
+  section?: string;
+  modified?: Date;
+}
+
+const { title, date, lang, path, cover, description, section, modified } = Astro.props;
 const dateStr = date.toLocaleDateString(lang === 'en' ? 'en-US' : 'th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
+const origin = Astro.site?.origin ?? 'https://opendream.co.th';
+const blogHref = lang === 'en' ? '/en/blogs' : '/blog';
+const blogName = lang === 'en' ? 'News' : 'ข่าวสาร';
+const homePath = lang === 'en' ? '/en' : '/';
+const publishedTime = date.toISOString();
+const modifiedTime = modified ? modified.toISOString() : undefined;
+const jsonLd = [
+  blogPostingLd(origin, {
+    path,
+    title,
+    description,
+    image: cover || DEFAULT_OG_IMAGE,
+    datePublished: publishedTime,
+    dateModified: modifiedTime,
+    lang,
+    section,
+  }),
+  breadcrumbLd(origin, [
+    { name: 'Opendream', path: homePath },
+    { name: blogName, path: blogHref },
+    { name: title, path },
+  ]),
+];
 ---
-<BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path}>
+<BaseLayout
+  title={`${title} — Opendream`}
+  description={description}
+  lang={lang}
+  path={path}
+  cover={cover}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  section={section}
+  jsonLd={jsonLd}
+>
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
     <p class="od-article__meta"><time datetime={date.toISOString()}>{dateStr}</time></p>

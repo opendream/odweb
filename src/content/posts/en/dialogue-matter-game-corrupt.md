@@ -1,5 +1,5 @@
 ---
-title: "Dialogue with The Matter on &#8220;Game Corrupt: Would you stop it or let it be?&#8221;"
+title: "Dialogue with The Matter on “Game Corrupt: Would you stop it or let it be?”"
 date: 2017-02-22T20:38:58.000Z
 modified: 2017-11-29T08:44:42.000Z
 lang: en

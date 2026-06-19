@@ -24,7 +24,7 @@ With governments and health leaders across the world focused on responding to th
 
 An estimated 75% of infectious diseases—such as SARS, MERS, Avian Flu, Swine Flu, and HIV—are zoonotic in origin, meaning they “spillover” from animals to humans. 
 
-![](/media/2021/06/podd1.jpg)
+![PODD graphic showing zoonotic disease spillover from animals to humans](/media/2021/06/podd1.jpg)
 
 Zoonosis is a major barrier to poverty alleviation around the world, particularly in less developed countries that lack disease surveillance infrastructure and depend on animals for daily life. As our cities grow, expanding farmland and deforestation encroach on wild animal habitats, increasing the likelihood of spillover. According to most infectious disease experts, it’s not a matter of _if_—but _when_ the next pandemic will happen. 
 

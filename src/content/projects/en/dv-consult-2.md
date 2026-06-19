@@ -22,27 +22,27 @@ DV Consult is an online chat application that allows general practitioners in re
 
 In developing the application, Opendream worked closely with Debaratana Vejjanukula Foundation in Chiang Mai to understand the main problems faced by the practitioners in order to create the most suitable communication solution for them.
 
-![](/media/2018/02/dvconsult-image-1.jpg)
+![DV Consult app screens for submitting a medical consultation and chat response](/media/2018/02/dvconsult-image-1.jpg)
 
 ### Problem & Concept
 
-![](/media/2018/02/lo2_dv_present-08.jpg)
+![Map showing remote general practitioners connected to city medical specialists](/media/2018/02/lo2_dv_present-08.jpg)
 
 When general practitioners in remote areas are confronted with complicated cases, which require specific knowledge and experience to make proper judgments, consultations with specialists are needed. Referring patients to specialists in the city might be necessary but at the same time the patients will have to bear higher expenses.
 
 ### Execution
 
-![](/media/2018/02/lo2_dv_present-10.jpg)
+![DV Consult network diagram showing technology connecting specialists across regions](/media/2018/02/lo2_dv_present-10.jpg)
 
-![](/media/2018/02/dv_03-1.png)
+![DV Consult screens for selecting a specialty group and specialist](/media/2018/02/dv_03-1.png)
 
 DV Consult is created to provide the general practitioners a list of medical specialists who are willing to give professional advice. The application is equipped with the following unique features that solve the problems with the existing chat solutions.
 
 -   Text will not be deleted after a set time period like the other applications
--   Conversations are sorted and categorized according to the issue or specialty consulted so that it is easy to follow up and also facilitates knowledge management![](/media/2018/02/dv_05-1.png)
+-   Conversations are sorted and categorized according to the issue or specialty consulted so that it is easy to follow up and also facilitates knowledge management![DV Consult screens for composing and tracking consultation questions](/media/2018/02/dv_05-1.png)
 -   General practitioners are able to consult multiple specialists at the same time by sending the case details only once. Each specialist can respond to the general practitioner independently in separate chat rooms.
--   The number of times one initiates or respond to queries is traceable in the system record![](/media/2018/02/dv_06-1.png)
--   All conversations are kept private. Login to registered user account is required to access the chat interface and all users communicate in the form of closed groups.![](/media/2018/02/lo2_dv_present-09.jpg)
+-   The number of times one initiates or respond to queries is traceable in the system record![DV Consult doctor profile screens showing question and answer counts](/media/2018/02/dv_06-1.png)
+-   All conversations are kept private. Login to registered user account is required to access the chat interface and all users communicate in the form of closed groups.![DV Consult closed-group registration and login diagram](/media/2018/02/lo2_dv_present-09.jpg)
 
 ### Impact
 

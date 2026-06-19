@@ -1,5 +1,5 @@
 ---
-title: "BBC News: Thailand&#8217;s Disease Detective"
+title: "BBC News: Thailand’s Disease Detective"
 date: 2017-11-24T17:09:38.000Z
 modified: 2017-11-29T08:41:24.000Z
 lang: th

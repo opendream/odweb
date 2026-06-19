@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
 import translations from '../data/translations.json';
 
 interface Props {
@@ -10,10 +11,33 @@ interface Props {
   lang: 'th' | 'en';
   path: string;
   altPath?: string;
+  image?: string;
+  cover?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  noindex?: boolean;
+  jsonLd?: object[];
 }
-const { title, description, lang, path, altPath } = Astro.props;
-// canonical/hreflang must be absolute; derive from the Astro `site` config (single source of truth)
-const site = Astro.site?.origin ?? 'https://opendream.co.th';
+const {
+  title,
+  description,
+  lang,
+  path,
+  altPath,
+  image,
+  cover,
+  imageAlt,
+  type,
+  publishedTime,
+  modifiedTime,
+  section,
+  noindex,
+  jsonLd,
+} = Astro.props;
+
 const alt = altPath ?? translations[path as keyof typeof translations];
 const fallbackAlt = (() => {
   if (alt) return alt;
@@ -21,7 +45,7 @@ const fallbackAlt = (() => {
     if (path.startsWith('/projects/')) return '/en/projects_en';
     if (path.startsWith('/project/')) return '/en/projects_en';
     if (path.startsWith('/blog/')) return '/en/blogs';
-    return '/en/';
+    return '/en';
   }
   if (path.startsWith('/en/projects_en/')) return '/projects';
   if (path.startsWith('/en/project/')) return '/projects';
@@ -30,27 +54,29 @@ const fallbackAlt = (() => {
 })();
 const enHref = lang === 'en' ? path : fallbackAlt;
 const thHref = lang === 'th' ? path : fallbackAlt;
+const hasAlt = Boolean(alt);
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    {alt && <link rel="alternate" hreflang="th" href={site + thHref} />}
-    {alt && <link rel="alternate" hreflang="en" href={site + enHref} />}
-    <link rel="canonical" href={site + path} />
-    <link rel="icon" href="/media/2016/12/opendream-fav.png" />
-    <link rel="apple-touch-icon" href="/media/2016/12/opendream-fav.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Opendream" />
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content={site + path} />
-    <meta property="og:image" content={site + "/media/2016/12/opendream-fav.png"} />
-    <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
-    <meta name="twitter:card" content="summary" />
+    <SEO
+      title={title}
+      description={description}
+      lang={lang}
+      path={path}
+      image={image}
+      cover={cover}
+      imageAlt={imageAlt}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      section={section}
+      noindex={noindex}
+      hasAlt={hasAlt}
+      thHref={thHref}
+      enHref={enHref}
+      jsonLd={jsonLd}
+    />
     <!-- Site font: self-hosted Noto Sans Thai Looped (OFL); @font-face in src/styles/fonts.css.
          Preload the body weight (400) for Thai + Latin to avoid a flash of fallback text. -->
     <link rel="preload" href="/fonts/noto-sans-thai-looped-thai-400.woff2" as="font" type="font/woff2" crossorigin />

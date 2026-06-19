@@ -50,11 +50,11 @@ partners:
 
 ### Awards
 
-![](/media/2017/05/aicta.png)
+![โลโก้ ASEAN ICT Awards 2017](/media/2017/05/aicta.png)
 
 เกมคอร์รัปได้รับรางวัล Silver Award ในหมวด Digital Content จากการแข่งขัน ASEAN ICT Awards 2017 เมื่อ พฤศจิกายน 2560
 
-![](/media/2017/02/ict_award2-1-1080x675.jpg)
+![ทีมเกมคอร์รัปบนเวทีรับรางวัล ASEAN ICT Awards 2017](/media/2017/02/ict_award2-1-1080x675.jpg)
 
 [รายละเอียดข่าว](/blog/asean-ict-awards-2017)
 

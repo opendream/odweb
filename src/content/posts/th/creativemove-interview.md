@@ -1,5 +1,5 @@
 ---
-title: "CreativeMOVE &#8216;Opendream&#8217; เปิดฝันงานไอที"
+title: "CreativeMOVE ‘Opendream’ เปิดฝันงานไอที"
 date: 2014-05-10T11:17:19.000Z
 modified: 2017-02-20T16:06:21.000Z
 lang: th

@@ -1,5 +1,5 @@
 ---
-title: "The MATTER คุยกับ Opendream เรื่อง &#8220;เกม Corrupt: หยุดยั้งหรือปล่อยไป&#8221;"
+title: "The MATTER คุยกับ Opendream เรื่อง “เกม Corrupt: หยุดยั้งหรือปล่อยไป”"
 date: 2017-02-22T17:49:01.000Z
 modified: 2017-12-12T20:07:26.000Z
 lang: th

@@ -7,7 +7,8 @@ const order = projectConfig.th?.order ?? [];
 const rank = (slug) => { const i = order.indexOf(slug); return i === -1 ? Infinity : i; };
 const items = (await getCollection('projects', (p) => p.data.lang === 'th'))
   .sort((a, b) => (rank(a.data.slug) - rank(b.data.slug)) || (b.data.date.getTime() - a.data.date.getTime()));
+const description = 'ผลงานดิจิทัลของ Opendream ทั้งระบบเว็บ แอป เกม และแพลตฟอร์มข้อมูล ที่พัฒนาร่วมกับองค์กรเพื่อสร้างผลกระทบทางสังคม';
 ---
-<BaseLayout title="งานของเรา — Opendream" lang="th" path="/projects" altPath="/en/projects_en">
+<BaseLayout title="งานของเรา — Opendream" description={description} lang="th" path="/projects" altPath="/en/projects_en">
   <ProjectListing items={items} lang="th" />
 </BaseLayout>
