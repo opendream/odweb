@@ -46,8 +46,8 @@ with:
 
 ```css
 /* Full-bleed magazine grid: square covers touching edge-to-edge — 2 columns on wider screens,
-   1 full-width column at/below the mobile breakpoint. Keyed on viewport WIDTH (not orientation),
-   so a tall/narrow desktop window stays 2-up instead of collapsing. Name + subtle zoom on hover. */
+   1 full-width column at/below the mobile breakpoint so tablet portrait widths stay two-up.
+   Name + subtle zoom on hover. */
 .od-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: var(--od-max); margin: 0 auto; }
 @media (max-width: 640px) { .od-showcase { grid-template-columns: 1fr; } }
 ```
@@ -60,7 +60,7 @@ Expected: no matches (this was the only one).
 - [ ] **Step 3: Build and visually verify the fix.**
 
 Run: `make up`
-Open `http://localhost:4321` and resize the browser to a **tall, narrow-ish but still wide** desktop window (e.g. ~900px wide × ~1200px tall — portrait orientation, but width > 640px). The showcase must stay **2 columns** (previously it collapsed to 1). Then narrow below 640px → it collapses to a single column.
+Open `http://localhost:4321` and resize the browser to a **tall, narrow-ish but still wide** desktop window (e.g. ~900px wide × ~1200px tall — portrait orientation, but width > 640px). The showcase must stay **2 columns** (previously it collapsed to 1). Tablet portrait widths such as 768px must also stay **2 columns**. Then narrow to 640px or below → it collapses to a single column.
 
 - [ ] **Step 4: Commit**
 
@@ -211,7 +211,7 @@ echo "covered project tiles unchanged — home still has tiles (expect >0):"; gr
 ```
 Expected: orientation `0`; covered-post `1`; home tiles `>0`.
 
-- [ ] **Step 4: Final visual pass.** At `http://localhost:4321`: home showcase is 2-up on a wide-but-tall window and 1-up below 640px; `/blog` coverless cards and a coverless post page both show gradients; covered posts/cards still show their real images.
+- [ ] **Step 4: Final visual pass.** At `http://localhost:4321`: home showcase is 2-up on a wide-but-tall window and tablet portrait widths, and 1-up at/below 640px; `/blog` coverless cards and a coverless post page both show gradients; covered posts/cards still show their real images.
 
 ---
 
@@ -220,7 +220,7 @@ Expected: orientation `0`; covered-post `1`; home tiles `>0`.
 **Requirement coverage:**
 - Issue 1 (orientation → width) → Task 1 (swap `@media (orientation: portrait)` for `@media (max-width: 640px)`; Step 2 proves it's the only orientation rule) ✓
 - Issue 2 (gradient cover for coverless posts) → Task 2 (listing cards) + Task 3 (single-post cover), both reusing `gradientFor` keyed on the post path for consistency ✓
-- User decisions honored: 640px breakpoint, both cards + post page, plain gradient (no title text) ✓
+- User decisions honored: 640px breakpoint so tablet portrait widths stay two-column, both cards + post page, plain gradient (no title text) ✓
 
 **Placeholder scan:** No vague steps; every edit shows exact before/after code. Verification uses concrete file paths (a known coverless post `election-2554-mps-per-province` and a known covered post `opendream-style`).
 
