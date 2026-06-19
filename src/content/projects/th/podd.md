@@ -59,14 +59,16 @@ partners:
 
 โครงการผ่อดีดีโดยมหาวิทยาลัยเชียงใหม่และโอเพ่นดรีม ได้รับรางวัลเชนะเลิศ Z(Grand Prize Winner) จากโครงการทั้งหมด 340 โครงการทั่วโลกใน Trinity Challenge โดยเป็นการคัดเลือกโครงการที่ใช้เทคโนโลยีในการรวมรวมและวิเคราะห์ข้อมูลเพื่อการรับมือและแก้ปัญหาภาวะวิกฤติทางสุขภาพ
 
-![](/media/2021/06/winner2-copy.jpg)  
+![Dame Sally Davies announces PODD as Grand Prize Winner at The Trinity Challenge](/media/2021/06/winner2-copy.jpg)
+
 [พิธีประกาศรางวัล Trinity Challenge](https://www.youtube.com/watch?v=nUkn-Mxjbxs&t=2060s)
 
 **MIT Solve Competition 2020**
 
 ได้รับเลือกใน MIT Solve Competition จาก 2,600 โครงการ ที่ส่งเข้าร่วมจาก 135 ประเทศ
 
-![](/media/2021/06/PODD-mit02.jpg)  
+![PODD finalist page on the MIT Solve website](/media/2021/06/PODD-mit02.jpg)
+
 [PODD Finalist MIT Solve](https://solve.mit.edu/challenges/health-security-pandemics/solutions/21665)
 
 **PBS NewsHours: Leading Edge of Science and Medicine,** **2019**
@@ -76,11 +78,11 @@ partners:
 
 **ASEAN ICT Awards, 2017**
 
-![](/media/2017/05/aicta.png)
+![โลโก้ ASEAN ICT Awards 2017](/media/2017/05/aicta.png)
 
 โครงการผ่อดีดีได้รับรางวัล Bronze Award ในหมวด Corporate Social Responsibility (CSR) จากการแข่งขัน ASEAN ICT Awards 2017 เมื่อ พฤศจิกายน 2560
 
-![](/media/2017/05/ict_award2-1080x675.jpg)
+![ทีมผ่อดีดีบนเวทีรับรางวัล ASEAN ICT Awards 2017](/media/2017/05/ict_award2-1080x675.jpg)
 
 [อ่านข่าวเพิ่มเติม](/blog/podd-asean-ict-awards-2017)
 

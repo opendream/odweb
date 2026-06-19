@@ -169,11 +169,11 @@ And enter your Email address and Friend code into the form. The deletion process
 
 1\. Go to your profile
 
-![](/media/2021/10/new-horizons-request-deletion-date-step-1-473x1024.png)
+![New Horizons profile screen showing where to find the Friend code](/media/2021/10/new-horizons-request-deletion-date-step-1-473x1024.png)
 
 2\. You can copy your Friend code to clipboard with “Copy” button
 
-![](/media/2021/10/new-horizons-request-deletion-date-step-2-473x1024.png)
+![New Horizons Friend code screen with the Copy button](/media/2021/10/new-horizons-request-deletion-date-step-2-473x1024.png)
 
 ## Contact Us
 

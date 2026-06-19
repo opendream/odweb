@@ -23,7 +23,7 @@ partners:
 
 ### Problem & Concept
 
-![](/media/2026/02/Screenshot-2026-02-16-at-5.50.11-PM.png)
+![Timeline comparing DetectEverything early warning with traditional outbreak surveillance](/media/2026/02/Screenshot-2026-02-16-at-5.50.11-PM.png)
 
 Intensive livestock farming, driven by urbanization and global population growth, has altered the human-animal interface, creating opportunities for the spillover and amplification of emerging zoonotic diseases.
 
@@ -41,15 +41,15 @@ The DetectEverything solution deploys metagenomic sequencing in rural agricultur
 2.  Increase sensitivity of government surveillance systems
 3.  Reduce impacts of animal disease on livelihoods of local communities.
 
-![](/media/2026/02/IMG_2765-1-1024x768.jpg)
+![DetectEverything field team collecting environmental samples](/media/2026/02/IMG_2765-1-1024x768.jpg)
 
 Our approach combines anomaly detection AI algorithms with the burgeoning field of **Precision Epidemiology**, enabled by metagenomic sequencing technology, in order to create a near real-time pathogen detection system. The resulting system detects aberrations in the microbial community of samples “pre-spillover”, before infected animals have the opportunity to transmit to humans.
 
-![](/media/2026/02/IMG_2758-2-1024x768.jpg)
+![DetectEverything field team preparing sample collection equipment](/media/2026/02/IMG_2758-2-1024x768.jpg)
 
 DetectEverything provides a high-impact, low-cost approach that can be used as a blueprint for LMICs to implement effective early warning systems that can prevent outbreaks before they cause widespread economic damage. Governments can use the research findings to justify budget requests for scaling genomic surveillance, helping build sequencing capacity for regions most severely impacted by infectious disease outbreaks.
 
-![](/media/2026/02/PXL_20250305_060720139-1-1024x771.jpg)
+![Field researchers collecting samples in a rural agricultural setting](/media/2026/02/PXL_20250305_060720139-1-1024x771.jpg)
 
 ### Latest Research
 
@@ -57,6 +57,6 @@ DetectEverything provides a high-impact, low-cost approach that can be used as a
 
 Parker MC, Apinda N, Uamngamsup S, et al. Targeted metagenomic sequencing with spiked primers for enrichment of viruses in wastewater for pathogen surveillance. _bioRxiv_. Preprint posted online December 26, 2025:2025.12.26.690930. doi:[10.64898/2025.12.26.690930](https://doi.org/10.64898/2025.12.26.690930)
 
-![](/media/2026/02/IMG_2726-1-5-1024x768.jpg)
+![DetectEverything team after a successful sample collection mission](/media/2026/02/IMG_2726-1-5-1024x768.jpg)
 
 Team after a successful poop-hunting mission.
