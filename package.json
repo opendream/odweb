@@ -5,21 +5,17 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npm run build && wrangler dev",
+    "preview": "astro preview --port 4321",
     "test": "vitest run",
-    "extract": "node scripts/extract.mjs",
-    "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "extract": "node scripts/extract.mjs"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12",
-    "@astrojs/mdx": "^4.0.0",
+    "astro": "^5.0.0",
     "@astrojs/sitemap": "^3.2.0",
-    "astro": "^5.0.0"
+    "@astrojs/mdx": "^4.0.0"
   },
   "devDependencies": {
     "turndown": "^7.2.0",
-    "vitest": "^2.1.0",
-    "wrangler": "^4.102.0"
+    "vitest": "^2.1.0"
   }
 }
