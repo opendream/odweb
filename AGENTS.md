@@ -23,10 +23,15 @@ build command `npm run build`, output directory `dist`, and **set the production
 `@astrojs/cloudflare` adapter — the site is static; Pages serves `dist/` directly. (A Workers/SSR
 adapter was tried and reverted; it expects a `_worker.js` this static build never emits.)
 
-**To release to production.** Fast-forward / merge a tested `main` into `production` and push —
-Pages builds and deploys it. Roll back with one click in the Pages dashboard (it keeps deploy
-history). Optionally tag the released commit `vX.Y.Z` for version history (tags don't trigger
-deploys; the `production` branch push does).
+**To release to production.** Run **`make release`** — it fast-forwards `production` to a tested,
+pushed `main` and pushes it, triggering the Pages production build & deploy. It refuses to run on a
+dirty working tree or when local `main` is out of sync with `origin/main`, and leaves you back on
+`main`. Roll back with one click in the Pages dashboard (it keeps deploy history). Optionally tag the
+released commit `vX.Y.Z` for version history — tags don't trigger deploys; the `production` push does.
+
+**`production` is a protected branch** on GitHub: no force-pushes, no deletion, and linear history
+required, so it can only ever **fast-forward from `main`** — exactly what `make release` does. `main`
+stays unprotected and experimental.
 
 **Environment variables.** Set `CLOUDFLARE_WEB_ANALYTICS_TOKEN` and `GOOGLE_SITE_VERIFICATION` on the
 **Production** environment only (leave Preview empty), so experimental builds emit no analytics or
