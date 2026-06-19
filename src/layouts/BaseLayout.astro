@@ -15,8 +15,21 @@ const { title, description, lang, path, altPath } = Astro.props;
 // canonical/hreflang must be absolute; derive from the Astro `site` config (single source of truth)
 const site = Astro.site?.origin ?? 'https://opendream.co.th';
 const alt = altPath ?? translations[path as keyof typeof translations];
-const enHref = lang === 'en' ? path : (alt ?? '/en/blogs');
-const thHref = lang === 'th' ? path : (alt ?? '/blog');
+const fallbackAlt = (() => {
+  if (alt) return alt;
+  if (lang === 'th') {
+    if (path.startsWith('/projects/')) return '/en/projects_en';
+    if (path.startsWith('/project/')) return '/en/projects_en';
+    if (path.startsWith('/blog/')) return '/en/blogs';
+    return '/en/';
+  }
+  if (path.startsWith('/en/projects_en/')) return '/projects';
+  if (path.startsWith('/en/project/')) return '/projects';
+  if (path.startsWith('/en/public/')) return '/blog';
+  return '/';
+})();
+const enHref = lang === 'en' ? path : fallbackAlt;
+const thHref = lang === 'th' ? path : fallbackAlt;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -25,17 +38,17 @@ const thHref = lang === 'th' ? path : (alt ?? '/blog');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="alternate" hreflang="th" href={site + thHref} />
-    <link rel="alternate" hreflang="en" href={site + enHref} />
+    {alt && <link rel="alternate" hreflang="th" href={site + thHref} />}
+    {alt && <link rel="alternate" hreflang="en" href={site + enHref} />}
     <link rel="canonical" href={site + path} />
-    <link rel="icon" href="/wp-content/uploads/2016/12/opendream-fav.png" />
-    <link rel="apple-touch-icon" href="/wp-content/uploads/2016/12/opendream-fav.png" />
+    <link rel="icon" href="/media/2016/12/opendream-fav.png" />
+    <link rel="apple-touch-icon" href="/media/2016/12/opendream-fav.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Opendream" />
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={site + path} />
-    <meta property="og:image" content={site + "/wp-content/uploads/2016/12/opendream-fav.png"} />
+    <meta property="og:image" content={site + "/media/2016/12/opendream-fav.png"} />
     <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
     <meta name="twitter:card" content="summary" />
     <!-- Site font: self-hosted Noto Sans Thai Looped (OFL); @font-face in src/styles/fonts.css.

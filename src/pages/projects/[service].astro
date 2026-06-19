@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import serviceLandings from '../../data/service-landings.json';
+
+export function getStaticPaths() {
+  return serviceLandings.th.map((service) => ({
+    params: { service: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const path = `/projects/${service.slug}`;
+---
+<BaseLayout title={`${service.title} — Opendream`} lang="th" path={path} altPath={service.altPath}>
+  <section class="od-section">
+    <div class="od-container">
+      <div class="od-prose od-prose--center">
+        <h1>{service.title}</h1>
+        <p>หน้าเดิมนี้ถูกรวมเข้ากับหน้าผลงานของเราแล้ว คุณสามารถดูตัวอย่างงานและโครงการที่เกี่ยวข้องได้จากหน้าผลงาน</p>
+        <p><a class="od-btn" href="/projects">ดูผลงานทั้งหมด</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

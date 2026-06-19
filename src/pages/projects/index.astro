@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import { SECTORS } from '../../../scripts/lib/categories.mjs';
+import ProjectListing from '../../components/ProjectListing.astro';
 import projectConfig from '../../data/projects.config.json';
 const order = projectConfig.th?.order ?? [];
 const rank = (slug) => { const i = order.indexOf(slug); return i === -1 ? Infinity : i; };
@@ -10,32 +9,5 @@ const items = (await getCollection('projects', (p) => p.data.lang === 'th'))
   .sort((a, b) => (rank(a.data.slug) - rank(b.data.slug)) || (b.data.date.getTime() - a.data.date.getTime()));
 ---
 <BaseLayout title="งานของเรา — Opendream" lang="th" path="/projects" altPath="/en/projects_en">
-  <section class="od-listing">
-    <div class="od-container">
-      <ul class="od-filter">
-        {SECTORS.map((s) => (
-          <li><a href="#" class={s.slug === 'all' ? 'active' : undefined} data-category-slug={s.slug}>{s.th}</a></li>
-        ))}
-      </ul>
-      <div class="od-grid">
-        {items.map((p) => <ProjectCard title={p.data.title} href={p.data.path} cover={p.data.cover} categories={p.data.categories} />)}
-      </div>
-    </div>
-  </section>
-  <script is:inline>
-    (() => {
-      const root = document.currentScript.closest('main') || document;
-      const links = root.querySelectorAll('.od-filter a');
-      const cards = root.querySelectorAll('.od-grid .od-card');
-      links.forEach((a) => a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const slug = a.getAttribute('data-category-slug');
-        links.forEach((x) => x.classList.toggle('active', x === a));
-        cards.forEach((c) => {
-          const s = (c.getAttribute('data-sectors') || '').split(' ');
-          c.style.display = (slug === 'all' || s.includes(slug)) ? '' : 'none';
-        });
-      }));
-    })();
-  </script>
+  <ProjectListing items={items} lang="th" />
 </BaseLayout>

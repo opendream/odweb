@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import serviceLandings from '../../../data/service-landings.json';
+
+export function getStaticPaths() {
+  return serviceLandings.en.map((service) => ({
+    params: { service: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const path = `/en/projects_en/${service.slug}`;
+---
+<BaseLayout title={`${service.title} — Opendream`} lang="en" path={path} altPath={service.altPath}>
+  <section class="od-section">
+    <div class="od-container">
+      <div class="od-prose od-prose--center">
+        <h1>{service.title}</h1>
+        <p>This service page has been folded into our portfolio. You can find related work and project examples on the projects page.</p>
+        <p><a class="od-btn" href="/en/projects_en">View all projects</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

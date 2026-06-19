@@ -1,0 +1,39 @@
+{
+  "th": [
+    { "slug": "chatbot", "title": "Chatbot", "altPath": "/en/projects_en/chatbot" },
+    { "slug": "crowdfunding", "title": "Crowdfunding", "altPath": "/en/projects_en/crowdfunding" },
+    { "slug": "crowdsourcing", "title": "Crowdsourcing", "altPath": "/en/projects_en/crowdsourcing" },
+    { "slug": "e-commerce", "title": "E-commerce" },
+    { "slug": "graphic-design", "title": "Graphic design", "altPath": "/en/projects_en/graphic-design" },
+    { "slug": "interactive-infographic", "title": "Interactive infographic", "altPath": "/en/projects_en/interactive-infographic" },
+    { "slug": "intranet", "title": "Intranet", "altPath": "/en/projects_en/intranet" },
+    { "slug": "mobileapplication", "title": "Mobile application", "altPath": "/en/projects_en/mobile-application" },
+    { "slug": "mobilegame", "title": "Mobile game", "altPath": "/en/projects_en/mobilegame" },
+    { "slug": "online-donation", "title": "Online donation", "altPath": "/en/projects_en/online-donation" },
+    { "slug": "online-payment", "title": "Online payment", "altPath": "/en/projects_en/online-payment" },
+    { "slug": "online-ticketing-system", "title": "Online ticketing system", "altPath": "/en/projects_en/online-ticketing-system" },
+    { "slug": "open-data", "title": "Open data", "altPath": "/en/projects_en/open-data" },
+    { "slug": "project", "title": "Project", "altPath": "/en/projects_en/project" },
+    { "slug": "web-application", "title": "Web application", "altPath": "/en/projects_en/web-application" },
+    { "slug": "web-portal", "title": "Web portal", "altPath": "/en/projects_en/web-portal" },
+    { "slug": "website", "title": "Website", "altPath": "/en/projects_en/website" }
+  ],
+  "en": [
+    { "slug": "chatbot", "title": "Chatbot", "altPath": "/projects/chatbot" },
+    { "slug": "crowdfunding", "title": "Crowdfunding", "altPath": "/projects/crowdfunding" },
+    { "slug": "crowdsourcing", "title": "Crowdsourcing", "altPath": "/projects/crowdsourcing" },
+    { "slug": "graphic-design", "title": "Graphic design", "altPath": "/projects/graphic-design" },
+    { "slug": "interactive-infographic", "title": "Interactive infographic", "altPath": "/projects/interactive-infographic" },
+    { "slug": "intranet", "title": "Intranet", "altPath": "/projects/intranet" },
+    { "slug": "mobile-application", "title": "Mobile application", "altPath": "/projects/mobileapplication" },
+    { "slug": "mobilegame", "title": "Mobile game", "altPath": "/projects/mobilegame" },
+    { "slug": "online-donation", "title": "Online donation", "altPath": "/projects/online-donation" },
+    { "slug": "online-payment", "title": "Online payment", "altPath": "/projects/online-payment" },
+    { "slug": "online-ticketing-system", "title": "Online ticketing system", "altPath": "/projects/online-ticketing-system" },
+    { "slug": "open-data", "title": "Open data", "altPath": "/projects/open-data" },
+    { "slug": "project", "title": "Project", "altPath": "/projects/project" },
+    { "slug": "web-application", "title": "Web application", "altPath": "/projects/web-application" },
+    { "slug": "web-portal", "title": "Web portal", "altPath": "/projects/web-portal" },
+    { "slug": "website", "title": "Website", "altPath": "/projects/website" }
+  ]
+}
