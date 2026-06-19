@@ -18,7 +18,7 @@ const dateStr = date.toLocaleDateString(lang === 'en' ? 'en-US' : 'th-TH', { yea
 const origin = Astro.site?.origin ?? 'https://opendream.co.th';
 const blogHref = lang === 'en' ? '/en/blogs' : '/blog';
 const blogName = lang === 'en' ? 'News' : 'ข่าวสาร';
-const homePath = lang === 'en' ? '/en/' : '/';
+const homePath = lang === 'en' ? '/en' : '/';
 const publishedTime = date.toISOString();
 const modifiedTime = modified ? modified.toISOString() : undefined;
 const jsonLd = [

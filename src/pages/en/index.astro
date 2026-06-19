@@ -11,7 +11,7 @@ const origin = Astro.site?.origin ?? 'https://opendream.co.th';
 const description = 'Opendream is a social-impact technology partner designing and building digital systems with organizations creating lasting public value.';
 const jsonLd = [organizationLd(origin), websiteLd(origin, 'en')];
 ---
-<BaseLayout title="Opendream — Open by Design. Build for Impact." description={description} lang="en" path="/en/" altPath="/" jsonLd={jsonLd}>
+<BaseLayout title="Opendream — Open by Design. Build for Impact." description={description} lang="en" path="/en" altPath="/" jsonLd={jsonLd}>
   <section class="od-home-hero">
     <h1 class="od-home-hero__title">Open by Design.<br /><span>Build for Impact.</span></h1>
   </section>

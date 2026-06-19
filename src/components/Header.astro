@@ -2,7 +2,7 @@
 import Nav from './Nav.astro';
 interface Props { lang: 'th' | 'en'; thHref?: string; enHref?: string; }
 const { lang, thHref = '/blog', enHref = '/en/blogs' } = Astro.props;
-const homeHref = lang === 'en' ? '/en/' : '/';
+const homeHref = lang === 'en' ? '/en' : '/';
 const menuLabel = lang === 'en' ? 'Menu' : 'เมนู';
 ---
 <header class="od-header">

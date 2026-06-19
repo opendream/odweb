@@ -45,7 +45,7 @@ const fallbackAlt = (() => {
     if (path.startsWith('/projects/')) return '/en/projects_en';
     if (path.startsWith('/project/')) return '/en/projects_en';
     if (path.startsWith('/blog/')) return '/en/blogs';
-    return '/en/';
+    return '/en';
   }
   if (path.startsWith('/en/projects_en/')) return '/projects';
   if (path.startsWith('/en/project/')) return '/projects';
