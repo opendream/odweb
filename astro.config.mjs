@@ -14,6 +14,11 @@ const serializeSitemap = createSitemapSerializer({ site, translations, serviceLa
 
 export default defineConfig({
   site,
+  // Inline the (single, ~16 KB / ~4 KB gzip) site stylesheet into each page's <head>
+  // instead of emitting a render-blocking <link>. Removes the CSS request from the
+  // critical path (faster FCP/LCP). The default 'auto' keeps chunks >4 KB external,
+  // which left our 4.4 KB bundle render-blocking.
+  build: { inlineStylesheets: 'always' },
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],
