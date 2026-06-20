@@ -19,15 +19,15 @@ export function shouldUseWebp(fallbackSize, webpSize) {
   return Number.isFinite(fallbackSize) && Number.isFinite(webpSize) && webpSize < fallbackSize;
 }
 
-export function webpFor(src) {
+export function webpFor(src, mediaRoot = PUBLIC_MEDIA_ROOT) {
   const webp = webpPathFor(src);
   if (!webp) return null;
 
-  const key = `${src}\0${webp}`;
+  const key = `${mediaRoot}\0${src}\0${webp}`;
   if (cache.has(key)) return cache.get(key);
 
-  const fallbackPath = mediaFilePath(src);
-  const webpPath = mediaFilePath(webp);
+  const fallbackPath = mediaFilePath(src, mediaRoot);
+  const webpPath = mediaFilePath(webp, mediaRoot);
   let result = null;
 
   try {
@@ -44,11 +44,11 @@ export function webpFor(src) {
   return result;
 }
 
-function mediaFilePath(src) {
+function mediaFilePath(src, mediaRoot = PUBLIC_MEDIA_ROOT) {
   try {
     const mediaPath = decodeURIComponent(src).replace(/^\/media\//, '');
-    const filePath = path.resolve(PUBLIC_MEDIA_ROOT, mediaPath);
-    return filePath.startsWith(`${PUBLIC_MEDIA_ROOT}${path.sep}`) ? filePath : null;
+    const filePath = path.resolve(mediaRoot, mediaPath);
+    return filePath.startsWith(`${mediaRoot}${path.sep}`) ? filePath : null;
   } catch {
     return null;
   }
