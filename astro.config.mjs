@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import { createRequire } from 'node:module';
@@ -21,7 +22,7 @@ export default defineConfig({
   // which left our 4.4 KB bundle render-blocking.
   build: { inlineStylesheets: 'always' },
   // Wrap local /media raster <img> in markdown/MDX bodies with a webp <picture> source.
-  markdown: { rehypePlugins: [rehypeMediaWebp] },
+  markdown: { processor: unified({ rehypePlugins: [rehypeMediaWebp] }) },
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],

@@ -13,9 +13,10 @@ import Gallery from '../components/content/Gallery.astro';
 import Map from '../components/content/Map.astro';
 import CTA from '../components/content/CTA.astro';
 import Button from '../components/content/Button.astro';
+import Picture from '../components/Picture.astro';
 
 // Components available to `pages` MDX without per-file imports (clean, CMS-friendly content).
-const mdxComponents = { Hero, Section, Blurbs, Blurb, Gallery, Map, CTA, Button };
+const mdxComponents = { Hero, Section, Blurbs, Blurb, Gallery, Map, CTA, Button, Picture };
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');

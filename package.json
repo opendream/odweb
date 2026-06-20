@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview --port 4321",
     "test": "vitest run",
-    "extract": "node scripts/extract.mjs"
+    "extract": "node scripts/extract.mjs",
+    "optimize-media": "node scripts/optimize-media.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.3",
@@ -15,6 +16,7 @@
     "astro": "^6.4.8"
   },
   "devDependencies": {
+    "sharp": "^0.34.5",
     "turndown": "^7.2.0",
     "vitest": "^3.2.6"
   },

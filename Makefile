@@ -57,7 +57,7 @@ test: ## Run the content-pipeline unit tests (Vitest)
 extract: ## Regenerate content from the WordPress source (requires that source running)
 	$(TOOLS) extract
 
-optimize-media: ## Optimize public/media in place (resize + webp); idempotent, FORCE=1 redoes all
+optimize-media: ## Optimize public/media in place (resize + smaller webp); FORCE=1 redoes all
 	$(TOOLS) optimize
 
 open: ## Open the site in your browser

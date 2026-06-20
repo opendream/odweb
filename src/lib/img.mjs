@@ -1,14 +1,55 @@
-// Maps a local /media raster URL to its generated `.webp` sibling.
-// The optimize-media script writes "<file>.webp" next to every png/jpg in public/media, so
-// callers can render a <picture> with a webp <source> and the original as the fallback.
-// Returns null for anything we don't generate webp for (svg/gif, remote/non-media URLs), so
-// callers degrade to a plain <img>. og:image keeps using the original (social-safe) — this
-// only affects on-page rendering.
-const RASTER = /\.(?:png|jpe?g)$/i;
+import { existsSync, statSync } from 'node:fs';
+import path from 'node:path';
 
-export function webpFor(src) {
+// Maps a local /media raster URL to its generated `.webp` sibling when that sibling exists
+// and is smaller than the optimized fallback. This keeps modern browsers from receiving a
+// larger asset for tiny PNGs/icons where WebP is not a win.
+const RASTER = /\.(?:png|jpe?g)$/i;
+const PUBLIC_MEDIA_ROOT = path.resolve('public/media');
+const cache = new Map();
+
+export function webpPathFor(src) {
   if (typeof src !== 'string') return null;
   if (!src.startsWith('/media/')) return null;
   if (!RASTER.test(src)) return null;
   return `${src}.webp`;
+}
+
+export function shouldUseWebp(fallbackSize, webpSize) {
+  return Number.isFinite(fallbackSize) && Number.isFinite(webpSize) && webpSize < fallbackSize;
+}
+
+export function webpFor(src) {
+  const webp = webpPathFor(src);
+  if (!webp) return null;
+
+  const key = `${src}\0${webp}`;
+  if (cache.has(key)) return cache.get(key);
+
+  const fallbackPath = mediaFilePath(src);
+  const webpPath = mediaFilePath(webp);
+  let result = null;
+
+  try {
+    if (fallbackPath && webpPath && existsSync(fallbackPath) && existsSync(webpPath)) {
+      const fallbackSize = statSync(fallbackPath).size;
+      const webpSize = statSync(webpPath).size;
+      if (shouldUseWebp(fallbackSize, webpSize)) result = webp;
+    }
+  } catch {
+    result = null;
+  }
+
+  cache.set(key, result);
+  return result;
+}
+
+function mediaFilePath(src) {
+  try {
+    const mediaPath = decodeURIComponent(src).replace(/^\/media\//, '');
+    const filePath = path.resolve(PUBLIC_MEDIA_ROOT, mediaPath);
+    return filePath.startsWith(`${PUBLIC_MEDIA_ROOT}${path.sep}`) ? filePath : null;
+  } catch {
+    return null;
+  }
 }

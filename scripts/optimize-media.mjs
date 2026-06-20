@@ -1,13 +1,15 @@
 // One-off media optimizer (run via `make optimize-media`, which runs it in Docker with sharp).
 //
 // For every raster image under public/media it:
-//   1. writes a "<file>.webp" sibling — the small, modern-format payload served on-page via
+//   1. writes a "<file>.webp" sibling when it is smaller than the optimized fallback — the
+//      modern-format payload served on-page via
 //      <picture> (src/components/Picture.astro + the rehype plugin for body images), and
 //   2. re-encodes the original IN PLACE as an optimized JPEG/PNG — the og:image / legacy
 //      fallback (social scrapers render JPEG/PNG reliably; WebP support is patchy).
 //
 // Both outputs are capped at CAP px on the longest side (never upscaled) and EXIF-rotated.
-// Idempotent: skips files that already have a .webp sibling (set FORCE=1 to re-process).
+// Idempotent for useful WebPs: skips files with a fresh, smaller .webp sibling
+// (set FORCE=1 to re-process).
 import { readdir, stat, rename, unlink } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -30,12 +32,15 @@ async function* walk(dir) {
 
 const kb = (n) => `${(n / 1024).toFixed(0)}KB`;
 
-let optimized = 0, skipped = 0, failed = 0;
+let optimized = 0, skipped = 0, failed = 0, webpKept = 0, webpOmitted = 0;
 let beforeTotal = 0, afterTotal = 0, webpTotal = 0;
 
 for await (const file of walk(ROOT)) {
   const webpPath = `${file}.webp`;
-  if (!FORCE && existsSync(webpPath)) { skipped++; continue; }
+  if (!FORCE && await hasFreshSmallerWebp(file, webpPath)) { skipped++; continue; }
+
+  const fallbackTmp = `${file}.tmp`;
+  const webpTmp = `${webpPath}.tmp`;
   try {
     const before = (await stat(file)).size;
     // Shared decode: respect EXIF orientation, cap longest side (never enlarge).
@@ -43,31 +48,65 @@ for await (const file of walk(ROOT)) {
       .rotate()
       .resize({ width: CAP, height: CAP, fit: 'inside', withoutEnlargement: true });
 
-    // 1) webp sibling — the on-page payload.
-    await base().webp({ quality: WEBP_Q, effort: 5 }).toFile(webpPath);
-    const webpSize = (await stat(webpPath)).size;
+    // 1) webp candidate — renamed into place only if it is smaller than the final fallback.
+    await base().webp({ quality: WEBP_Q, effort: 5 }).toFile(webpTmp);
+    const webpSize = (await stat(webpTmp)).size;
 
     // 2) optimized same-format fallback, written to a temp file then swapped in place
     //    (sharp can't read and write the same path).
     const ext = path.extname(file).toLowerCase();
-    const tmp = `${file}.tmp`;
     const pipe = ext === '.png'
       ? base().png({ palette: true, quality: 80, effort: 8, compressionLevel: 9 })
       : base().jpeg({ quality: JPEG_Q, mozjpeg: true, progressive: true });
-    await pipe.toFile(tmp);
-    if ((await stat(tmp)).size < before) await rename(tmp, file);
-    else await unlink(tmp);
+    await pipe.toFile(fallbackTmp);
+    const fallbackTmpSize = (await stat(fallbackTmp)).size;
+    const finalFallbackSize = fallbackTmpSize < before ? fallbackTmpSize : before;
+
+    if (fallbackTmpSize < before) await rename(fallbackTmp, file);
+    else await unlink(fallbackTmp);
+
+    if (webpSize < finalFallbackSize) {
+      await rename(webpTmp, webpPath);
+      webpKept++;
+      webpTotal += webpSize;
+    } else {
+      await unlink(webpTmp);
+      if (existsSync(webpPath)) await unlink(webpPath);
+      webpOmitted++;
+    }
+
     const after = (await stat(file)).size;
 
-    optimized++; beforeTotal += before; afterTotal += after; webpTotal += webpSize;
-    console.log(`${path.relative(ROOT, file)}  ${kb(before)} → fb ${kb(after)} · webp ${kb(webpSize)}`);
+    optimized++; beforeTotal += before; afterTotal += after;
+    const webpLabel = webpSize < after ? `webp ${kb(webpSize)}` : 'webp omitted';
+    console.log(`${path.relative(ROOT, file)}  ${kb(before)} → fb ${kb(after)} · ${webpLabel}`);
   } catch (err) {
     failed++;
     console.warn(`! skip ${path.relative(ROOT, file)}: ${err.message}`);
+    await cleanup(fallbackTmp);
+    await cleanup(webpTmp);
   }
 }
 
-console.log(`\nDone. ${optimized} optimized, ${skipped} already done, ${failed} failed.`);
+console.log(`\nDone. ${optimized} optimized, ${skipped} already fresh, ${webpKept} webp kept, ${webpOmitted} webp omitted, ${failed} failed.`);
 if (optimized) {
   console.log(`Fallbacks: ${kb(beforeTotal)} → ${kb(afterTotal)} · on-page webp total: ${kb(webpTotal)}`);
+}
+
+async function hasFreshSmallerWebp(file, webpPath) {
+  if (!existsSync(webpPath)) return false;
+  try {
+    const [fallback, webp] = await Promise.all([stat(file), stat(webpPath)]);
+    return webp.mtimeMs >= fallback.mtimeMs && webp.size < fallback.size;
+  } catch {
+    return false;
+  }
+}
+
+async function cleanup(file) {
+  try {
+    if (existsSync(file)) await unlink(file);
+  } catch {
+    // Best-effort cleanup only.
+  }
 }

@@ -45,7 +45,7 @@ services:
     command: sh -c "npm install --no-save turndown@^7.2.0 vitest@^3.2.6 node-html-parser@^6.1.13 >/dev/null 2>&1 && npx vitest run"
     profiles: ["tools"]
 
-  # One-off: optimize public/media in place (resize + webp siblings). Idempotent; FORCE=1 to redo.
+  # One-off: optimize public/media in place (resize + smaller webp siblings). FORCE=1 to redo.
   #   docker compose --profile tools run --rm optimize
   optimize:
     image: node:22-alpine
@@ -55,7 +55,7 @@ services:
       - extract_modules:/app/node_modules
     environment:
       - FORCE=${FORCE:-}
-    command: sh -c "npm install --no-save sharp@^0.34 >/dev/null 2>&1 && node scripts/optimize-media.mjs"
+    command: sh -c "npm ci >/dev/null 2>&1 && npm run optimize-media"
     profiles: ["tools"]
 
 volumes:

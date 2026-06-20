@@ -1,6 +1,6 @@
 ---
-// Renders a <picture> with a webp <source> + the original as the <img> fallback when a webp
-// sibling exists (local /media raster); otherwise a plain <img>. Drop-in for cover/media
+// Renders a <picture> with a webp <source> + the original as the <img> fallback when a smaller
+// webp sibling exists (local /media raster); otherwise a plain <img>. Drop-in for cover/media
 // images rendered by .astro components. og:image is unaffected (it keeps using the original).
 import { webpFor } from '../lib/img.mjs';
 

@@ -1,7 +1,7 @@
-// Rehype plugin: wrap any local /media raster <img> produced by markdown/MDX bodies in a
-// <picture> with a webp <source>, so body images get the same modern-format delivery as the
-// component-rendered covers (see src/components/Picture.astro). No external deps — a small
-// manual HAST walk keeps the production build dependency-free.
+// Rehype plugin: wrap local /media raster <img> produced by markdown/MDX bodies in a
+// <picture> with a webp <source> when the generated WebP is smaller, so body images get the
+// same modern-format delivery policy as component-rendered covers (see src/components/Picture.astro).
+// No external deps — a small manual HAST walk keeps the production build dependency-free.
 import { webpFor } from './img.mjs';
 
 export default function rehypeMediaWebp() {
