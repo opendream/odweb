@@ -57,7 +57,7 @@ const jsonLd = [
     <h1 class="od-article__title">{title}</h1>
     <p class="od-article__meta"><time datetime={date.toISOString()}>{dateStr}</time></p>
     {cover
-      ? <Picture class="od-article__cover" src={cover} alt={title} loading="eager" />
+      ? <Picture class="od-article__cover" src={cover} alt={title} loading="eager" fetchpriority="high" />
       : <div class="od-article__cover od-article__cover--ph" style={`background:${gradientFor(path)}`}></div>}
     <div class="od-prose"><slot /></div>
   </article>

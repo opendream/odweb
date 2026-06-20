@@ -17,10 +17,10 @@ const jsonLd = [organizationLd(origin), websiteLd(origin, 'th')];
     <h1 class="od-home-hero__title">Open by Design.<br /><span>Build for Impact.</span></h1>
   </section>
   <div class="od-showcase">
-    {tiles.map((t) => (
+    {tiles.map((t, i) => (
       <a href={t.path} class="od-showcase__tile">
         {t.cover
-          ? <Picture src={t.cover} alt={t.title} loading="eager" />
+          ? <Picture src={t.cover} alt={t.title} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} />
           : <span class="od-ph" style={`background:${gradientFor(t.slug)}`}>{t.title}</span>}
         {t.cover && (
           <div class="od-showcase__overlay">

@@ -9,12 +9,13 @@ interface Props {
   alt: string;
   class?: string;
   loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
   width?: number | string;
   height?: number | string;
 }
-const { src, alt, class: className, loading = 'lazy', width, height } = Astro.props;
+const { src, alt, class: className, loading = 'lazy', fetchpriority, width, height } = Astro.props;
 const webp = webpFor(src);
-const imgAttrs = { src, alt, class: className, loading, width, height };
+const imgAttrs = { src, alt, class: className, loading, fetchpriority, width, height };
 ---
 {webp ? (
   <picture>

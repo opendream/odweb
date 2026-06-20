@@ -55,7 +55,7 @@ const jsonLd = [
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path} cover={cover} jsonLd={jsonLd}>
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
-    {cover && <Picture class="od-article__cover" src={cover} alt={title} loading="eager" />}
+    {cover && <Picture class="od-article__cover" src={cover} alt={title} loading="eager" fetchpriority="high" />}
     {rows.length > 0 && (
       <dl class="od-meta">
         {rows.map((r) => (
