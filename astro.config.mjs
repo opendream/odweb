@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import { createRequire } from 'node:module';
 import { createSitemapSerializer, isSitemapIndexable } from './src/lib/sitemap-hreflang.mjs';
 import { resolveSiteOrigin } from './src/lib/site.mjs';
+import rehypeMediaWebp from './src/lib/rehype-media-webp.mjs';
 
 const require = createRequire(import.meta.url);
 const translations = require('./src/data/translations.json');
@@ -19,6 +20,8 @@ export default defineConfig({
   // critical path (faster FCP/LCP). The default 'auto' keeps chunks >4 KB external,
   // which left our 4.4 KB bundle render-blocking.
   build: { inlineStylesheets: 'always' },
+  // Wrap local /media raster <img> in markdown/MDX bodies with a webp <picture> source.
+  markdown: { rehypePlugins: [rehypeMediaWebp] },
   i18n: {
     defaultLocale: 'th',
     locales: ['th', 'en'],

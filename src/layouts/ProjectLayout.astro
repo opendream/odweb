@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Picture from '../components/Picture.astro';
 import { DEFAULT_OG_IMAGE, breadcrumbLd, creativeWorkLd } from '../lib/seo.mjs';
 
 interface Props {
@@ -54,7 +55,7 @@ const jsonLd = [
 <BaseLayout title={`${title} — Opendream`} description={description} lang={lang} path={path} cover={cover} jsonLd={jsonLd}>
   <article class="od-article">
     <h1 class="od-article__title">{title}</h1>
-    {cover && <img class="od-article__cover" src={cover} alt={title} />}
+    {cover && <Picture class="od-article__cover" src={cover} alt={title} loading="eager" />}
     {rows.length > 0 && (
       <dl class="od-meta">
         {rows.map((r) => (

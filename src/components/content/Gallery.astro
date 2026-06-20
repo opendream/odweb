@@ -1,7 +1,8 @@
 ---
+import Picture from '../Picture.astro';
 interface Props { images: { src: string; alt?: string }[]; cols?: number; }
 const { images = [], cols = 3 } = Astro.props;
 ---
 <div class="od-gallery" style={`--od-gallery-cols:${cols}`}>
-  {images.map((img) => <img src={img.src} alt={img.alt ?? ''} loading="lazy" />)}
+  {images.map((img) => <Picture src={img.src} alt={img.alt ?? ''} loading="lazy" />)}
 </div>

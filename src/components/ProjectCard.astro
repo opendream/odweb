@@ -3,13 +3,14 @@
 // `data-sectors` drives the client-side category filter. Styled by .od-card in modern.css.
 import { sectorSlugs } from '../lib/categories.mjs';
 import { gradientFor } from '../lib/gradient.mjs';
+import Picture from './Picture.astro';
 interface Props { title: string; href: string; cover?: string; categories?: string[]; }
 const { title, href, cover, categories = [] } = Astro.props;
 const sectors = sectorSlugs(categories).join(' ');
 ---
 <a href={href} class="od-card" data-sectors={sectors}>
   {cover
-    ? <img src={cover} alt={title} loading="lazy" width="400" height="286" />
+    ? <Picture src={cover} alt={title} loading="lazy" width="400" height="286" />
     : <span class="od-ph" style={`background:${gradientFor(href)}`}>{title}</span>}
   {cover && <span class="od-card__overlay"><span class="od-card__title">{title}</span></span>}
 </a>

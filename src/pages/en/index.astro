@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Picture from '../../components/Picture.astro';
 import { getCollection } from 'astro:content';
 import projectConfig from '../../data/projects.config.json';
 import { gradientFor } from '../../lib/gradient.mjs';
@@ -19,7 +20,7 @@ const jsonLd = [organizationLd(origin), websiteLd(origin, 'en')];
     {tiles.map((t) => (
       <a href={t.path} class="od-showcase__tile">
         {t.cover
-          ? <img src={t.cover} alt={t.title} />
+          ? <Picture src={t.cover} alt={t.title} loading="eager" />
           : <span class="od-ph" style={`background:${gradientFor(t.slug)}`}>{t.title}</span>}
         {t.cover && (
           <div class="od-showcase__overlay">

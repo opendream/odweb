@@ -1,0 +1,26 @@
+---
+// Renders a <picture> with a webp <source> + the original as the <img> fallback when a webp
+// sibling exists (local /media raster); otherwise a plain <img>. Drop-in for cover/media
+// images rendered by .astro components. og:image is unaffected (it keeps using the original).
+import { webpFor } from '../lib/img.mjs';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  width?: number | string;
+  height?: number | string;
+}
+const { src, alt, class: className, loading = 'lazy', width, height } = Astro.props;
+const webp = webpFor(src);
+const imgAttrs = { src, alt, class: className, loading, width, height };
+---
+{webp ? (
+  <picture>
+    <source srcset={webp} type="image/webp" />
+    <img {...imgAttrs} />
+  </picture>
+) : (
+  <img {...imgAttrs} />
+)}

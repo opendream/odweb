@@ -1,4 +1,5 @@
 ---
+import Picture from './Picture.astro';
 interface Props { lang: 'th' | 'en'; }
 const { lang } = Astro.props;
 const year = new Date().getFullYear();
@@ -10,7 +11,7 @@ const deed = lang === 'en'
 <footer class="od-footer">
   <div class="od-footer__inner">
     <div class="od-footer__logo">
-      <img src="/media/logo_foot.png" alt="Opendream" />
+      <Picture src="/media/logo_foot.png" alt="Opendream" />
       <div class="od-footer__copy">
         <span>2007&ndash;{year}</span>
         <a class="od-footer__license" rel="license noopener" target="_blank" href={deed}>

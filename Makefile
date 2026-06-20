@@ -6,7 +6,7 @@ TOOLS   := $(COMPOSE) --profile tools run --rm
 URL     := http://localhost:4321
 
 .DEFAULT_GOAL := help
-.PHONY: help up down rebuild dist release restart logs ps test extract open clean
+.PHONY: help up down rebuild dist release restart logs ps test extract optimize-media open clean
 
 help: ## Show this help
 	@grep -hE '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*## "}{printf "  \033[36m%-9s\033[0m %s\n", $$1, $$2}'
@@ -56,6 +56,9 @@ test: ## Run the content-pipeline unit tests (Vitest)
 
 extract: ## Regenerate content from the WordPress source (requires that source running)
 	$(TOOLS) extract
+
+optimize-media: ## Optimize public/media in place (resize + webp); idempotent, FORCE=1 redoes all
+	$(TOOLS) optimize
 
 open: ## Open the site in your browser
 	@open $(URL) 2>/dev/null || xdg-open $(URL) 2>/dev/null || echo "Open $(URL)"
