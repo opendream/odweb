@@ -16,7 +16,7 @@
     "astro": "^6.4.8"
   },
   "devDependencies": {
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.2",
     "turndown": "^7.2.0",
     "vitest": "^3.2.6"
   },
